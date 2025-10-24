@@ -47,3 +47,13 @@ def tool(inputs: dict,
         return wrapper
 
     return tool_decorator
+
+
+@tool(inputs={'name': str}, outputs={'greeting': str},
+      side_effects=['string manipulation'])
+def greeting(name: str):
+    return "Hello, {name}"
+
+
+print(greeting('hady'))
+print(TOOL_REGISTRY)
