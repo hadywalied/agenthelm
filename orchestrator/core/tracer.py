@@ -15,15 +15,19 @@ class ExecutionTracer:
         pargs = inspect.signature(tool_func).bind(*args, **kwargs).arguments
         timestamp = datetime.now(timezone.utc)
         start_time = time.monotonic()
+        output = None
         error_state = None
-        outputs_dict = {'result': ''}
         try:
             output = tool_func(*args, **kwargs)
-            outputs_dict = {"result": output}
         except Exception as e:
             error_state = str(e)
 
         execution_time = time.monotonic() - start_time
+
+        # The output dictionary for the event should be created after the call
+        outputs_dict = {}
+        if error_state is None:
+            outputs_dict = {"result": output}
 
         event = Event(timestamp=timestamp,
                       tool_name=tool_func.__name__,
@@ -33,4 +37,4 @@ class ExecutionTracer:
                       error_state=error_state)
 
         self.storage.save(event.model_dump())
-        return outputs_dict
+        return output

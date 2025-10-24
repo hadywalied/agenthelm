@@ -1,6 +1,7 @@
 from orchestrator.core.storage import FileStorage
 from orchestrator.core.tool import tool
 from orchestrator.core.tracer import ExecutionTracer
+import json
 
 storage = FileStorage('trace.json')
 executor = ExecutionTracer(storage)
@@ -10,7 +11,6 @@ executor = ExecutionTracer(storage)
 def read_file(filepath: str):
     with open(filepath, 'r') as f:
         content = f.read()
-    content = json.loads(content)
     return content
 
 
@@ -21,6 +21,7 @@ def read_file(filepath: str):
 def write_file(filepath: str, content: str):
     with open(filepath, 'w') as f:
         f.write(content)
+    return {"success": True}
 
 
 if __name__ == "__main__":
@@ -35,10 +36,7 @@ if __name__ == "__main__":
 
     # Use the tracer to read the file
     print("\n--- Tracing 'read_file' tool ---")
-    content_result = executor.trace_and_execute(read_file, filepath=test_file)
-
-    # The actual content is in the 'result' key of the output
-    read_content = content_result.get("result")
+    read_content = executor.trace_and_execute(read_file, filepath=test_file)
     print(f"Read content: '{read_content}'")
 
     # Modify the content
@@ -58,6 +56,5 @@ if __name__ == "__main__":
     # Verify the trace log
     print("\n--- Final Trace Log (from trace.json) ---")
     trace_log = storage.load()
-    import json
 
     print(json.dumps(trace_log, indent=2, default=str))
