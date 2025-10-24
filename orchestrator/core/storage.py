@@ -19,12 +19,12 @@ class FileStorage:
         """
         if override:
             with open(self.file_path, 'w') as f:
-                json.dump([data], f, indent=2)
+                json.dump([data], f, indent=2, default=str)
         else:
             current_data = self.load()
             current_data.append(data)
             with open(self.file_path, 'w') as f:
-                json.dump(current_data, f, indent=2)
+                json.dump(current_data, f, indent=2, default=str)
 
     def load(self) -> List[Dict[str, Any]]:
         """Load data from a JSON file. Returns a list of dictionaries."""

@@ -11,12 +11,12 @@ class ExecutionTracer:
     def __init__(self, storage: FileStorage):
         self.storage = storage
 
-    def trace_and_execute(self, tool_func: Callable, *args, kwargs):
+    def trace_and_execute(self, tool_func: Callable, *args, **kwargs):
         pargs = inspect.signature(tool_func).bind(*args, **kwargs).arguments
         timestamp = datetime.now(timezone.utc)
         start_time = time.monotonic()
         error_state = None
-        outputs_dict = {'result': None}
+        outputs_dict = {'result': ''}
         try:
             output = tool_func(*args, **kwargs)
             outputs_dict = {"result": output}
@@ -33,4 +33,4 @@ class ExecutionTracer:
                       error_state=error_state)
 
         self.storage.save(event.model_dump())
-        return output
+        return outputs_dict
