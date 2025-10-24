@@ -1,0 +1,21 @@
+internal_docs/
+
+.vscode/
+.idea/
+
+env/
+.DS_Store
+
+
+# uv lock file
+uv.lock
+
+# Virtual environment directory
+.venv/
+
+# Python-specific ignores (common in Python projects)
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
