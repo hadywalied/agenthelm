@@ -11,7 +11,7 @@
       
       
       
-        <link rel="prev" href="../api_reference/">
+        <link rel="prev" href="..">
       
       
         <link rel="next" href="../tutorial/">
@@ -225,29 +225,7 @@
   
   
   <span class="md-ellipsis">
-    AgentHelm
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api_reference/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    API Reference
+    Home
     
   </span>
   
@@ -314,18 +292,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-tracer" class="md-nav__link">
+  <a href="#the-tracer-the-heart-of-observability" class="md-nav__link">
     <span class="md-ellipsis">
-      The Tracer
+      The Tracer: The Heart of Observability
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-agent" class="md-nav__link">
+  <a href="#the-agent-the-brain-of-the-operation" class="md-nav__link">
     <span class="md-ellipsis">
-      The Agent
+      The Agent: The Brain of the Operation
     </span>
   </a>
   
@@ -335,6 +313,15 @@
   <a href="#the-event-model" class="md-nav__link">
     <span class="md-ellipsis">
       The Event Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reliability-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliability Features
     </span>
   </a>
   
@@ -361,6 +348,28 @@
   
   <span class="md-ellipsis">
     Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
     
   </span>
   
@@ -397,18 +406,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-tracer" class="md-nav__link">
+  <a href="#the-tracer-the-heart-of-observability" class="md-nav__link">
     <span class="md-ellipsis">
-      The Tracer
+      The Tracer: The Heart of Observability
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-agent" class="md-nav__link">
+  <a href="#the-agent-the-brain-of-the-operation" class="md-nav__link">
     <span class="md-ellipsis">
-      The Agent
+      The Agent: The Brain of the Operation
     </span>
   </a>
   
@@ -418,6 +427,15 @@
   <a href="#the-event-model" class="md-nav__link">
     <span class="md-ellipsis">
       The Event Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reliability-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliability Features
     </span>
   </a>
   
@@ -444,12 +462,43 @@
 
 <h1 id="core-concepts">Core Concepts</h1>
 <p>This section explains the fundamental ideas behind AgentHelm.</p>
-<h2 id="the-tracer">The Tracer</h2>
-<p><em>Coming soon...</em></p>
-<h2 id="the-agent">The Agent</h2>
-<p><em>Coming soon...</em></p>
+<h2 id="the-tracer-the-heart-of-observability">The Tracer: The Heart of Observability</h2>
+<p>The <code>ExecutionTracer</code> is the central component for running tools and recording their behavior. It acts as a wrapper around every tool call, ensuring that no action goes unrecorded.</p>
+<p>Its primary responsibilities are:</p>
+<ol>
+<li><strong>Execution</strong>: It takes a tool function and its arguments and executes it.</li>
+<li><strong>Tracing</strong>: It records the inputs, outputs, execution time, and any errors that occur during the execution.</li>
+<li><strong>Event Creation</strong>: It creates a structured <code>Event</code> object for every execution, which is then saved to a storage backend (like a JSON file).</li>
+</ol>
+<p>By routing all tool calls through the tracer, we gain a complete and auditable log of everything the agent does.</p>
+<h2 id="the-agent-the-brain-of-the-operation">The Agent: The Brain of the Operation</h2>
+<p>The <code>Agent</code> class is responsible for orchestrating the entire workflow. It uses a <strong>Reason-Act (ReAct)</strong> loop to achieve a user's goal.</p>
+<p>Here's how it works:</p>
+<ol>
+<li><strong>Reason</strong>: The agent takes the user's task and the history of previous steps and presents them to a Large Language Model (LLM). It asks the LLM to decide on the single next best action.</li>
+<li><strong>Act</strong>: The agent parses the LLM's response, which includes the tool to use and the arguments to use it with. It then uses the <code>ExecutionTracer</code> to execute that tool.</li>
+<li><strong>Observe</strong>: The result of the tool execution (the "observation") is added to the history.</li>
+<li><strong>Repeat</strong>: The loop repeats, feeding the new observation back into the LLM for the next reasoning step.</li>
+</ol>
+<p>This loop continues until the LLM decides the task is complete and calls the special <code>finish</code> tool.</p>
 <h2 id="the-event-model">The Event Model</h2>
-<p><em>Coming soon...</em></p>
+<p>Every action in AgentHelm is recorded as an <code>Event</code>. This is a Pydantic model that provides a consistent structure for our logs. The key fields are:</p>
+<ul>
+<li><code>timestamp</code>: When the event happened.</li>
+<li><code>tool_name</code>: The name of the tool that was called.</li>
+<li><code>inputs</code> &amp; <code>outputs</code>: The arguments the tool was called with and what it returned.</li>
+<li><code>error_state</code>: Any error that occurred.</li>
+<li><code>llm_reasoning_trace</code>: The "thought" process from the LLM that led to this tool call.</li>
+<li><code>confidence_score</code>: The LLM's confidence in its decision.</li>
+</ul>
+<p>This structured logging is what makes true observability possible.</p>
+<h2 id="reliability-features">Reliability Features</h2>
+<p>Reliability is a core tenet of AgentHelm. The <code>ExecutionTracer</code> implements several key features to make agents more robust:</p>
+<ul>
+<li><strong>Human-in-the-Loop (<code>requires_approval</code>)</strong>: You can mark any tool as requiring human approval. The tracer will pause execution and wait for confirmation before proceeding.</li>
+<li><strong>Retries</strong>: For tools that might be flaky (e.g., due to network issues), you can specify a number of retries. The tracer will automatically re-run the tool on failure.</li>
+<li><strong>Rollbacks (<code>compensating_tool</code>)</strong>: You can link a tool to a "compensating" tool that can undo its action. If a step in a multi-step workflow fails, the <code>Agent</code> will instruct the <code>Tracer</code> to execute the compensating tools for all previously completed steps in reverse order, ensuring the system doesn't get left in an inconsistent state.</li>
+</ul>
 
 
 
