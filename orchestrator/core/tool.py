@@ -55,5 +55,4 @@ def greeting(name: str):
     return "Hello, {name}"
 
 
-print(greeting('hady'))
 print(TOOL_REGISTRY)
