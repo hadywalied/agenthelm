@@ -1,13 +1,12 @@
+import inspect
 from functools import wraps
 from typing import List, Dict, Any, Callable
 
-# a central registry
-# This dictionary will store all our registered tools and their contracts.
+# A central registry for all tools
 TOOL_REGISTRY: Dict[str, Dict[str, Any]] = {}
 
-
-def tool(inputs: dict,
-         outputs: dict,
+def tool(inputs: dict = None,
+         outputs: dict = None,
          side_effects: List[str] = None,
          max_cost: float = 0.0,
          requires_approval: bool = False,
@@ -15,23 +14,44 @@ def tool(inputs: dict,
          compensating_tool: str = None):
     """
     A decorator to register a function as a tool in the orchestration framework.
+    If 'inputs' or 'outputs' are not provided, they will be inferred from the function's type hints.
     """
-    # Create a dictionary to hold the tool's contract
-    contract = {
-        "inputs": inputs,
-        "outputs": outputs,
-        "side_effects": side_effects or [],
-        "max_cost": max_cost,
-        "requires_approval": requires_approval,
-        "retries": retries,
-        "compensating_tool": compensating_tool,
-    }
 
     def tool_decorator(func: Callable) -> Callable:
-        """This is the actual decorator that wraps the function."""
+        """This is the actual decorator that wraps the function and builds the contract."""
         tool_name = func.__name__
 
-        # Register the tool and its contract when the code is loaded
+        # --- Introspection Logic --- 
+        sig = inspect.signature(func)
+        
+        # Infer inputs from type hints if not provided
+        introspected_inputs = {
+            param.name: param.annotation.__name__
+            for param in sig.parameters.values()
+            if param.kind == param.POSITIONAL_OR_KEYWORD
+        }
+
+        # Infer outputs from return type hint if not provided
+        introspected_outputs = {}
+        if sig.return_annotation is not inspect.Signature.empty:
+            # For simplicity, we'll assume the output is a dict with a single key 'result'
+            introspected_outputs = {'result': sig.return_annotation.__name__}
+
+        # --- Contract Creation --- 
+        final_inputs = inputs if inputs is not None else introspected_inputs
+        final_outputs = outputs if outputs is not None else introspected_outputs
+
+        contract = {
+            "inputs": final_inputs,
+            "outputs": final_outputs,
+            "side_effects": side_effects or [],
+            "max_cost": max_cost,
+            "requires_approval": requires_approval,
+            "retries": retries,
+            "compensating_tool": compensating_tool,
+        }
+
+        # Register the tool and its contract
         TOOL_REGISTRY[tool_name] = {
             "function": func,
             "contract": contract
@@ -39,20 +59,10 @@ def tool(inputs: dict,
 
         @wraps(func)
         def wrapper(*args, **kwargs):
-            # For now, the wrapper just executes the function.
-            # Later, the orchestrator will use the registry to perform
-            # checks before this wrapper is ever called.
+            # The orchestrator will use the registry to perform checks 
+            # before this wrapper is ever called.
             return func(*args, **kwargs)
 
         return wrapper
 
     return tool_decorator
-
-
-@tool(inputs={'name': str}, outputs={'greeting': str},
-      side_effects=['string manipulation'])
-def greeting(name: str):
-    return "Hello, {name}"
-
-
-print(TOOL_REGISTRY)

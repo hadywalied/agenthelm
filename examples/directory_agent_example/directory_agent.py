@@ -16,8 +16,6 @@ class FlakyToolState:
 flaky_state = FlakyToolState()
 
 @tool(
-    inputs={},
-     outputs={'status': str},
      retries=2  # Set retries to 2 (total of 3 attempts)
  )
 def flaky_tool():
@@ -31,7 +29,7 @@ def flaky_tool():
      return {"status": "Succeeded on the third attempt!"}
 
 
-@tool(inputs={'filepath': str}, outputs={'content': str})
+@tool()
 def read_file(filepath: str):
     """Reads the entire content of a file and returns it as a string."""
     with open(filepath, 'r') as f:
@@ -39,7 +37,7 @@ def read_file(filepath: str):
     return content
 
 
-@tool(inputs={'filepath': str, 'content_to_add': str}, outputs={'success': bool}, requires_approval=True)
+@tool(requires_approval=True)
 def append_to_file(filepath: str, content_to_add: str):
     """Appends a string to the end of a file."""
     with open(filepath, 'a') as f:

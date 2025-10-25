@@ -8,14 +8,14 @@ from orchestrator.llm.mistral_client import MistralClient
 
 # --- Tool Definitions ---
 
-@tool(inputs={'filepath': str}, outputs={'content': str})
+@tool()
 def read_file(filepath: str):
     """Reads the entire content of a file and returns it as a string."""
     with open(filepath, 'r') as f:
         content = f.read()
     return content
 
-@tool(inputs={'filepath': str}, outputs={'success': bool})
+@tool()
 def undo_append(filepath: str):
     """Removes the last line from a file to undo an append operation."""
     print("--- UNDOING APPEND --- ")
@@ -26,8 +26,6 @@ def undo_append(filepath: str):
     return {"success": True}
 
 @tool(
-    inputs={'filepath': str, 'content_to_add': str},
-    outputs={'success': bool},
     compensating_tool='undo_append'  # Linking the compensating tool
 )
 def append_to_file(filepath: str, content_to_add: str):
@@ -37,7 +35,7 @@ def append_to_file(filepath: str, content_to_add: str):
         f.write(f"\n{content_to_add}")
     return {"success": True}
 
-@tool(inputs={}, outputs={})
+@tool()
 def failing_tool():
     """This tool is designed to always fail, for testing rollbacks."""
     raise RuntimeError("This tool failed as intended.")
