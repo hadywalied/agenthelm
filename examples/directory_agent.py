@@ -7,6 +7,30 @@ from orchestrator.agent import Agent
 from orchestrator.llm.mistral_client import MistralClient
 
 
+
+# A simple stateful class to simulate a flaky tool
+class FlakyToolState:
+    def __init__(self):
+        self.attempts = 0
+
+flaky_state = FlakyToolState()
+
+@tool(
+    inputs={},
+     outputs={'status': str},
+     retries=2  # Set retries to 2 (total of 3 attempts)
+ )
+def flaky_tool():
+     """
+     A tool that is designed to fail the first two times it's called
+     and succeed on the third attempt.
+     """
+     flaky_state.attempts += 1
+     if flaky_state.attempts < 3:
+         raise ValueError(f"Simulating failure on attempt {flaky_state.attempts}")
+     return {"status": "Succeeded on the third attempt!"}
+
+
 @tool(inputs={'filepath': str}, outputs={'content': str})
 def read_file(filepath: str):
     """Reads the entire content of a file and returns it as a string."""
@@ -37,7 +61,7 @@ if __name__ == "__main__":
     client = MistralClient(model_name="mistral-small-latest", api_key=api_key)
 
     # Define the list of tools for the agent
-    agent_tools = [read_file, append_to_file]
+    agent_tools = [read_file, append_to_file, flaky_tool]
 
     # Instantiate the Agent
     agent = Agent(tools=agent_tools, tracer=tracer, client=client)
@@ -64,3 +88,7 @@ if __name__ == "__main__":
     print("\n--- Final Trace Log ---")
     trace_log = storage.load()
     print(json.dumps(trace_log, indent=2, default=str))
+
+
+    print("\n--- Running Agent with flaky_tool to test retries ---")
+    agent.run("run the flaky tool and see if it succeeds")

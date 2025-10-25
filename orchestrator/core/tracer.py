@@ -36,10 +36,18 @@ class ExecutionTracer:
                               error_state=error_state)
                 self.storage.save(event.model_dump())
                 return None
-        try:
-            output = tool_func(*args, **kwargs)
-        except Exception as e:
-            error_state = str(e)
+
+        retries = contract.get('retries', 0)
+        for attempt in range(retries + 1):
+            try:
+                output = tool_func(*args, **kwargs)
+                error_state = None  # Reset error state on success
+                break  # If successful, exit the loop
+            except Exception as e:
+                error_state = str(e)
+                print(f"Attempt {attempt + 1}/{retries + 1} failed: {error_state}")
+                if attempt < retries:
+                    time.sleep(1)  # Wait 1 second before the next attemp
 
         execution_time = time.monotonic() - start_time
 
