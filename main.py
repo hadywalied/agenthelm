@@ -8,7 +8,7 @@ from typing import List, Callable
 
 from build.lib.orchestrator.llm.openai_client import OpenAIClient
 from orchestrator.core.storage import FileStorage
-from orchestrator.core.tool import TOOL_REGISTRY, tool
+from orchestrator.core.tool import TOOL_REGISTRY
 from orchestrator.core.tracer import ExecutionTracer
 from orchestrator.agent import Agent
 from orchestrator.llm.mistral_client import MistralClient

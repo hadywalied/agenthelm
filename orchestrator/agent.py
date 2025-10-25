@@ -48,7 +48,7 @@ class Agent:
     def make_prompt(self, task: str, history: str = "") -> tuple[str, str]:
         tools_str = self.get_tools_str()
 
-        system_prompt = f"""
+        system_prompt = """
         You are a helpful assistant that completes a task by planning and executing a sequence of tool calls.
         Your goal is to decide the single next tool call to make. 
         You must respond with a single, valid JSON object with two keys: 'tool_name' and 'arguments'.
