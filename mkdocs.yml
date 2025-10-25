@@ -9,6 +9,21 @@ nav:
   - Tutorial: tutorial.md
   - API Reference: api_reference.md
 
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_if_no_docstring: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_object_full_path: false
+            show_category_heading: true
+            show_bases: true
+            show_source: true
+            members_order: alphabetical
+            docstring_style: "google"
+
 theme:
   name: material
   features:
