@@ -47,15 +47,19 @@ def test_tracer_requires_approval_approved(tracer):
 
 def test_tracer_requires_approval_denied(tracer):
     """Tests that the tracer stops execution when approval is denied."""
-    tracer.approval_handler = MockApprovalHandler(approve=False)
+    handler = MockApprovalHandler(approve=False)
+    tracer.approval_handler = handler
 
     @tool(requires_approval=True)
     def sensitive_tool():
         return "success"
 
-    result = tracer.trace_and_execute(sensitive_tool)
-    assert result is None
-    assert tracer.approval_handler.called is True
+    # Assert that the correct exception is raised
+    with pytest.raises(RuntimeError, match="User did not approve execution."):
+        tracer.trace_and_execute(sensitive_tool)
+
+    # Assert that the handler was still called
+    assert handler.called is True
 
     # Check the trace log to ensure denial was recorded
     log = tracer.storage.load()
