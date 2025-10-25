@@ -50,16 +50,37 @@ def post_tweet(message: str) -> dict:
     return {"status": "posted"}
 ```
 
-### 3. Run the Agent
+### 3. Environment Variables
 
-Use the `agenthelm` command-line tool to run your agent. The CLI handles everything from setting up the agent to running the reasoning loop and logging the traces.
+AgentHelm requires API keys for the Large Language Models (LLMs) it interacts with. Set these as environment variables:
+
+-   **Mistral AI**: Set `MISTRAL_API_KEY`. Optionally, set `MISTRAL_MODEL_NAME` (defaults to `mistral-small-latest`).
+    ```bash
+    export MISTRAL_API_KEY="your_mistral_api_key_here"
+    # export MISTRAL_MODEL_NAME="mistral-large-latest"
+    ```
+-   **OpenAI**: Set `OPENAI_API_KEY`. Optionally, set `OPENAI_MODEL_NAME` (defaults to `gpt-4`).
+    ```bash
+    export OPENAI_API_KEY="your_openai_api_key_here"
+    # export OPENAI_MODEL_NAME="gpt-3.5-turbo"
+    ```
+
+### 4. Run the Agent
+
+Use the `agenthelm` command-line tool (or `python -m main`) to run your agent. The CLI handles everything from setting up the agent to running the reasoning loop and logging the traces.
 
 ```bash
-# Set your LLM API key
-export MISTRAL_API_KEY='your_key_here'
-
 # Run the agent from your terminal
-agenthelm run tools.py "What is the weather in New York?"
+python -m main run \
+  --agent-file examples/cli_tools_example/my_agent_tools.py \
+  --task "What is the weather in New York?"
+
+# For verbose output, add the -v or --verbose flag
+python -m main run \
+  --agent-file examples/cli_tools_example/my_agent_tools.py \
+  --task "What is the weather in New York?" \
+  --llm-type mistral \
+  --verbose
 ```
 
 This will produce a detailed `cli_trace.json` file, giving you a perfect record of the agent's execution.
