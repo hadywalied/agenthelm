@@ -1,3 +1,5 @@
+[![FreePalestine.Dev](https://freepalestine.dev/header/1)](https://freepalestine.dev)
+
 # DockAI
 
 **Production-Ready Orchestration for AI Agents.**
