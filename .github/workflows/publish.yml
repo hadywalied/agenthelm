@@ -1,10 +1,10 @@
-name: Publish
+name: Publish to PyPI
 
 on:
   workflow_dispatch:
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,11 +19,14 @@ jobs:
       - name: Install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
-      - name: Install dependencies
-        run: ~/.local/bin/uv sync --extra dev
+      - name: Create Virtual Environment
+        run: ~/.local/bin/uv venv
 
-      - name: Lint with ruff
-        run: ~/.local/bin/uv run ruff check .
+      - name: Install Build Dependencies
+        run: source .venv/bin/activate && ~/.local/bin/uv pip install build twine
 
-      - name: Run tests with pytest
-        run: ~/.local/bin/uv run pytest
+      - name: Build Package
+        run: source .venv/bin/activate && ~/.local/bin/uv build
+
+      - name: Publish to PyPI
+        run: source .venv/bin/activate && ~/.local/bin/uv publish --token ${{ secrets.PYPI_API_TOKEN }}
