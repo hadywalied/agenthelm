@@ -1,5 +1,5 @@
 [project]
-name = "dockai"
+name = "agenthelm"
 version = "0.1.0"
 description = "A production-ready, observable, and reliable AI agent orchestration framework."
 readme = "README.md"
@@ -16,6 +16,8 @@ dependencies = [
 include = ["orchestrator", "orchestrator.*"]
 
 [project.scripts]
+agenthelm = "main:app"
+
 [project.optional-dependencies]
 dev = [
     "ruff>=0.5.5",

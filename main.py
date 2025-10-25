@@ -35,7 +35,7 @@ def main(verbose: bool = typer.Option(False, "--verbose", "-v", help="Enable ver
 def help():
     """Display a custom help message for the DockAI CLI."""
     # This can be enhanced or kept as is. For now, the default --help is powerful.
-    typer.echo("Welcome to DockAI - The Docker for AI Agents")
+    typer.echo("Welcome to AgentHelm - The Docker for AI Agents")
     typer.echo("Run 'python main.py run --help' for detailed command usage.")
 
 
