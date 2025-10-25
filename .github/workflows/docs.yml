@@ -1,0 +1,30 @@
+name: Deploy Docs to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Create Virtual Environment
+        run: ~/.local/bin/uv venv
+
+      - name: Install MkDocs and Material Theme
+        run: source .venv/bin/activate && ~/.local/bin/uv pip install mkdocs mkdocs-material
+
+      - name: Deploy Docs
+        run: source .venv/bin/activate && python -m mkdocs gh-deploy --force

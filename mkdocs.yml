@@ -1,0 +1,10 @@
+site_name: AgentHelm
+site_author: hadywalied
+repo_url: https://github.com/hadywalied/agenthelm
+repo_name: hadywalied/agenthelm
+
+theme:
+  name: material
+  features:
+    - content.code.copy
+
