@@ -85,11 +85,10 @@ python -m main run \
 
 This will produce a detailed `cli_trace.json` file, giving you a perfect record of the agent's execution.
 
-## Next Steps
+## Documentation
 
-This project is in active development. The next major steps are:
--   Adding a comprehensive test suite.
--   Publishing the first version to PyPI.
--   Building a web-based UI for visualizing traces.
+For comprehensive guides, tutorials, and API reference, please visit our official documentation site: [https://hadywalied.github.io/agenthelm/](https://hadywalied.github.io/agenthelm/)
+
+## Contributing
 
 We welcome contributions! Please feel free to open an issue or submit a pull request.
