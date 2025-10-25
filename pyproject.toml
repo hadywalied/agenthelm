@@ -1,7 +1,7 @@
 [project]
 name = "dockai"
 version = "0.1.0"
-description = "Add your description here"
+description = "A production-ready, observable, and reliable AI agent orchestration framework."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -10,4 +10,8 @@ dependencies = [
     "pydantic>=2.12.3",
     "requests>=2.32.5",
     "sqlalchemy>=2.0.44",
+    "typer>=0.20.0",
 ]
+
+[project.scripts]
+dockai = "main:app"
