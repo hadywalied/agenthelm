@@ -3,6 +3,12 @@ site_author: hadywalied
 repo_url: https://github.com/hadywalied/agenthelm
 repo_name: hadywalied/agenthelm
 
+nav:
+  - Home: index.md
+  - Core Concepts: concepts.md
+  - Tutorial: tutorial.md
+  - API Reference: api_reference.md
+
 theme:
   name: material
   features:
