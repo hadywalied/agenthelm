@@ -15,7 +15,7 @@ def read_file(filepath: str):
     return content
 
 
-@tool(inputs={'filepath': str, 'content_to_add': str}, outputs={'success': bool})
+@tool(inputs={'filepath': str, 'content_to_add': str}, outputs={'success': bool}, requires_approval=True)
 def append_to_file(filepath: str, content_to_add: str):
     """Appends a string to the end of a file."""
     with open(filepath, 'a') as f:
