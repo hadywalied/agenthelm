@@ -1,26 +1,32 @@
-name: Publish to PyPI
+name: CI
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-    - name: Install uv
-      run: curl -LsSf https://astral.sh/uv/install.sh | sh
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
-    - name: Build package
-      run: ~/.local/bin/uv build
+      - name: Install dependencies
+        run: ~/.local/bin/uv sync --extra dev
 
-    - name: Publish to PyPI
-      run: ~/.local/bin/uv publish --token ${{ secrets.PYPI_API_TOKEN }}
+      - name: Lint with ruff
+        run: ~/.local/bin/uv run ruff check .
+
+      - name: Run tests with pytest
+        run: ~/.local/bin/uv run pytest

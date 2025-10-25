@@ -12,6 +12,8 @@ dependencies = [
     "sqlalchemy>=2.0.44",
     "typer>=0.20.0",
 ]
+[tool.setuptools.packages.find]
+include = ["orchestrator", "orchestrator.*"]
 
 [project.scripts]
 [project.optional-dependencies]

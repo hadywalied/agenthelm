@@ -18,7 +18,7 @@ def test_tool_registration_and_introspection():
     assert "my_test_tool" in TOOL_REGISTRY
 
     # 2. Check if the function itself is stored correctly
-    assert TOOL_REGISTRY["my_test_tool"]["function"] == my_test_tool
+    assert TOOL_REGISTRY["my_test_tool"]["function"] == my_test_tool.__wrapped__
 
     # 3. Check if the contract was created
     contract = TOOL_REGISTRY["my_test_tool"]["contract"]

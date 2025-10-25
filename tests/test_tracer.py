@@ -15,9 +15,6 @@ def clear_tool_registry():
 @pytest.fixture
 def tracer() -> ExecutionTracer:
     """Provides a tracer instance with an in-memory storage for testing."""
-    # Use an in-memory storage for tests to avoid creating files
-    storage = FileStorage(':memory:') # Assuming FileStorage can be adapted for in-memory
-    # For now, we'll just use a dummy file path
     if os.path.exists("test_trace.json"):
         os.remove("test_trace.json")
     storage = FileStorage('test_trace.json')
