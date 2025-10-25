@@ -4,7 +4,7 @@ import os
 import importlib.util
 import inspect
 import logging
-from typing import List, Callable, Optional
+from typing import List, Callable
 
 from orchestrator.core.storage import FileStorage
 from orchestrator.core.tool import TOOL_REGISTRY
