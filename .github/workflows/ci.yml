@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install uv
+      run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+    - name: Install dependencies
+      run: ~/.local/bin/uv pip install -e .[dev]  # Assuming a [dev] extra for linting/testing tools
+
+    - name: Lint with ruff
+      run: ~/.local/bin/uv run ruff check .
+
+    - name: Run tests with pytest
+      run: ~/.local/bin/uv run pytest

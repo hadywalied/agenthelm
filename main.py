@@ -1,3 +1,5 @@
+from enum import Enum
+
 import typer
 import os
 import importlib.util
@@ -9,6 +11,11 @@ from orchestrator.core.tool import TOOL_REGISTRY, tool
 from orchestrator.core.tracer import ExecutionTracer
 from orchestrator.agent import Agent
 from orchestrator.llm.mistral_client import MistralClient
+
+class LLM_TYPE(Enum):
+    MISTRAL = "mistral"
+    OPENAI = "openai"
+
 
 app = typer.Typer(help="A CLI for running and observing AI agents.")
 
@@ -45,7 +52,7 @@ def load_tools_from_file(filepath: str) -> List[Callable]:
     return discovered_tools
 
 @app.command()
-def run(agent_file: str = typer.Argument(..., help="The path to the Python file containing tool definitions."),
+def run(llm_type:LLM_TYPE = typer.Argument(LLM_TYPE.MISTRAL, help="The type of LLM to use. choose between mistral and openai for now. we'll add more later."), agent_file: str = typer.Argument(..., help="The path to the Python file containing tool definitions."),
         task: str = typer.Argument(..., help="The natural language task for the agent to perform.")):
     """Runs the agent with a specified set of tools and a task."""
     
@@ -68,8 +75,16 @@ def run(agent_file: str = typer.Argument(..., help="The path to the Python file 
     if not api_key:
         typer.echo("Error: MISTRAL_API_KEY environment variable not set.")
         raise typer.Exit(code=1)
-
-    client = MistralClient(model_name="mistral-small-latest", api_key=api_key)
+    
+    match llm_type:
+        case LLM_TYPE.MISTRAL:
+            client = MistralClient(model_name="mistral-small-latest", api_key=api_key)
+        case LLM_TYPE.OPENAI:
+            typer.echo("OpenAI LLM type is not yet implemented.")
+            raise typer.Exit(code=1)
+        case _:
+            typer.echo(f"Unsupported LLM type: {llm_type}")
+            raise typer.Exit(code=1)
 
     # 2. Instantiate the Agent
     agent = Agent(tools=agent_tools, tracer=tracer, client=client)

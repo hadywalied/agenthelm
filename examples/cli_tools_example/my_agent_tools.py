@@ -4,7 +4,7 @@ from orchestrator.core.tool import tool
 # The CLI (`main.py`) is responsible for loading these tools and running the agent.
 
 @tool()
-def ahmed_w_mona(filepath: str) -> str:
+def read_file(filepath: str) -> str:
     """Reads the entire content of a file and returns it as a string."""
     with open(filepath, 'r') as f:
         content = f.read()

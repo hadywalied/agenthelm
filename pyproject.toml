@@ -14,4 +14,9 @@ dependencies = [
 ]
 
 [project.scripts]
-dockai = "main:app"
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.5.5",
+    "pytest>=8.3.2",
+]
+
