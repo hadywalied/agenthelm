@@ -45,6 +45,8 @@
       
     
     
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -64,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tutorial" class="md-skip">
+        <a href="#tutorial-building-your-first-agent-with-agenthelm" class="md-skip">
           Skip to content
         </a>
       
@@ -111,46 +113,6 @@
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
     
     
       <div class="md-header__source">
@@ -273,6 +235,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -284,6 +259,136 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-setup-your-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Setup Your Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-define-your-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Define Your Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Define Your Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-tool-get_weather" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple Tool: get_weather
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-requiring-human-approval-send_email" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool Requiring Human Approval: send_email
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-with-rollback-create_resource-and-delete_resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool with Rollback: create_resource and delete_resource
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-run-your-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Run Your Agent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Run Your Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple Task
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-requiring-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Requiring Approval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-with-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task with Rollback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-inspect-the-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Inspect the Trace
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -331,6 +436,125 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-setup-your-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Setup Your Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-define-your-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Define Your Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Define Your Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-tool-get_weather" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple Tool: get_weather
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-requiring-human-approval-send_email" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool Requiring Human Approval: send_email
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-with-rollback-create_resource-and-delete_resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool with Rollback: create_resource and delete_resource
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-run-your-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Run Your Agent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Run Your Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple Task
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-requiring-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Requiring Approval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-with-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task with Rollback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-inspect-the-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Inspect the Trace
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -348,9 +572,94 @@
   
 
 
-<h1 id="tutorial">Tutorial</h1>
-<p>This tutorial will walk you through building a complete agent with AgentHelm, from simple tools to complex, multi-step workflows with rollbacks.</p>
-<p><em>Coming soon...</em></p>
+<h1 id="tutorial-building-your-first-agent-with-agenthelm">Tutorial: Building Your First Agent with AgentHelm</h1>
+<p>This tutorial will guide you through building a simple agent using AgentHelm, demonstrating its core features like tool definition, human approval, and rollbacks.</p>
+<h2 id="1-setup-your-environment">1. Setup Your Environment</h2>
+<p>First, ensure you have Python 3.12+ and a virtual environment set up. Install AgentHelm:</p>
+<pre><code class="language-bash">pip install agenthelm
+</code></pre>
+<p>Also, make sure you have your LLM API key set as an environment variable (e.g., <code>export MISTRAL_API_KEY="your_key_here"</code>).</p>
+<h2 id="2-define-your-tools">2. Define Your Tools</h2>
+<p>Create a file named <code>my_agent_tools.py</code>. This file will contain the tools your agent can use.</p>
+<h3 id="simple-tool-get_weather">Simple Tool: <code>get_weather</code></h3>
+<p>Let's start with a simple tool to get weather information. AgentHelm's <code>@tool</code> decorator automatically infers the tool's contract from your function's type hints.</p>
+<pre><code class="language-python"># my_agent_tools.py
+from orchestrator.core.tool import tool
+
+@tool()
+def get_weather(city: str) -&gt; str:
+    &quot;&quot;&quot;Gets the current weather for a given city.&quot;&quot;&quot;
+    # In a real scenario, this would call a weather API
+    if city == &quot;New York&quot;:
+        return &quot;It is 24°C and sunny in New York.&quot;
+    elif city == &quot;London&quot;:
+        return &quot;It is 15°C and cloudy in London.&quot;
+    else:
+        return f&quot;Sorry, I don't know the weather for {city}.&quot;
+</code></pre>
+<h3 id="tool-requiring-human-approval-send_email">Tool Requiring Human Approval: <code>send_email</code></h3>
+<p>For sensitive actions, you can require human approval. AgentHelm will pause the agent's execution and prompt the user for confirmation.</p>
+<pre><code class="language-python"># my_agent_tools.py (continued)
+
+@tool(requires_approval=True)
+def send_email(recipient: str, subject: str, body: str) -&gt; dict:
+    &quot;&quot;&quot;Sends an email to a specified recipient.&quot;&quot;&quot;
+    # In a real scenario, this would integrate with an email service
+    print(f&quot;[ACTION REQUIRED] Sending email to {recipient} with subject '{subject}' and body: '{body}'&quot;)
+    return {&quot;status&quot;: &quot;email_sent&quot;, &quot;recipient&quot;: recipient}
+</code></pre>
+<h3 id="tool-with-rollback-create_resource-and-delete_resource">Tool with Rollback: <code>create_resource</code> and <code>delete_resource</code></h3>
+<p>AgentHelm supports transactional workflows with automatic rollbacks. If a multi-step process fails, it can execute compensating actions to undo previous steps.</p>
+<pre><code class="language-python"># my_agent_tools.py (continued)
+
+@tool()
+def delete_resource(resource_id: str) -&gt; dict:
+    &quot;&quot;&quot;Deletes a cloud resource by its ID (compensating action).&quot;&quot;&quot;
+    print(f&quot;[COMPENSATING ACTION] Deleting resource: {resource_id}&quot;)
+    return {&quot;status&quot;: &quot;resource_deleted&quot;, &quot;resource_id&quot;: resource_id}
+
+@tool(compensating_tool='delete_resource')
+def create_resource(resource_type: str, config: dict) -&gt; dict:
+    &quot;&quot;&quot;Creates a cloud resource with specified type and configuration.&quot;&quot;&quot;
+    # In a real scenario, this would call a cloud provider API
+    resource_id = f&quot;res-{resource_type}-{hash(str(config))}&quot;
+    print(f&quot;[ACTION] Creating resource {resource_id} of type {resource_type} with config {config}&quot;)
+    return {&quot;status&quot;: &quot;resource_created&quot;, &quot;resource_id&quot;: resource_id}
+
+@tool()
+def deploy_application(resource_id: str, app_name: str) -&gt; dict:
+    &quot;&quot;&quot;Deploys an application to a given resource. Designed to fail for demonstration.&quot;&quot;&quot;
+    print(f&quot;[ACTION] Deploying application {app_name} to {resource_id}&quot;)
+    raise RuntimeError(&quot;Deployment failed due to an unexpected error!&quot;)
+</code></pre>
+<h2 id="3-run-your-agent">3. Run Your Agent</h2>
+<p>Now, let's run the agent using the <code>agenthelm</code> CLI. Make sure you are in the directory containing <code>my_agent_tools.py</code>.</p>
+<h3 id="simple-task">Simple Task</h3>
+<pre><code class="language-bash">python -m main run \
+  --agent-file my_agent_tools.py \
+  --task &quot;What is the weather in London?&quot;
+</code></pre>
+<h3 id="task-requiring-approval">Task Requiring Approval</h3>
+<pre><code class="language-bash">python -m main run \
+  --agent-file my_agent_tools.py \
+  --task &quot;Send an email to user@example.com with subject 'Hello' and body 'This is a test email.'&quot;
+</code></pre>
+<p>When you run this, the agent will pause and ask for your approval before sending the email.</p>
+<h3 id="task-with-rollback">Task with Rollback</h3>
+<p>Let's simulate a multi-step workflow where a later step fails, triggering a rollback.</p>
+<pre><code class="language-bash">python -m main run \
+  --agent-file my_agent_tools.py \
+  --task &quot;First, create a 'web_server' resource with config {'size': 'medium'}. Then, deploy 'my-app' to it.&quot;
+</code></pre>
+<p>In this scenario, the <code>create_resource</code> tool will succeed, but <code>deploy_application</code> will fail. AgentHelm will then automatically call <code>delete_resource</code> (the compensating tool) to undo the <code>create_resource</code> action.</p>
+<h2 id="4-inspect-the-trace">4. Inspect the Trace</h2>
+<p>After each run, AgentHelm generates a <code>cli_trace.json</code> file in your current directory. This file contains a detailed, structured log of every action the agent took, including LLM reasoning, tool inputs/outputs, and any errors or rollbacks.</p>
+<p>Open <code>cli_trace.json</code> in a text editor to see the full observability in action.</p>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Explore the <a href="../concepts/">Core Concepts</a> to understand the architecture.</li>
+<li>Refer to the <a href="../api_reference/">API Reference</a> for detailed usage of classes and functions.</li>
+</ul>
 
 
 
