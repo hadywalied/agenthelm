@@ -15,6 +15,12 @@ dependencies = [
 [tool.setuptools.packages.find]
 include = ["orchestrator", "orchestrator.*"]
 
+[dependency-groups]
+dev = [
+    "matplotlib>=3.10.7",
+    "networkx>=3.5",
+]
+
 [project.scripts]
 agenthelm = "main:app"
 
