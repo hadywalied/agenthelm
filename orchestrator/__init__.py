@@ -9,6 +9,7 @@ from orchestrator.agent import Agent
 from orchestrator.core.tool import tool, TOOL_REGISTRY
 from orchestrator.core.tracer import ExecutionTracer
 from orchestrator.core.storage.json_storage import JsonStorage
+from orchestrator.core.storage.sqlite_storage import SqliteStorage
 from orchestrator.core.storage.base import BaseStorage
 from orchestrator.core.event import Event
 from orchestrator.core.handlers import CliHandler, ApprovalHandler
