@@ -19,6 +19,66 @@ If you've ever struggled to debug a failing agent or worried about deploying an 
 -   **Resilient Workflows**: Define automatic retries for flaky tools that might fail due to transient network errors.
 -   **Transactional Safety**: Implement automatic rollbacks for multi-step workflows. If a step fails, AgentHelm can run compensating actions to undo the previous steps.
 
+---
+
+## Observability & Trace Explorer (v0.2.0 New!)
+
+AgentHelm now provides enhanced observability features, allowing you to store, query, and analyze your agent's execution
+traces with ease.
+
+### Storage Backends
+
+By default, AgentHelm stores traces in a JSON file (`cli_trace.json`). You can now choose between different storage
+backends:
+
+- **JSON Storage**: Simple file-based storage (`.json` files). Ideal for local development and smaller projects.
+- **SQLite Storage**: A robust, file-based relational database (`.db` files). Offers efficient querying capabilities for
+  larger trace datasets.
+
+Specify your desired storage backend using the `--trace-file` option with either a `.json` or `.db` extension.
+
+### CLI Trace Explorer
+
+Use the `agenthelm traces` command to interact with your stored execution traces:
+
+#### List Traces
+
+List recent traces with pagination:
+
+```bash
+agenthelm traces list --limit 5 --offset 0 --trace-file my_traces.db
+agenthelm traces list --json # Output in JSON format
+```
+
+#### Show Trace Details
+
+View detailed information for a specific trace ID:
+
+```bash
+agenthelm traces show 0 --trace-file my_traces.db
+```
+
+#### Filter Traces
+
+Filter traces by various criteria:
+
+```bash
+agenthelm traces filter --tool-name read_file --status failed --date-from 2025-11-01 --trace-file my_traces.db
+agenthelm traces filter --min-time 1.0 --confidence-max 0.5 --json
+```
+
+#### Export Traces
+
+Export filtered traces to different formats (CSV, JSON, Markdown):
+
+```bash
+agenthelm traces export --output report.csv --format csv --status failed --trace-file my_traces.db
+agenthelm traces export --output all_traces.json --format json
+agenthelm traces export --output summary.md --format md --tool-name search_web
+```
+
+---
+
 ```mermaid
 graph TD
 subgraph "AgentHelm Ecosystem"

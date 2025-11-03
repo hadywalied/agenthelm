@@ -2,7 +2,7 @@ import pytest
 import os
 from orchestrator.core.tool import tool, TOOL_REGISTRY
 from orchestrator.core.tracer import ExecutionTracer
-from orchestrator.core.storage import FileStorage
+from orchestrator.core.storage.json_storage import JsonStorage
 from orchestrator.agent import Agent
 from orchestrator.llm.base import LLMClient
 
@@ -37,7 +37,7 @@ class MockLLMClient(LLMClient):
 def test_agent_react_loop_success():
     """Tests a successful multi-step workflow using the ReAct agent."""
     # 1. Setup
-    storage = FileStorage("test_react_success.json")
+    storage = JsonStorage("test_react_success.json")
     if os.path.exists("test_react_success.json"):
         os.remove("test_react_success.json")
     tracer = ExecutionTracer(storage=storage)
@@ -83,7 +83,7 @@ def test_agent_react_loop_success():
 def test_agent_react_loop_rollback():
     """Tests that the agent correctly performs a rollback on failure."""
     # 1. Setup
-    storage = FileStorage("test_react_rollback.json")
+    storage = JsonStorage("test_react_rollback.json")
     if os.path.exists("test_react_rollback.json"):
         os.remove("test_react_rollback.json")
     tracer = ExecutionTracer(storage=storage)

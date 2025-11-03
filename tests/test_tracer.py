@@ -1,7 +1,7 @@
 import pytest
 from orchestrator.core.tool import tool, TOOL_REGISTRY
 from orchestrator.core.tracer import ExecutionTracer
-from orchestrator.core.storage import FileStorage
+from orchestrator.core.storage.json_storage import JsonStorage
 from orchestrator.core.handlers import ApprovalHandler
 import os
 
@@ -19,7 +19,7 @@ def tracer() -> ExecutionTracer:
     """Provides a tracer instance with an in-memory storage for testing."""
     if os.path.exists("test_trace.json"):
         os.remove("test_trace.json")
-    storage = FileStorage("test_trace.json")
+    storage = JsonStorage("test_trace.json")
     return ExecutionTracer(storage=storage)
 
 
@@ -79,7 +79,7 @@ def test_tracer_retries_succeeds():
     # Separate storage and tracer for this test to isolate the log
     if os.path.exists("retry_test_trace.json"):
         os.remove("retry_test_trace.json")
-    storage = FileStorage("retry_test_trace.json")
+    storage = JsonStorage("retry_test_trace.json")
     tracer = ExecutionTracer(storage=storage)
 
     class FlakyState:

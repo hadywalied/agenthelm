@@ -36,7 +36,34 @@ This section provides a detailed API reference for all public classes and functi
 
 ## Storage
 
-::: orchestrator.FileStorage
+### BaseStorage (Abstract Base Class)
+
+::: orchestrator.BaseStorage
+options:
+members:
+- save
+- load
+- query
+
+### JsonStorage
+
+::: orchestrator.JsonStorage
+options:
+members:
+- __init__
+- save
+- load
+- exists
+
+### SqliteStorage
+
+::: orchestrator.SqliteStorage
+options:
+members:
+- __init__
+- save
+- load
+- query
 
 ## LLM Clients
 

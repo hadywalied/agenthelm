@@ -7,12 +7,12 @@ from typing import Callable
 from orchestrator.core.tool import TOOL_REGISTRY
 from orchestrator.core.handlers import CliHandler, ApprovalHandler
 
-from .storage import FileStorage
+from .storage.json_storage import JsonStorage
 from .event import Event
 
 
 class ExecutionTracer:
-    def __init__(self, storage: FileStorage, approval_handler: ApprovalHandler = None):
+    def __init__(self, storage: JsonStorage, approval_handler: ApprovalHandler = None):
         self.storage = storage
         self.approval_handler = approval_handler or CliHandler()
         self._current_reasoning = None

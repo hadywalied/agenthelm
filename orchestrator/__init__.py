@@ -2,13 +2,14 @@
 AgentHelm - A production-ready, observable, and reliable AI agent orchestration framework.
 """
 
-__version__ = "0.1.2"
+__version__ = "0.2.0"
 
 # Core imports
 from orchestrator.agent import Agent
 from orchestrator.core.tool import tool, TOOL_REGISTRY
 from orchestrator.core.tracer import ExecutionTracer
-from orchestrator.core.storage import FileStorage, Storage
+from orchestrator.core.storage.json_storage import JsonStorage
+from orchestrator.core.storage.base import BaseStorage
 from orchestrator.core.event import Event
 from orchestrator.core.handlers import CliHandler, ApprovalHandler
 
@@ -22,8 +23,9 @@ __all__ = [
     "tool",
     "TOOL_REGISTRY",
     "ExecutionTracer",
-    "FileStorage",
-    "Storage",
+    "JsonStorage",
+    "BaseStorage",
+    "SqliteStorage",
     "Event",
     "LLMClient",
     "MistralClient",
