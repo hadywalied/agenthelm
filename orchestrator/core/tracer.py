@@ -31,14 +31,16 @@ class ExecutionTracer:
         error_state = None
 
         try:
-            contract = TOOL_REGISTRY.get(tool_func.__name__, {}).get('contract', {})
-            requires_approval = contract.get('requires_approval', False)
+            contract = TOOL_REGISTRY.get(tool_func.__name__, {}).get("contract", {})
+            requires_approval = contract.get("requires_approval", False)
             if requires_approval:
-                user_approval = self.approval_handler.request_approval(tool_func.__name__, pargs)
+                user_approval = self.approval_handler.request_approval(
+                    tool_func.__name__, pargs
+                )
                 if not user_approval:
                     raise PermissionError("User did not approve execution.")
 
-            retries = contract.get('retries', 0)
+            retries = contract.get("retries", 0)
             for attempt in range(retries + 1):
                 try:
                     output = tool_func(*args, **kwargs)
@@ -46,10 +48,12 @@ class ExecutionTracer:
                     break  # If successful, exit the loop
                 except Exception as e:
                     error_state = str(e)
-                    logging.warning(f"Attempt {attempt + 1}/{retries + 1} failed: {error_state}")
+                    logging.warning(
+                        f"Attempt {attempt + 1}/{retries + 1} failed: {error_state}"
+                    )
                     if attempt < retries:
                         time.sleep(1)  # Wait 1 second before the next attempt
-            
+
             if error_state:
                 raise RuntimeError(error_state)
 
@@ -59,22 +63,24 @@ class ExecutionTracer:
         execution_time = time.monotonic() - start_time
         outputs_dict = {"result": output} if error_state is None else {}
 
-        event = Event(timestamp=timestamp,
-                      tool_name=tool_func.__name__,
-                      inputs=pargs,
-                      outputs=outputs_dict,
-                      execution_time=execution_time,
-                      error_state=error_state,
-                      llm_reasoning_trace=self._current_reasoning or "",
-                      confidence_score=self._current_confidence)
+        event = Event(
+            timestamp=timestamp,
+            tool_name=tool_func.__name__,
+            inputs=pargs,
+            outputs=outputs_dict,
+            execution_time=execution_time,
+            error_state=error_state,
+            llm_reasoning_trace=self._current_reasoning or "",
+            confidence_score=self._current_confidence,
+        )
 
         # Clear the context for the next run
         self._current_reasoning = None
         self._current_confidence = 1.0
 
         self.storage.save(event.model_dump())
-        
+
         if error_state:
             raise RuntimeError(error_state)
-            
+
         return output

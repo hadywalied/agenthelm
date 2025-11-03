@@ -29,5 +29,5 @@ __all__ = [
     "MistralClient",
     "OpenAIClient",
     "CliHandler",
-    "ApprovalHandler"
+    "ApprovalHandler",
 ]

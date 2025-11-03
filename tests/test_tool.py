@@ -1,10 +1,12 @@
 import pytest
 from orchestrator.core.tool import tool, TOOL_REGISTRY
 
+
 # Clean up the registry before each test to ensure isolation
 @pytest.fixture(autouse=True)
 def clear_tool_registry():
     TOOL_REGISTRY.clear()
+
 
 def test_tool_registration_and_introspection():
     """Tests that the @tool decorator correctly registers a function and introspects its inputs."""

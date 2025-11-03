@@ -51,11 +51,13 @@ class Agent:
         for tool_func in self.tools:
             tool_name = tool_func.__name__
             if tool_name in TOOL_REGISTRY:
-                contract = TOOL_REGISTRY[tool_name]['contract']
+                contract = TOOL_REGISTRY[tool_name]["contract"]
                 tools_str += f"Tool Name: {tool_name}\n"
                 tools_str += f"Inputs: {contract['inputs']}\n\n"
         tools_str += "Tool Name: finish\n"
-        tools_str += "Inputs: {{'answer': 'The final answer to the user\'s request'}}\n\n"
+        tools_str += (
+            "Inputs: {{'answer': 'The final answer to the user's request'}}\n\n"
+        )
         return tools_str
 
     def run_react(self, task: str, max_steps: int = 10):
@@ -72,54 +74,76 @@ class Agent:
             logging.debug(f"LLM Response: {llm_response}")
 
             try:
-                json_start = llm_response.find('{')
-                json_end = llm_response.rfind('}') + 1
+                json_start = llm_response.find("{")
+                json_end = llm_response.rfind("}") + 1
                 clean_json_str = llm_response[json_start:json_end]
                 choice = json.loads(clean_json_str)
-                
-                thought = choice.get('thought', 'N/A')
-                confidence = choice.get('confidence', 1.0)
-                tool_name = choice['tool_name']
-                arguments = choice['arguments']
+
+                thought = choice.get("thought", "N/A")
+                confidence = choice.get("confidence", 1.0)
+                tool_name = choice["tool_name"]
+                arguments = choice["arguments"]
                 logging.info(f"LLM chose tool: {tool_name} with arguments: {arguments}")
                 logging.debug(f"LLM thought: {thought}")
 
                 if tool_name == "finish":
-                    logging.info(f"--- Workflow finished. Final Answer: {arguments.get('answer')} ---")
-                    return {"status": "Workflow succeeded.", "final_answer": arguments.get('answer')}
+                    logging.info(
+                        f"--- Workflow finished. Final Answer: {arguments.get('answer')} ---"
+                    )
+                    return {
+                        "status": "Workflow succeeded.",
+                        "final_answer": arguments.get("answer"),
+                    }
 
                 if tool_name in self.tool_map:
                     tool_function = self.tool_map[tool_name]
-                    
-                    self.tracer.set_trace_context(reasoning=thought, confidence=confidence)
-                    
+
+                    self.tracer.set_trace_context(
+                        reasoning=thought, confidence=confidence
+                    )
+
                     result = self.tracer.trace_and_execute(tool_function, **arguments)
-                    
-                    successful_steps.append({"tool_name": tool_name, "arguments": arguments})
-                    history += f"\nStep {i+1}: Executed tool '{tool_name}'. Observation: {result}"
+
+                    successful_steps.append(
+                        {"tool_name": tool_name, "arguments": arguments}
+                    )
+                    history += f"\nStep {i + 1}: Executed tool '{tool_name}'. Observation: {result}"
                     logging.info(f"--- Tool execution finished. Result: {result} ---")
                 else:
-                    raise KeyError(f"LLM chose a tool '{tool_name}' that is not available.")
+                    raise KeyError(
+                        f"LLM chose a tool '{tool_name}' that is not available."
+                    )
 
             except Exception as e:
                 logging.error(f"--- Step {i + 1} FAILED: {e} ---")
                 logging.warning("--- INITIATING ROLLBACK ---")
-                
+
                 for step in reversed(successful_steps):
                     completed_tool_name = step["tool_name"]
                     logging.info(f"Checking for rollback for: {completed_tool_name}")
-                    
-                    contract = TOOL_REGISTRY[completed_tool_name]['contract']
-                    compensating_tool_name = contract.get('compensating_tool')
 
-                    if compensating_tool_name and compensating_tool_name in self.tool_map:
-                        logging.info(f"Found compensating tool: {compensating_tool_name}. Running it now.")
+                    contract = TOOL_REGISTRY[completed_tool_name]["contract"]
+                    compensating_tool_name = contract.get("compensating_tool")
+
+                    if (
+                        compensating_tool_name
+                        and compensating_tool_name in self.tool_map
+                    ):
+                        logging.info(
+                            f"Found compensating tool: {compensating_tool_name}. Running it now."
+                        )
                         compensating_tool_func = self.tool_map[compensating_tool_name]
-                        self.tracer.set_trace_context("Executing compensating tool for failed workflow.", 1.0)
-                        self.tracer.trace_and_execute(compensating_tool_func, **step["arguments"])
+                        self.tracer.set_trace_context(
+                            "Executing compensating tool for failed workflow.", 1.0
+                        )
+                        self.tracer.trace_and_execute(
+                            compensating_tool_func, **step["arguments"]
+                        )
                     else:
-                        logging.warning(f"No compensating tool found for {completed_tool_name}.")
-                
+                        logging.warning(
+                            f"No compensating tool found for {completed_tool_name}."
+                        )
+
                 logging.info("--- Rollback complete. Halting workflow. ---")
                 return {"status": "Workflow failed and was rolled back."}
 

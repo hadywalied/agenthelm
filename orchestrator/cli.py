@@ -25,7 +25,11 @@ app = typer.Typer(help="A CLI for running and observing AI agents.")
 
 
 @app.callback()
-def main(verbose: bool = typer.Option(False, "--verbose", "-v", help="Enable verbose DEBUG-level logging.")):
+def main(
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v", help="Enable verbose DEBUG-level logging."
+    ),
+):
     """Configure logging for the application."""
     level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(level=level, format="%(message)s")
@@ -48,29 +52,45 @@ def load_tools_from_file(filepath: str) -> List[Callable]:
         raise ImportError(f"Could not load spec from {filepath}")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    discovered_tools = [obj for name, obj in inspect.getmembers(module) if inspect.isfunction(obj) and name in TOOL_REGISTRY]
+    discovered_tools = [
+        obj
+        for name, obj in inspect.getmembers(module)
+        if inspect.isfunction(obj) and name in TOOL_REGISTRY
+    ]
     return discovered_tools
 
 
 @app.command()
-def run(agent_file: str = typer.Option(..., help="The path to the Python file containing tool definitions."),
-        task: str = typer.Option(..., help="The natural language task for the agent to perform."),
-        llm_type: LLM_TYPE = typer.Option(LLM_TYPE.MISTRAL, help="The type of LLM to use."),
-        max_steps: int = typer.Option(10, help="The maximum number of steps to run the agent for.")):
+def run(
+    agent_file: str = typer.Option(
+        ..., help="The path to the Python file containing tool definitions."
+    ),
+    task: str = typer.Option(
+        ..., help="The natural language task for the agent to perform."
+    ),
+    llm_type: LLM_TYPE = typer.Option(LLM_TYPE.MISTRAL, help="The type of LLM to use."),
+    max_steps: int = typer.Option(
+        10, help="The maximum number of steps to run the agent for."
+    ),
+):
     """Runs the agent with a specified set of tools and a task."""
     logging.info(f"Loading tools from: {agent_file}")
     try:
         agent_tools = load_tools_from_file(agent_file)
         if not agent_tools:
-            logging.error(f"Error: No tools found in {agent_file}. Make sure your functions are decorated with @tool.")
+            logging.error(
+                f"Error: No tools found in {agent_file}. Make sure your functions are decorated with @tool."
+            )
             raise typer.Exit(code=1)
-        logging.info(f"Found {len(agent_tools)} tools: {[t.__name__ for t in agent_tools]}")
+        logging.info(
+            f"Found {len(agent_tools)} tools: {[t.__name__ for t in agent_tools]}"
+        )
     except Exception as e:
         logging.error(f"Error loading tools file: {e}")
         raise typer.Exit(code=1)
 
     # 1. Setup the components
-    storage = FileStorage('cli_trace.json')
+    storage = FileStorage("cli_trace.json")
     tracer = ExecutionTracer(storage)
 
     if llm_type == LLM_TYPE.MISTRAL:

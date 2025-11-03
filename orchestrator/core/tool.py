@@ -5,13 +5,16 @@ from typing import List, Dict, Any, Callable
 # A central registry for all tools
 TOOL_REGISTRY: Dict[str, Dict[str, Any]] = {}
 
-def tool(inputs: dict = None,
-         outputs: dict = None,
-         side_effects: List[str] = None,
-         max_cost: float = 0.0,
-         requires_approval: bool = False,
-         retries: int = 0,
-         compensating_tool: str = None):
+
+def tool(
+    inputs: dict = None,
+    outputs: dict = None,
+    side_effects: List[str] = None,
+    max_cost: float = 0.0,
+    requires_approval: bool = False,
+    retries: int = 0,
+    compensating_tool: str = None,
+):
     """
     A decorator to register a function as a tool in the orchestration framework.
     If 'inputs' or 'outputs' are not provided, they will be inferred from the function's type hints.
@@ -21,9 +24,9 @@ def tool(inputs: dict = None,
         """This is the actual decorator that wraps the function and builds the contract."""
         tool_name = func.__name__
 
-        # --- Introspection Logic --- 
+        # --- Introspection Logic ---
         sig = inspect.signature(func)
-        
+
         # Infer inputs from type hints if not provided
         introspected_inputs = {
             param.name: param.annotation.__name__
@@ -35,9 +38,9 @@ def tool(inputs: dict = None,
         introspected_outputs = {}
         if sig.return_annotation is not inspect.Signature.empty:
             # For simplicity, we'll assume the output is a dict with a single key 'result'
-            introspected_outputs = {'result': sig.return_annotation.__name__}
+            introspected_outputs = {"result": sig.return_annotation.__name__}
 
-        # --- Contract Creation --- 
+        # --- Contract Creation ---
         final_inputs = inputs if inputs is not None else introspected_inputs
         final_outputs = outputs if outputs is not None else introspected_outputs
 
@@ -52,14 +55,11 @@ def tool(inputs: dict = None,
         }
 
         # Register the tool and its contract
-        TOOL_REGISTRY[tool_name] = {
-            "function": func,
-            "contract": contract
-        }
+        TOOL_REGISTRY[tool_name] = {"function": func, "contract": contract}
 
         @wraps(func)
         def wrapper(*args, **kwargs):
-            # The orchestrator will use the registry to perform checks 
+            # The orchestrator will use the registry to perform checks
             # before this wrapper is ever called.
             return func(*args, **kwargs)
 

@@ -9,31 +9,33 @@ from orchestrator.llm.mistral_client import MistralClient
 
 # --- Tool Definitions ---
 
+
 @tool()
 def read_file(filepath: str):
     """Reads the entire content of a file and returns it as a string."""
-    with open(filepath, 'r') as f:
+    with open(filepath, "r") as f:
         content = f.read()
     return content
+
 
 @tool()
 def undo_append(filepath: str):
     """Removes the last line from a file to undo an append operation."""
     logging.warning("--- UNDOING APPEND --- ")
-    with open(filepath, 'r') as f:
+    with open(filepath, "r") as f:
         lines = f.readlines()
-    with open(filepath, 'w') as f:
+    with open(filepath, "w") as f:
         f.writelines(lines[:-1])
     return {"success": True}
 
-@tool(
-    compensating_tool='undo_append'
-)
+
+@tool(compensating_tool="undo_append")
 def append_to_file(filepath: str, content_to_add: str):
     """Appends a string to the end of a file."""
-    with open(filepath, 'a') as f:
+    with open(filepath, "a") as f:
         f.write(f"\n{content_to_add}")
     return {"success": True}
+
 
 @tool()
 def failing_tool():
@@ -47,7 +49,7 @@ if __name__ == "__main__":
     # logging.basicConfig(level=logging.INFO, format="%(message)s")
 
     # 1. Setup the components
-    storage = FileStorage('react_trace.json')
+    storage = FileStorage("react_trace.json")
     tracer = ExecutionTracer(storage)
 
     api_key = os.environ.get("MISTRAL_API_KEY")
