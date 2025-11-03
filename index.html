@@ -488,7 +488,7 @@
 <h3 id="2-create-your-tools">2. Create your Tools</h3>
 <p>Create a Python file (e.g., <code>tools.py</code>) and define your functions with the <code>@tool</code> decorator. AgentHelm automatically parses the function signature to build the contract.</p>
 <pre><code class="language-python"># tools.py
-from orchestrator.core.tool import tool
+from orchestrator import tool
 
 @tool()
 def get_weather(city: str) -&gt; str:
@@ -517,14 +517,14 @@ def post_tweet(message: str) -&gt; dict:
     # export OPENAI_MODEL_NAME="gpt-3.5-turbo"</code></li>
 </ul>
 <h3 id="4-run-the-agent">4. Run the Agent</h3>
-<p>Use the <code>agenthelm</code> command-line tool (or <code>python -m main</code>) to run your agent. The CLI handles everything from setting up the agent to running the reasoning loop and logging the traces.</p>
+<p>Use the <code>agenthelm</code> command-line tool to run your agent. The CLI handles everything from setting up the agent to running the reasoning loop and logging the traces.</p>
 <pre><code class="language-bash"># Run the agent from your terminal
-python -m main run \
+agenthelm run \
   --agent-file examples/cli_tools_example/my_agent_tools.py \
   --task &quot;What is the weather in New York?&quot;
 
 # For verbose output, add the -v or --verbose flag
-python -m main run \
+agenthelm run \
   --agent-file examples/cli_tools_example/my_agent_tools.py \
   --task &quot;What is the weather in New York?&quot; \
   --llm-type mistral \

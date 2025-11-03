@@ -584,7 +584,7 @@
 <h3 id="simple-tool-get_weather">Simple Tool: <code>get_weather</code></h3>
 <p>Let's start with a simple tool to get weather information. AgentHelm's <code>@tool</code> decorator automatically infers the tool's contract from your function's type hints.</p>
 <pre><code class="language-python"># my_agent_tools.py
-from orchestrator.core.tool import tool
+from orchestrator import tool
 
 @tool()
 def get_weather(city: str) -&gt; str:
@@ -635,19 +635,19 @@ def deploy_application(resource_id: str, app_name: str) -&gt; dict:
 <h2 id="3-run-your-agent">3. Run Your Agent</h2>
 <p>Now, let's run the agent using the <code>agenthelm</code> CLI. Make sure you are in the directory containing <code>my_agent_tools.py</code>.</p>
 <h3 id="simple-task">Simple Task</h3>
-<pre><code class="language-bash">python -m main run \
+<pre><code class="language-bash">agenthelm run \
   --agent-file my_agent_tools.py \
   --task &quot;What is the weather in London?&quot;
 </code></pre>
 <h3 id="task-requiring-approval">Task Requiring Approval</h3>
-<pre><code class="language-bash">python -m main run \
+<pre><code class="language-bash">agenthelm run \
   --agent-file my_agent_tools.py \
   --task &quot;Send an email to user@example.com with subject 'Hello' and body 'This is a test email.'&quot;
 </code></pre>
 <p>When you run this, the agent will pause and ask for your approval before sending the email.</p>
 <h3 id="task-with-rollback">Task with Rollback</h3>
 <p>Let's simulate a multi-step workflow where a later step fails, triggering a rollback.</p>
-<pre><code class="language-bash">python -m main run \
+<pre><code class="language-bash">agenthelm run \
   --agent-file my_agent_tools.py \
   --task &quot;First, create a 'web_server' resource with config {'size': 'medium'}. Then, deploy 'my-app' to it.&quot;
 </code></pre>
