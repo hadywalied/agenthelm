@@ -44,10 +44,6 @@ pythonpath = ["."]
 # Add common flags: -v for verbose, --color=yes for readable output.
 addopts = "-v --color=yes"
 
-[tool.ruff]
-# This now matches your `requires-python` setting.
-target-version = "py312"
-
 [tool.ruff.lint]
 
 # Add rules to ignore (optional, but good starters).
