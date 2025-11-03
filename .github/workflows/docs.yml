@@ -3,6 +3,9 @@ name: Deploy Docs to GitHub Pages
 on:
   push:
     branches: [ main ]
+    tags:
+      - 'v*'
+  workflow_dispatch:  # Allow manual trigger
 
 permissions:
   contents: write
@@ -14,6 +17,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for version info
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -23,11 +28,21 @@ jobs:
       - name: Install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
-      - name: Create Virtual Environment
-        run: ~/.local/bin/uv venv
+      - name: Cache UV dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: ${{ runner.os }}-uv-${{ hashFiles('uv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-uv-
 
-      - name: Install MkDocs and Material Theme
-        run: source .venv/bin/activate && ~/.local/bin/uv pip install mkdocs mkdocs-material
+      - name: Install Dependencies
+        run: ~/.local/bin/uv sync --all-extras
+
+      - name: Configure Git
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
 
       - name: Deploy Docs
-        run: source .venv/bin/activate && python -m mkdocs gh-deploy --force
+        run: ~/.local/bin/uv run mkdocs gh-deploy --force
