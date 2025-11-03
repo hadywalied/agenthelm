@@ -36,4 +36,5 @@ __all__ = [
 def cli_main():
     """Entry point for the CLI command."""
     from orchestrator.cli import app
+
     app()
