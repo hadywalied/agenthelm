@@ -2,7 +2,7 @@
 AgentHelm - A production-ready, observable, and reliable AI agent orchestration framework.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.2"
 
 # Core imports
 from orchestrator.agent import Agent

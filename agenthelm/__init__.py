@@ -5,7 +5,7 @@ This is the public API package. Users import from here.
 Internally, this re-exports everything from the `orchestrator` package.
 """
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 # Re-export core components from orchestrator
 from orchestrator.agent import Agent
