@@ -18,10 +18,10 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["orchestrator", "orchestrator.core", "orchestrator.llm"]
+packages = ["orchestrator", "orchestrator.core", "orchestrator.llm", "agenthelm"]
 
 [project.scripts]
-agenthelm = "orchestrator.cli:app"
+agenthelm = "agenthelm:cli_main"
 
 [project.optional-dependencies]
 dev = [

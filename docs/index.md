@@ -31,7 +31,7 @@ Create a Python file (e.g., `tools.py`) and define your functions with the `@too
 
 ```python
 # tools.py
-from orchestrator import tool
+from agenthelm import tool
 
 @tool()
 def get_weather(city: str) -> str:

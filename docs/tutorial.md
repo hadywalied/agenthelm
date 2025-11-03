@@ -22,7 +22,7 @@ Let's start with a simple tool to get weather information. AgentHelm's `@tool` d
 
 ```python
 # my_agent_tools.py
-from orchestrator import tool
+from agenthelm import tool
 
 @tool()
 def get_weather(city: str) -> str:
