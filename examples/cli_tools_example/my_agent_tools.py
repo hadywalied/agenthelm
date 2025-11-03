@@ -1,7 +1,7 @@
 from orchestrator.core.tool import tool
 
 # Note: This file only contains tool definitions.
-# The CLI (`main.py`) is responsible for loading these tools and running the agent.
+# The CLI (`cli.py`) is responsible for loading these tools and running the agent.
 
 @tool()
 def read_file(filepath: str) -> str:

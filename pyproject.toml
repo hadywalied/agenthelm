@@ -1,6 +1,10 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "agenthelm"
-version = "0.1.0"
+version = "0.1.1"
 description = "A production-ready, observable, and reliable AI agent orchestration framework."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -12,17 +16,12 @@ dependencies = [
     "sqlalchemy>=2.0.44",
     "typer>=0.20.0",
 ]
-[tool.setuptools.packages.find]
-include = ["orchestrator", "orchestrator.*"]
 
-[dependency-groups]
-dev = [
-    "matplotlib>=3.10.7",
-    "networkx>=3.5",
-]
+[tool.setuptools]
+packages = ["orchestrator", "orchestrator.core", "orchestrator.llm"]
 
 [project.scripts]
-agenthelm = "main:app"
+agenthelm = "orchestrator.cli:app"
 
 [project.optional-dependencies]
 dev = [
@@ -31,5 +30,51 @@ dev = [
     "mkdocs>=1.6.0",
     "mkdocs-material>=9.5.0",
     "mkdocstrings[python]>=0.25.1",
+    "ty>=0.0.1a24",
+    "matplotlib>=3.10.7",
+    "networkx>=3.5",
 ]
 
+# --- NEW: `pytest` Configuration ---
+[tool.pytest.ini_options]
+# Automatically add the current directory to the python path.
+# This helps pytest find your `orchestrator` module.
+pythonpath = ["."]
+# Add common flags: -v for verbose, --color=yes for readable output.
+addopts = "-v --color=yes"
+
+[tool.ruff]
+# This now matches your `requires-python` setting.
+target-version = "py312"
+
+[tool.ruff.lint]
+
+# Add rules to ignore (optional, but good starters).
+ignore = [
+    # --- Docstring Ignores ---
+    "D100", # Missing docstring in public module
+    "D101", # Missing docstring in public class
+    "D102", # Missing docstring in public method
+    "D103", # Missing docstring in public function
+    "D104", # Missing docstring in public package
+    "D107", # Missing docstring in `__init__`
+
+    # --- Annotation Ignores ---
+    "ANN101", # Missing type annotation for `self` in method
+    "ANN102", # Missing type annotation for `cls` in classmethod
+    "ANN401", # `Any` type, sometimes unavoidable
+
+    # --- Other Common Ignores ---
+    "COM812", # Trailing comma missed
+    "ISC001", # Implicit string concatenation
+    "TD002",  # "TODO" comments
+    "TD003",
+    "FIX002", # "FIXME" comments
+    "CPY001", # Copyright notice
+]
+
+# --- NEW: Per-file Ignores ---
+# This is very useful for relaxing rules in test files.
+[tool.ruff.lint.per-file-ignores]
+# Allow missing docstrings, "magic numbers", and `assert` statements in tests
+"tests/**/*.py" = ["D", "S101", "PLR2004"]

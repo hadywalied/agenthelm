@@ -4,7 +4,7 @@ This section provides a detailed API reference for all public classes and functi
 
 ## Agent
 
-::: orchestrator.agent.Agent
+::: orchestrator.Agent
     options:
         members:
             - __init__
@@ -15,15 +15,15 @@ This section provides a detailed API reference for all public classes and functi
 
 ### The `@tool` decorator
 
-::: orchestrator.core.tool.tool
+::: orchestrator.tool
 
 ### Tool Registry
 
-::: orchestrator.core.tool.TOOL_REGISTRY
+::: orchestrator.TOOL_REGISTRY
 
 ## Tracer
 
-::: orchestrator.core.tracer.ExecutionTracer
+::: orchestrator.ExecutionTracer
     options:
         members:
             - __init__
@@ -32,27 +32,27 @@ This section provides a detailed API reference for all public classes and functi
 
 ## Event Model
 
-::: orchestrator.core.event.Event
+::: orchestrator.Event
 
 ## Storage
 
-::: orchestrator.core.storage.FileStorage
+::: orchestrator.FileStorage
 
 ## LLM Clients
 
-::: orchestrator.llm.base.LLMClient
+::: orchestrator.LLMClient
     options:
         members:
             - __init__
             - predict
 
-::: orchestrator.llm.mistral_client.MistralClient
+::: orchestrator.MistralClient
     options:
         members:
             - __init__
             - predict
 
-::: orchestrator.llm.openai_client.OpenAIClient
+::: orchestrator.OpenAIClient
     options:
         members:
             - __init__
@@ -60,10 +60,10 @@ This section provides a detailed API reference for all public classes and functi
 
 ## Approval Handlers
 
-::: orchestrator.core.handlers.ApprovalHandler
+::: orchestrator.ApprovalHandler
     options:
         members:
             - request_approval
 
-::: orchestrator.core.handlers.CliHandler
+::: orchestrator.CliHandler
 

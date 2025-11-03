@@ -3,7 +3,17 @@ import os
 from typing import Any, Dict, List
 
 
-class FileStorage:
+class Storage:
+    def save(self, data: Dict[str, Any], override=False) -> None:
+        NotImplementedError()
+
+    def load(self) -> List[Dict[str, Any]]:
+        NotImplementedError()
+
+    def exists(self) -> bool:
+        NotImplementedError()
+
+class FileStorage(Storage):
     def __init__(self, file_path: str):
         self.file_path = file_path
         # Create the file with an empty list if it doesn't exist

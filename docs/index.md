@@ -31,7 +31,7 @@ Create a Python file (e.g., `tools.py`) and define your functions with the `@too
 
 ```python
 # tools.py
-from orchestrator.core.tool import tool
+from orchestrator import tool
 
 @tool()
 def get_weather(city: str) -> str:
@@ -65,16 +65,16 @@ AgentHelm requires API keys for the Large Language Models (LLMs) it interacts wi
 
 ### 4. Run the Agent
 
-Use the `agenthelm` command-line tool (or `python -m main`) to run your agent. The CLI handles everything from setting up the agent to running the reasoning loop and logging the traces.
+Use the `agenthelm` command-line tool to run your agent. The CLI handles everything from setting up the agent to running the reasoning loop and logging the traces.
 
 ```bash
 # Run the agent from your terminal
-python -m main run \
+agenthelm run \
   --agent-file examples/cli_tools_example/my_agent_tools.py \
   --task "What is the weather in New York?"
 
 # For verbose output, add the -v or --verbose flag
-python -m main run \
+agenthelm run \
   --agent-file examples/cli_tools_example/my_agent_tools.py \
   --task "What is the weather in New York?" \
   --llm-type mistral \

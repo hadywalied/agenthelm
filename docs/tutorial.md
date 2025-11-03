@@ -22,7 +22,7 @@ Let's start with a simple tool to get weather information. AgentHelm's `@tool` d
 
 ```python
 # my_agent_tools.py
-from orchestrator.core.tool import tool
+from orchestrator import tool
 
 @tool()
 def get_weather(city: str) -> str:
@@ -86,7 +86,7 @@ Now, let's run the agent using the `agenthelm` CLI. Make sure you are in the dir
 ### Simple Task
 
 ```bash
-python -m main run \
+agenthelm run \
   --agent-file my_agent_tools.py \
   --task "What is the weather in London?"
 ```
@@ -94,7 +94,7 @@ python -m main run \
 ### Task Requiring Approval
 
 ```bash
-python -m main run \
+agenthelm run \
   --agent-file my_agent_tools.py \
   --task "Send an email to user@example.com with subject 'Hello' and body 'This is a test email.'"
 ```
@@ -106,7 +106,7 @@ When you run this, the agent will pause and ask for your approval before sending
 Let's simulate a multi-step workflow where a later step fails, triggering a rollback.
 
 ```bash
-python -m main run \
+agenthelm run \
   --agent-file my_agent_tools.py \
   --task "First, create a 'web_server' resource with config {'size': 'medium'}. Then, deploy 'my-app' to it."
 ```

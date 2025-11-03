@@ -42,7 +42,7 @@ def failing_tool():
 
 
 if __name__ == "__main__":
-    # Note: The logging level is configured by the main CLI in main.py
+    # Note: The logging level is configured by the main CLI in cli.py
     # If running this script directly, you may want to add:
     # logging.basicConfig(level=logging.INFO, format="%(message)s")
 

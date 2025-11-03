@@ -19,14 +19,10 @@ jobs:
       - name: Install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
-      - name: Create Virtual Environment
-        run: ~/.local/bin/uv venv
-
-      - name: Install Build Dependencies
-        run: source .venv/bin/activate && ~/.local/bin/uv pip install build twine
-
       - name: Build Package
-        run: source .venv/bin/activate && ~/.local/bin/uv build
+        run: ~/.local/bin/uv build
 
       - name: Publish to PyPI
-        run: source .venv/bin/activate && ~/.local/bin/uv publish --token ${{ secrets.PYPI_API_TOKEN }}
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        run: ~/.local/bin/uv publish
