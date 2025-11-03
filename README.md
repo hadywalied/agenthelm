@@ -19,6 +19,27 @@ If you've ever struggled to debug a failing agent or worried about deploying an 
 -   **Resilient Workflows**: Define automatic retries for flaky tools that might fail due to transient network errors.
 -   **Transactional Safety**: Implement automatic rollbacks for multi-step workflows. If a step fails, AgentHelm can run compensating actions to undo the previous steps.
 
+```mermaid
+graph TD
+subgraph "AgentHelm Ecosystem"
+    direction LR
+    A[User Task] --> AH(AgentHelm Orchestrator)
+    AH --  Sends prompt/tools --> LLM(LLM Engine e.g., Mistral)
+    LLM --  Returns tool_call --> AH
+    AH --  Executes tool --> T1[Tool: get_weather]
+    AH --  Executes tool --> T2[Tool: post_tweet]
+    AH --  Executes tool --> T3[Tool: ...]
+    T1 --  Returns result --> AH
+    T2 --  Returns result --> AH
+    AH --  Sends result to LLM --> LLM
+    LLM -- Returns final answer --> AH
+    AH -- Returns to User --> UO[Final Output]
+end
+
+style AH fill:#007BFF,stroke:#333,stroke-width:2px,color:#fff
+style LLM fill:#FFC107,stroke:#333,stroke-width:2px,color:#000        
+```
+
 ## Quick Start
 
 ### 1. Installation
