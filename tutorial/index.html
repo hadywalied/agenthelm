@@ -584,7 +584,7 @@
 <h3 id="simple-tool-get_weather">Simple Tool: <code>get_weather</code></h3>
 <p>Let's start with a simple tool to get weather information. AgentHelm's <code>@tool</code> decorator automatically infers the tool's contract from your function's type hints.</p>
 <pre><code class="language-python"># my_agent_tools.py
-from orchestrator import tool
+from agenthelm import tool
 
 @tool()
 def get_weather(city: str) -&gt; str:

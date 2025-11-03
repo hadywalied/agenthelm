@@ -488,7 +488,7 @@
 <h3 id="2-create-your-tools">2. Create your Tools</h3>
 <p>Create a Python file (e.g., <code>tools.py</code>) and define your functions with the <code>@tool</code> decorator. AgentHelm automatically parses the function signature to build the contract.</p>
 <pre><code class="language-python"># tools.py
-from orchestrator import tool
+from agenthelm import tool
 
 @tool()
 def get_weather(city: str) -&gt; str:
