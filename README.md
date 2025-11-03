@@ -102,9 +102,16 @@ agenthelm run \
   --task "What is the weather in New York?" \
   --llm-type mistral \
   --verbose
+
+# To specify the output trace file, use the --trace-file option
+agenthelm run \
+  --agent-file examples/cli_tools_example/my_agent_tools.py \
+  --task "What is the weather in New York?" \
+  --trace-file my_trace.json
 ```
 
-This will produce a detailed `cli_trace.json` file, giving you a perfect record of the agent's execution.
+This will produce a detailed trace file (by default `cli_trace.json`), giving you a perfect record of the agent's
+execution.
 
 ## Documentation
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agenthelm"
-version = "0.1.2"
+version = "0.1.3"
 description = "A production-ready, observable, and reliable AI agent orchestration framework."
 readme = "README.md"
 requires-python = ">=3.12"

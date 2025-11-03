@@ -72,6 +72,9 @@ def run(
     max_steps: int = typer.Option(
         10, help="The maximum number of steps to run the agent for."
     ),
+    trace_file: str = typer.Option(
+        "cli_trace.json", help="The path to the output trace file."
+    ),
 ):
     """Runs the agent with a specified set of tools and a task."""
     logging.info(f"Loading tools from: {agent_file}")
@@ -90,7 +93,7 @@ def run(
         raise typer.Exit(code=1)
 
     # 1. Setup the components
-    storage = FileStorage("cli_trace.json")
+    storage = FileStorage(trace_file)
     tracer = ExecutionTracer(storage)
 
     if llm_type == LLM_TYPE.MISTRAL:
