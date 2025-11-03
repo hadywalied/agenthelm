@@ -79,6 +79,8 @@ agenthelm traces export --output summary.md --format md --tool-name search_web
 
 ---
 
+## The Agent Helm Ecosystem
+
 ```mermaid
 graph TD
 subgraph "AgentHelm Ecosystem"
@@ -98,6 +100,27 @@ end
 
 style AH fill:#007BFF,stroke:#333,stroke-width:2px,color:#fff
 style LLM fill:#FFC107,stroke:#333,stroke-width:2px,color:#000        
+```
+
+## The Trace Explorer
+
+```mermaid
+graph TD
+    A[Agent Execution] --> B{Storage Backend}
+    B -->|JSON| C[JSON File]
+    B -->|SQLite| D[SQLite DB]
+    C --> E[CLI Trace Explorer]
+    D --> E
+    E --> F[traces list]
+    E --> G[traces show]
+    E --> H[traces filter]
+    E --> I[traces export]
+    I -->|CSV| J[report.csv]
+    I -->|JSON| K[data.json]
+    I -->|Markdown| L[summary.md]
+    style B fill: #007BFF, stroke: #333, stroke-width: 2px, color: #fff
+    style E fill: #FFC107, stroke: #333, stroke-width: 2px, color: #000
+
 ```
 
 ## Quick Start
