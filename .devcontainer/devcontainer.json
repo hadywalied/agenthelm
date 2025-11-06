@@ -1,0 +1,12 @@
+{
+  "name": "uv",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "developer",
+  "customizations": {
+    "jetbrains": {
+      "backend": "PyCharm"
+    }
+  }
+}
