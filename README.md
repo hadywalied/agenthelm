@@ -515,8 +515,7 @@ What would make AgentHelm more useful?
 ## Community & Support
 
 - **GitHub Issues**: [github.com/hadywalied/agenthelm/issues](https://github.com/hadywalied/agenthelm/issues)
-- **GitHub Discussions
-  **: [github.com/hadywalied/agenthelm/discussions](https://github.com/hadywalied/agenthelm/discussions)
+- **GitHub Discussions**: [github.com/hadywalied/agenthelm/discussions](https://github.com/hadywalied/agenthelm/discussions)
 - **Documentation**: [hadywalied.github.io/agenthelm](https://hadywalied.github.io/agenthelm/)
 - **Author**: [Hady Walied](https://github.com/hadywalied) | [LinkedIn](https://www.linkedin.com/in/hadywalied/)
 
