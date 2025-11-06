@@ -256,6 +256,7 @@ agenthelm run \
 AgentHelm implements a **compensating transaction pattern** (also called the Saga pattern) for AI agents:
 
 ```mermaid
+
 graph TD
     A[Agent Task] --> B[Execute Step 1]
     B -->|Success| C[Execute Step 2]
@@ -263,10 +264,7 @@ graph TD
     D -->|Failure| E[Rollback Step 2]
     E --> F[Rollback Step 1]
     F --> G[Return to Consistent State]
-    style D fill: #ff6b6b
-    style E fill: #ffd93d
-    style F fill: #ffd93d
-    style G fill: #6bcf7f
+
 ```
 
 ### Key Components
