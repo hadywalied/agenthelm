@@ -15,8 +15,11 @@
       
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+        
+      
+      
+      <link rel="icon" href="../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -24,7 +27,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,11 +57,17 @@
 
     
     
-    
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,8 +94,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="AgentHelm" class="md-header__button md-logo" aria-label="AgentHelm" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../assets/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -106,6 +117,42 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -152,8 +199,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="AgentHelm" class="md-nav__button md-logo" aria-label="AgentHelm" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../assets/logo.svg" alt="logo">
 
     </a>
     AgentHelm
@@ -185,9 +231,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -207,9 +258,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Core Concepts
+  
+
     
   </span>
+  
   
 
       </a>
@@ -229,9 +285,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Tutorial
+  
+
     
   </span>
+  
   
 
       </a>
@@ -260,9 +321,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     API Reference
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -273,9 +339,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     API Reference
+  
+
     
   </span>
+  
   
 
       </a>
@@ -298,7 +369,9 @@
         <li class="md-nav__item">
   <a href="#agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Agent
+      
+        Agent
+      
     </span>
   </a>
   
@@ -307,7 +380,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.Agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Agent
+      
+        Agent
+      
     </span>
   </a>
   
@@ -317,7 +392,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Agent-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -327,7 +404,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Agent.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -336,7 +415,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Agent.run" class="md-nav__link">
     <span class="md-ellipsis">
-      run
+      
+        run
+      
     </span>
   </a>
   
@@ -345,7 +426,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Agent.run_react" class="md-nav__link">
     <span class="md-ellipsis">
-      run_react
+      
+        run_react
+      
     </span>
   </a>
   
@@ -364,7 +447,9 @@
         <li class="md-nav__item">
   <a href="#tools" class="md-nav__link">
     <span class="md-ellipsis">
-      Tools
+      
+        Tools
+      
     </span>
   </a>
   
@@ -374,7 +459,9 @@
           <li class="md-nav__item">
   <a href="#the-tool-decorator" class="md-nav__link">
     <span class="md-ellipsis">
-      The @tool decorator
+      
+        The @tool decorator
+      
     </span>
   </a>
   
@@ -388,7 +475,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.tool" class="md-nav__link">
     <span class="md-ellipsis">
-      tool
+      
+        tool
+      
     </span>
   </a>
   
@@ -398,7 +487,9 @@
           <li class="md-nav__item">
   <a href="#tool-registry" class="md-nav__link">
     <span class="md-ellipsis">
-      Tool Registry
+      
+        Tool Registry
+      
     </span>
   </a>
   
@@ -412,7 +503,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.TOOL_REGISTRY" class="md-nav__link">
     <span class="md-ellipsis">
-      TOOL_REGISTRY
+      
+        TOOL_REGISTRY
+      
     </span>
   </a>
   
@@ -421,7 +514,9 @@
         <li class="md-nav__item">
   <a href="#tracer" class="md-nav__link">
     <span class="md-ellipsis">
-      Tracer
+      
+        Tracer
+      
     </span>
   </a>
   
@@ -430,7 +525,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.ExecutionTracer" class="md-nav__link">
     <span class="md-ellipsis">
-      ExecutionTracer
+      
+        ExecutionTracer
+      
     </span>
   </a>
   
@@ -440,7 +537,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ExecutionTracer-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -450,7 +549,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ExecutionTracer.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -459,7 +560,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ExecutionTracer.set_trace_context" class="md-nav__link">
     <span class="md-ellipsis">
-      set_trace_context
+      
+        set_trace_context
+      
     </span>
   </a>
   
@@ -468,7 +571,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ExecutionTracer.trace_and_execute" class="md-nav__link">
     <span class="md-ellipsis">
-      trace_and_execute
+      
+        trace_and_execute
+      
     </span>
   </a>
   
@@ -487,7 +592,9 @@
         <li class="md-nav__item">
   <a href="#event-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Event Model
+      
+        Event Model
+      
     </span>
   </a>
   
@@ -496,7 +603,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.Event" class="md-nav__link">
     <span class="md-ellipsis">
-      Event
+      
+        Event
+      
     </span>
   </a>
   
@@ -506,7 +615,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event-attributes" class="md-nav__link">
     <span class="md-ellipsis">
-      Attributes
+      
+        Attributes
+      
     </span>
   </a>
   
@@ -516,7 +627,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.confidence_score" class="md-nav__link">
     <span class="md-ellipsis">
-      confidence_score
+      
+        confidence_score
+      
     </span>
   </a>
   
@@ -525,7 +638,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.error_state" class="md-nav__link">
     <span class="md-ellipsis">
-      error_state
+      
+        error_state
+      
     </span>
   </a>
   
@@ -534,7 +649,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.execution_time" class="md-nav__link">
     <span class="md-ellipsis">
-      execution_time
+      
+        execution_time
+      
     </span>
   </a>
   
@@ -543,7 +660,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.inputs" class="md-nav__link">
     <span class="md-ellipsis">
-      inputs
+      
+        inputs
+      
     </span>
   </a>
   
@@ -552,7 +671,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.llm_reasoning_trace" class="md-nav__link">
     <span class="md-ellipsis">
-      llm_reasoning_trace
+      
+        llm_reasoning_trace
+      
     </span>
   </a>
   
@@ -561,7 +682,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.outputs" class="md-nav__link">
     <span class="md-ellipsis">
-      outputs
+      
+        outputs
+      
     </span>
   </a>
   
@@ -570,7 +693,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.timestamp" class="md-nav__link">
     <span class="md-ellipsis">
-      timestamp
+      
+        timestamp
+      
     </span>
   </a>
   
@@ -579,7 +704,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.tool_name" class="md-nav__link">
     <span class="md-ellipsis">
-      tool_name
+      
+        tool_name
+      
     </span>
   </a>
   
@@ -598,7 +725,9 @@
         <li class="md-nav__item">
   <a href="#storage" class="md-nav__link">
     <span class="md-ellipsis">
-      Storage
+      
+        Storage
+      
     </span>
   </a>
   
@@ -608,7 +737,9 @@
           <li class="md-nav__item">
   <a href="#basestorage-abstract-base-class" class="md-nav__link">
     <span class="md-ellipsis">
-      BaseStorage (Abstract Base Class)
+      
+        BaseStorage (Abstract Base Class)
+      
     </span>
   </a>
   
@@ -622,7 +753,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.BaseStorage" class="md-nav__link">
     <span class="md-ellipsis">
-      BaseStorage
+      
+        BaseStorage
+      
     </span>
   </a>
   
@@ -632,7 +765,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.BaseStorage-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -642,7 +777,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.BaseStorage.load" class="md-nav__link">
     <span class="md-ellipsis">
-      load
+      
+        load
+      
     </span>
   </a>
   
@@ -651,7 +788,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.BaseStorage.query" class="md-nav__link">
     <span class="md-ellipsis">
-      query
+      
+        query
+      
     </span>
   </a>
   
@@ -660,7 +799,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.BaseStorage.save" class="md-nav__link">
     <span class="md-ellipsis">
-      save
+      
+        save
+      
     </span>
   </a>
   
@@ -674,7 +815,9 @@
           <li class="md-nav__item">
   <a href="#jsonstorage" class="md-nav__link">
     <span class="md-ellipsis">
-      JsonStorage
+      
+        JsonStorage
+      
     </span>
   </a>
   
@@ -688,7 +831,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage" class="md-nav__link">
     <span class="md-ellipsis">
-      JsonStorage
+      
+        JsonStorage
+      
     </span>
   </a>
   
@@ -698,7 +843,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage-attributes" class="md-nav__link">
     <span class="md-ellipsis">
-      Attributes
+      
+        Attributes
+      
     </span>
   </a>
   
@@ -708,7 +855,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage.file_path" class="md-nav__link">
     <span class="md-ellipsis">
-      file_path
+      
+        file_path
+      
     </span>
   </a>
   
@@ -722,7 +871,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -732,7 +883,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -741,7 +894,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage.exists" class="md-nav__link">
     <span class="md-ellipsis">
-      exists
+      
+        exists
+      
     </span>
   </a>
   
@@ -750,7 +905,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage.load" class="md-nav__link">
     <span class="md-ellipsis">
-      load
+      
+        load
+      
     </span>
   </a>
   
@@ -759,7 +916,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage.save" class="md-nav__link">
     <span class="md-ellipsis">
-      save
+      
+        save
+      
     </span>
   </a>
   
@@ -773,7 +932,9 @@
           <li class="md-nav__item">
   <a href="#sqlitestorage" class="md-nav__link">
     <span class="md-ellipsis">
-      SqliteStorage
+      
+        SqliteStorage
+      
     </span>
   </a>
   
@@ -787,7 +948,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage" class="md-nav__link">
     <span class="md-ellipsis">
-      SqliteStorage
+      
+        SqliteStorage
+      
     </span>
   </a>
   
@@ -797,7 +960,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage-attributes" class="md-nav__link">
     <span class="md-ellipsis">
-      Attributes
+      
+        Attributes
+      
     </span>
   </a>
   
@@ -807,7 +972,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage.db_path" class="md-nav__link">
     <span class="md-ellipsis">
-      db_path
+      
+        db_path
+      
     </span>
   </a>
   
@@ -821,7 +988,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -831,7 +1000,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -840,7 +1011,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage.load" class="md-nav__link">
     <span class="md-ellipsis">
-      load
+      
+        load
+      
     </span>
   </a>
   
@@ -849,7 +1022,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage.query" class="md-nav__link">
     <span class="md-ellipsis">
-      query
+      
+        query
+      
     </span>
   </a>
   
@@ -858,7 +1033,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage.save" class="md-nav__link">
     <span class="md-ellipsis">
-      save
+      
+        save
+      
     </span>
   </a>
   
@@ -877,7 +1054,9 @@
         <li class="md-nav__item">
   <a href="#llm-clients" class="md-nav__link">
     <span class="md-ellipsis">
-      LLM Clients
+      
+        LLM Clients
+      
     </span>
   </a>
   
@@ -886,7 +1065,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.LLMClient" class="md-nav__link">
     <span class="md-ellipsis">
-      LLMClient
+      
+        LLMClient
+      
     </span>
   </a>
   
@@ -896,7 +1077,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.LLMClient-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -906,7 +1089,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.LLMClient.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -915,7 +1100,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.LLMClient.predict" class="md-nav__link">
     <span class="md-ellipsis">
-      predict
+      
+        predict
+      
     </span>
   </a>
   
@@ -934,7 +1121,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.MistralClient" class="md-nav__link">
     <span class="md-ellipsis">
-      MistralClient
+      
+        MistralClient
+      
     </span>
   </a>
   
@@ -944,7 +1133,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.MistralClient-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -954,7 +1145,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.MistralClient.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -963,7 +1156,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.MistralClient.predict" class="md-nav__link">
     <span class="md-ellipsis">
-      predict
+      
+        predict
+      
     </span>
   </a>
   
@@ -982,7 +1177,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.OpenAIClient" class="md-nav__link">
     <span class="md-ellipsis">
-      OpenAIClient
+      
+        OpenAIClient
+      
     </span>
   </a>
   
@@ -992,7 +1189,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.OpenAIClient-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1002,7 +1201,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.OpenAIClient.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -1011,7 +1212,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.OpenAIClient.predict" class="md-nav__link">
     <span class="md-ellipsis">
-      predict
+      
+        predict
+      
     </span>
   </a>
   
@@ -1030,7 +1233,9 @@
         <li class="md-nav__item">
   <a href="#approval-handlers" class="md-nav__link">
     <span class="md-ellipsis">
-      Approval Handlers
+      
+        Approval Handlers
+      
     </span>
   </a>
   
@@ -1039,7 +1244,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.ApprovalHandler" class="md-nav__link">
     <span class="md-ellipsis">
-      ApprovalHandler
+      
+        ApprovalHandler
+      
     </span>
   </a>
   
@@ -1049,7 +1256,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ApprovalHandler-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1059,7 +1268,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ApprovalHandler.request_approval" class="md-nav__link">
     <span class="md-ellipsis">
-      request_approval
+      
+        request_approval
+      
     </span>
   </a>
   
@@ -1078,7 +1289,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.CliHandler" class="md-nav__link">
     <span class="md-ellipsis">
-      CliHandler
+      
+        CliHandler
+      
     </span>
   </a>
   
@@ -1088,7 +1301,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.CliHandler-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1098,7 +1313,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.CliHandler.request_approval" class="md-nav__link">
     <span class="md-ellipsis">
-      request_approval
+      
+        request_approval
+      
     </span>
   </a>
   
@@ -1151,7 +1368,9 @@
         <li class="md-nav__item">
   <a href="#agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Agent
+      
+        Agent
+      
     </span>
   </a>
   
@@ -1160,7 +1379,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.Agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Agent
+      
+        Agent
+      
     </span>
   </a>
   
@@ -1170,7 +1391,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Agent-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1180,7 +1403,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Agent.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -1189,7 +1414,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Agent.run" class="md-nav__link">
     <span class="md-ellipsis">
-      run
+      
+        run
+      
     </span>
   </a>
   
@@ -1198,7 +1425,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Agent.run_react" class="md-nav__link">
     <span class="md-ellipsis">
-      run_react
+      
+        run_react
+      
     </span>
   </a>
   
@@ -1217,7 +1446,9 @@
         <li class="md-nav__item">
   <a href="#tools" class="md-nav__link">
     <span class="md-ellipsis">
-      Tools
+      
+        Tools
+      
     </span>
   </a>
   
@@ -1227,7 +1458,9 @@
           <li class="md-nav__item">
   <a href="#the-tool-decorator" class="md-nav__link">
     <span class="md-ellipsis">
-      The @tool decorator
+      
+        The @tool decorator
+      
     </span>
   </a>
   
@@ -1241,7 +1474,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.tool" class="md-nav__link">
     <span class="md-ellipsis">
-      tool
+      
+        tool
+      
     </span>
   </a>
   
@@ -1251,7 +1486,9 @@
           <li class="md-nav__item">
   <a href="#tool-registry" class="md-nav__link">
     <span class="md-ellipsis">
-      Tool Registry
+      
+        Tool Registry
+      
     </span>
   </a>
   
@@ -1265,7 +1502,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.TOOL_REGISTRY" class="md-nav__link">
     <span class="md-ellipsis">
-      TOOL_REGISTRY
+      
+        TOOL_REGISTRY
+      
     </span>
   </a>
   
@@ -1274,7 +1513,9 @@
         <li class="md-nav__item">
   <a href="#tracer" class="md-nav__link">
     <span class="md-ellipsis">
-      Tracer
+      
+        Tracer
+      
     </span>
   </a>
   
@@ -1283,7 +1524,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.ExecutionTracer" class="md-nav__link">
     <span class="md-ellipsis">
-      ExecutionTracer
+      
+        ExecutionTracer
+      
     </span>
   </a>
   
@@ -1293,7 +1536,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ExecutionTracer-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1303,7 +1548,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ExecutionTracer.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -1312,7 +1559,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ExecutionTracer.set_trace_context" class="md-nav__link">
     <span class="md-ellipsis">
-      set_trace_context
+      
+        set_trace_context
+      
     </span>
   </a>
   
@@ -1321,7 +1570,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ExecutionTracer.trace_and_execute" class="md-nav__link">
     <span class="md-ellipsis">
-      trace_and_execute
+      
+        trace_and_execute
+      
     </span>
   </a>
   
@@ -1340,7 +1591,9 @@
         <li class="md-nav__item">
   <a href="#event-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Event Model
+      
+        Event Model
+      
     </span>
   </a>
   
@@ -1349,7 +1602,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.Event" class="md-nav__link">
     <span class="md-ellipsis">
-      Event
+      
+        Event
+      
     </span>
   </a>
   
@@ -1359,7 +1614,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event-attributes" class="md-nav__link">
     <span class="md-ellipsis">
-      Attributes
+      
+        Attributes
+      
     </span>
   </a>
   
@@ -1369,7 +1626,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.confidence_score" class="md-nav__link">
     <span class="md-ellipsis">
-      confidence_score
+      
+        confidence_score
+      
     </span>
   </a>
   
@@ -1378,7 +1637,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.error_state" class="md-nav__link">
     <span class="md-ellipsis">
-      error_state
+      
+        error_state
+      
     </span>
   </a>
   
@@ -1387,7 +1648,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.execution_time" class="md-nav__link">
     <span class="md-ellipsis">
-      execution_time
+      
+        execution_time
+      
     </span>
   </a>
   
@@ -1396,7 +1659,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.inputs" class="md-nav__link">
     <span class="md-ellipsis">
-      inputs
+      
+        inputs
+      
     </span>
   </a>
   
@@ -1405,7 +1670,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.llm_reasoning_trace" class="md-nav__link">
     <span class="md-ellipsis">
-      llm_reasoning_trace
+      
+        llm_reasoning_trace
+      
     </span>
   </a>
   
@@ -1414,7 +1681,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.outputs" class="md-nav__link">
     <span class="md-ellipsis">
-      outputs
+      
+        outputs
+      
     </span>
   </a>
   
@@ -1423,7 +1692,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.timestamp" class="md-nav__link">
     <span class="md-ellipsis">
-      timestamp
+      
+        timestamp
+      
     </span>
   </a>
   
@@ -1432,7 +1703,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.Event.tool_name" class="md-nav__link">
     <span class="md-ellipsis">
-      tool_name
+      
+        tool_name
+      
     </span>
   </a>
   
@@ -1451,7 +1724,9 @@
         <li class="md-nav__item">
   <a href="#storage" class="md-nav__link">
     <span class="md-ellipsis">
-      Storage
+      
+        Storage
+      
     </span>
   </a>
   
@@ -1461,7 +1736,9 @@
           <li class="md-nav__item">
   <a href="#basestorage-abstract-base-class" class="md-nav__link">
     <span class="md-ellipsis">
-      BaseStorage (Abstract Base Class)
+      
+        BaseStorage (Abstract Base Class)
+      
     </span>
   </a>
   
@@ -1475,7 +1752,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.BaseStorage" class="md-nav__link">
     <span class="md-ellipsis">
-      BaseStorage
+      
+        BaseStorage
+      
     </span>
   </a>
   
@@ -1485,7 +1764,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.BaseStorage-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1495,7 +1776,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.BaseStorage.load" class="md-nav__link">
     <span class="md-ellipsis">
-      load
+      
+        load
+      
     </span>
   </a>
   
@@ -1504,7 +1787,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.BaseStorage.query" class="md-nav__link">
     <span class="md-ellipsis">
-      query
+      
+        query
+      
     </span>
   </a>
   
@@ -1513,7 +1798,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.BaseStorage.save" class="md-nav__link">
     <span class="md-ellipsis">
-      save
+      
+        save
+      
     </span>
   </a>
   
@@ -1527,7 +1814,9 @@
           <li class="md-nav__item">
   <a href="#jsonstorage" class="md-nav__link">
     <span class="md-ellipsis">
-      JsonStorage
+      
+        JsonStorage
+      
     </span>
   </a>
   
@@ -1541,7 +1830,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage" class="md-nav__link">
     <span class="md-ellipsis">
-      JsonStorage
+      
+        JsonStorage
+      
     </span>
   </a>
   
@@ -1551,7 +1842,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage-attributes" class="md-nav__link">
     <span class="md-ellipsis">
-      Attributes
+      
+        Attributes
+      
     </span>
   </a>
   
@@ -1561,7 +1854,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage.file_path" class="md-nav__link">
     <span class="md-ellipsis">
-      file_path
+      
+        file_path
+      
     </span>
   </a>
   
@@ -1575,7 +1870,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1585,7 +1882,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -1594,7 +1893,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage.exists" class="md-nav__link">
     <span class="md-ellipsis">
-      exists
+      
+        exists
+      
     </span>
   </a>
   
@@ -1603,7 +1904,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage.load" class="md-nav__link">
     <span class="md-ellipsis">
-      load
+      
+        load
+      
     </span>
   </a>
   
@@ -1612,7 +1915,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.JsonStorage.save" class="md-nav__link">
     <span class="md-ellipsis">
-      save
+      
+        save
+      
     </span>
   </a>
   
@@ -1626,7 +1931,9 @@
           <li class="md-nav__item">
   <a href="#sqlitestorage" class="md-nav__link">
     <span class="md-ellipsis">
-      SqliteStorage
+      
+        SqliteStorage
+      
     </span>
   </a>
   
@@ -1640,7 +1947,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage" class="md-nav__link">
     <span class="md-ellipsis">
-      SqliteStorage
+      
+        SqliteStorage
+      
     </span>
   </a>
   
@@ -1650,7 +1959,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage-attributes" class="md-nav__link">
     <span class="md-ellipsis">
-      Attributes
+      
+        Attributes
+      
     </span>
   </a>
   
@@ -1660,7 +1971,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage.db_path" class="md-nav__link">
     <span class="md-ellipsis">
-      db_path
+      
+        db_path
+      
     </span>
   </a>
   
@@ -1674,7 +1987,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1684,7 +1999,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -1693,7 +2010,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage.load" class="md-nav__link">
     <span class="md-ellipsis">
-      load
+      
+        load
+      
     </span>
   </a>
   
@@ -1702,7 +2021,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage.query" class="md-nav__link">
     <span class="md-ellipsis">
-      query
+      
+        query
+      
     </span>
   </a>
   
@@ -1711,7 +2032,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.SqliteStorage.save" class="md-nav__link">
     <span class="md-ellipsis">
-      save
+      
+        save
+      
     </span>
   </a>
   
@@ -1730,7 +2053,9 @@
         <li class="md-nav__item">
   <a href="#llm-clients" class="md-nav__link">
     <span class="md-ellipsis">
-      LLM Clients
+      
+        LLM Clients
+      
     </span>
   </a>
   
@@ -1739,7 +2064,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.LLMClient" class="md-nav__link">
     <span class="md-ellipsis">
-      LLMClient
+      
+        LLMClient
+      
     </span>
   </a>
   
@@ -1749,7 +2076,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.LLMClient-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1759,7 +2088,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.LLMClient.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -1768,7 +2099,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.LLMClient.predict" class="md-nav__link">
     <span class="md-ellipsis">
-      predict
+      
+        predict
+      
     </span>
   </a>
   
@@ -1787,7 +2120,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.MistralClient" class="md-nav__link">
     <span class="md-ellipsis">
-      MistralClient
+      
+        MistralClient
+      
     </span>
   </a>
   
@@ -1797,7 +2132,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.MistralClient-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1807,7 +2144,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.MistralClient.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -1816,7 +2155,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.MistralClient.predict" class="md-nav__link">
     <span class="md-ellipsis">
-      predict
+      
+        predict
+      
     </span>
   </a>
   
@@ -1835,7 +2176,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.OpenAIClient" class="md-nav__link">
     <span class="md-ellipsis">
-      OpenAIClient
+      
+        OpenAIClient
+      
     </span>
   </a>
   
@@ -1845,7 +2188,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.OpenAIClient-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1855,7 +2200,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.OpenAIClient.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -1864,7 +2211,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.OpenAIClient.predict" class="md-nav__link">
     <span class="md-ellipsis">
-      predict
+      
+        predict
+      
     </span>
   </a>
   
@@ -1883,7 +2232,9 @@
         <li class="md-nav__item">
   <a href="#approval-handlers" class="md-nav__link">
     <span class="md-ellipsis">
-      Approval Handlers
+      
+        Approval Handlers
+      
     </span>
   </a>
   
@@ -1892,7 +2243,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.ApprovalHandler" class="md-nav__link">
     <span class="md-ellipsis">
-      ApprovalHandler
+      
+        ApprovalHandler
+      
     </span>
   </a>
   
@@ -1902,7 +2255,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ApprovalHandler-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1912,7 +2267,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.ApprovalHandler.request_approval" class="md-nav__link">
     <span class="md-ellipsis">
-      request_approval
+      
+        request_approval
+      
     </span>
   </a>
   
@@ -1931,7 +2288,9 @@
         <li class="md-nav__item">
   <a href="#orchestrator.CliHandler" class="md-nav__link">
     <span class="md-ellipsis">
-      CliHandler
+      
+        CliHandler
+      
     </span>
   </a>
   
@@ -1941,7 +2300,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.CliHandler-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Functions
+      
+        Functions
+      
     </span>
   </a>
   
@@ -1951,7 +2312,9 @@
           <li class="md-nav__item">
   <a href="#orchestrator.CliHandler.request_approval" class="md-nav__link">
     <span class="md-ellipsis">
-      request_approval
+      
+        request_approval
+      
     </span>
   </a>
   
@@ -1977,6 +2340,7 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -2012,7 +2376,8 @@
 
 
 
-              <details class="quote">
+
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/agent.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  8</span>
 <span class="normal">  9</span>
@@ -2329,7 +2694,7 @@
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/agent.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
 <span class="normal">10</span>
@@ -2358,7 +2723,7 @@
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/agent.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
 <span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -2381,7 +2746,7 @@
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/agent.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 63</span>
 <span class="normal"> 64</span>
@@ -2591,7 +2956,7 @@
 If 'inputs' or 'outputs' are not provided, they will be inferred from the function's type hints.</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/tool.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
 <span class="normal">10</span>
@@ -2761,7 +3126,8 @@ If 'inputs' or 'outputs' are not provided, they will be inferred from the functi
 
 
 
-              <details class="quote">
+
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/core/tracer.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
 <span class="normal">15</span>
@@ -2936,7 +3302,7 @@ If 'inputs' or 'outputs' are not provided, they will be inferred from the functi
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/tracer.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
 <span class="normal">16</span>
@@ -2967,7 +3333,7 @@ If 'inputs' or 'outputs' are not provided, they will be inferred from the functi
         <p>Sets the LLM reasoning context for the next trace event.</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/tracer.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
 <span class="normal">22</span>
@@ -2994,7 +3360,7 @@ If 'inputs' or 'outputs' are not provided, they will be inferred from the functi
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/tracer.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
 <span class="normal">27</span>
@@ -3148,6 +3514,7 @@ If 'inputs' or 'outputs' are not provided, they will be inferred from the functi
               Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
 
 
+
         <p>timestamp: When the event happened.
 tool_name: The name of the tool that was called.
 inputs: The arguments the tool was called with.
@@ -3164,7 +3531,7 @@ confidence_score: (For now, this can be a placeholder float, like 1.0).</p>
 
 
 
-              <details class="quote">
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/core/event.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
 <span class="normal"> 7</span>
@@ -3410,6 +3777,7 @@ confidence_score: (For now, this can be a placeholder float, like 1.0).</p>
               Bases: <code><span title="abc.ABC">ABC</span></code></p>
 
 
+
         <p>Abstract base class for trace storage backends.</p>
 
 
@@ -3419,7 +3787,7 @@ confidence_score: (For now, this can be a placeholder float, like 1.0).</p>
 
 
 
-              <details class="quote">
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/core/storage/base.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
 <span class="normal"> 6</span>
@@ -3486,7 +3854,7 @@ confidence_score: (For now, this can be a placeholder float, like 1.0).</p>
         <p>Load all trace events.</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
 <span class="normal">14</span>
@@ -3515,7 +3883,7 @@ confidence_score: (For now, this can be a placeholder float, like 1.0).</p>
         <p>Optional: Query traces with filters.</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
 <span class="normal">19</span>
@@ -3546,7 +3914,7 @@ confidence_score: (For now, this can be a placeholder float, like 1.0).</p>
         <p>Save a single trace event.</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
 <span class="normal"> 9</span>
@@ -3598,7 +3966,8 @@ members:
 
 
 
-              <details class="quote">
+
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/core/storage/json_storage.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
 <span class="normal"> 8</span>
@@ -3719,7 +4088,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/json_storage.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
 <span class="normal"> 9</span>
@@ -3752,7 +4121,7 @@ members:
         <p>Check if the storage file exists.</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/json_storage.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">40</span>
 <span class="normal">41</span>
@@ -3779,7 +4148,7 @@ members:
         <p>Load data from a JSON file. Returns a list of dictionaries.</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/json_storage.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
 <span class="normal">31</span>
@@ -3820,7 +4189,7 @@ If override is True, it will replace the entire file content.
 If override is False, it will append the data to the existing list.</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/json_storage.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
 <span class="normal">16</span>
@@ -3893,7 +4262,8 @@ members:
 
 
 
-              <details class="quote">
+
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/core/storage/sqlite_storage.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  7</span>
 <span class="normal">  8</span>
@@ -4158,7 +4528,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/sqlite_storage.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
 <span class="normal"> 9</span>
@@ -4183,7 +4553,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/sqlite_storage.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
 <span class="normal">62</span>
@@ -4240,7 +4610,7 @@ members:
         <p>Query traces with SQL-level filtering for better performance.</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/sqlite_storage.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 80</span>
 <span class="normal"> 81</span>
@@ -4329,7 +4699,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/storage/sqlite_storage.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
 <span class="normal">38</span>
@@ -4420,7 +4790,8 @@ members:
 
 
 
-              <details class="quote">
+
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/llm/base.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -4465,7 +4836,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/llm/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">2</span>
 <span class="normal">3</span>
@@ -4492,7 +4863,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/llm/base.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system_prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">user_prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -4527,6 +4898,7 @@ members:
               Bases: <code><a class="autorefs autorefs-internal" title="LLMClient (orchestrator.llm.base.LLMClient)" href="#orchestrator.LLMClient">LLMClient</a></code></p>
 
 
+
         <p>A client for interacting with the Mistral AI API.</p>
 
 
@@ -4536,7 +4908,7 @@ members:
 
 
 
-              <details class="quote">
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/llm/mistral_client.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
 <span class="normal"> 6</span>
@@ -4619,7 +4991,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/llm/mistral_client.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
 <span class="normal"> 9</span>
@@ -4648,7 +5020,7 @@ members:
         <p>Calls the Mistral Chat Completions API.</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/llm/mistral_client.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
 <span class="normal">14</span>
@@ -4724,7 +5096,8 @@ members:
 
 
 
-              <details class="quote">
+
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/llm/openai_client.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
 <span class="normal"> 6</span>
@@ -4803,7 +5176,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/llm/openai_client.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">6</span>
 <span class="normal">7</span>
@@ -4830,7 +5203,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/llm/openai_client.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
 <span class="normal">12</span>
@@ -4905,7 +5278,8 @@ members:
 
 
 
-              <details class="quote">
+
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/core/handlers.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -4940,7 +5314,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/handlers.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">request_approval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -4982,7 +5356,8 @@ members:
 
 
 
-              <details class="quote">
+
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>orchestrator/core/handlers.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
 <span class="normal"> 7</span>
@@ -5027,7 +5402,7 @@ members:
     <div class="doc doc-contents ">
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>orchestrator/core/handlers.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
 <span class="normal"> 8</span>
@@ -5103,10 +5478,11 @@ members:
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
