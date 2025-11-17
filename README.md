@@ -1,10 +1,14 @@
 [![FreePalestine.Dev](https://freepalestine.dev/header/1)](https://freepalestine.dev)
-
-# AgentHelm
+![image](docs/assets/logo_h.svg)
+<div id="badges" align="center">
 
 [![PyPI - Version](https://img.shields.io/pypi/v/agenthelm)](https://pypi.org/project/agenthelm/)
 [![CI](https://github.com/hadywalied/agenthelm/actions/workflows/ci.yml/badge.svg)](https://github.com/hadywalied/agenthelm/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/hadywalied/agenthelm)](https://github.com/hadywalied/agenthelm/blob/main/LICENSE)
+
+</div>
+
+# AgentHelm
 
 **The AI Agent Framework That Doesn't Break Your Business**
 

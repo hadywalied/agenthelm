@@ -1,8 +1,9 @@
+![image](assets/logo_h.svg)
+---
+
 # AgentHelm
 
 **Production-Ready Orchestration for AI Agents.**
-
----
 
 AgentHelm is a lightweight Python framework for building AI agents with a focus on production-readiness. It provides the essential orchestration layer to make your agents observable, reliable, and safe.
 
