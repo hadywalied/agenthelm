@@ -107,5 +107,4 @@ class ExecutionTracer:
         if error_state:
             raise RuntimeError(error_state)
 
-        return output
-
+        return output, event

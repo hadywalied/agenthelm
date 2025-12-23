@@ -22,18 +22,19 @@ class BaseAgent(ABC):
         self.tracer = tracer
 
     @abstractmethod
-    def run(self): ...
+    def run(self, task: str): ...
 
-    def _execute_tool(self, tool: str | Callable, **kwargs):
+    def _execute_tool(self, tool: str | Callable, *args, **kwargs):
         tool_func = tool if callable(tool) else None
         if tool_func is None and tool in TOOL_REGISTRY:
             tool_func = TOOL_REGISTRY[tool]["function"]
         if tool_func is None:
             raise RuntimeError(f"tool {tool} is not supported")
         if self.tracer:
-            return self.tracer.trace_and_execute(tool_func, **kwargs)
+            output, event = self.tracer.trace_and_execute(tool_func, *args, **kwargs)
+            return output, event
         else:
-            return tool_func(**kwargs)
+            return tool_func(*args, **kwargs), None
 
     async def _remember(self, text) -> str | None:
         """Store text in semantic memory. Returns memory ID or None if no memory."""

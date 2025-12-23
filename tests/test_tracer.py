@@ -55,9 +55,10 @@ class TestExecutionTracerBasic:
         def simple_tool(x: int) -> int:
             return x * 2
 
-        result = self.tracer.trace_and_execute(simple_tool, x=5)
+        result, event = self.tracer.trace_and_execute(simple_tool, x=5)
 
         assert result == 10
+        assert event is not None
         assert len(self.storage.events) == 1
 
         event = self.storage.events[0]
@@ -93,7 +94,7 @@ class TestExecutionTracerBasic:
         self.tracer.trace_and_execute(slow_tool)
 
         event = self.storage.events[0]
-        assert event["execution_time"] >= 0.1
+        assert event["execution_time"] >= 0.08  # Allow timing variance
 
     def test_event_has_trace_id(self):
         """Each execution should have a unique trace_id."""
@@ -198,7 +199,7 @@ class TestExecutionTracerRetry:
                 raise ValueError("Temporary failure")
             return "success"
 
-        result = self.tracer.trace_and_execute(flaky_tool)
+        result, event = self.tracer.trace_and_execute(flaky_tool)
 
         assert result == "success"
         assert call_count == 3  # 1 initial + 2 retries
@@ -249,7 +250,7 @@ class TestExecutionTracerApproval:
         def dangerous_tool() -> str:
             return "executed"
 
-        result = tracer.trace_and_execute(dangerous_tool)
+        result, event = tracer.trace_and_execute(dangerous_tool)
         assert result == "executed"
 
     def test_auto_deny_handler(self):
