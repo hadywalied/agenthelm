@@ -32,6 +32,16 @@ from agenthelm.memory import (
     SearchResult,
 )
 
+from agenthelm.agent import (
+    BaseAgent,
+    AgentResult,
+    Plan,
+    PlanStep,
+    StepStatus,
+    ToolAgent,
+    PlannerAgent,
+)
+
 __version__ = "0.3.0"
 
 __all__ = [
@@ -59,4 +69,12 @@ __all__ = [
     "SqliteShortTermMemory",
     "SemanticMemory",
     "SearchResult",
+    # Agents
+    "BaseAgent",
+    "AgentResult",
+    "Plan",
+    "PlanStep",
+    "StepStatus",
+    "ToolAgent",
+    "PlannerAgent",
 ]

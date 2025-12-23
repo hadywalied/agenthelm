@@ -24,6 +24,7 @@ class PlanStep(BaseModel):
     """
 
     id: str = Field(description="Unique step identifier")
+    agent_name: str | None = Field(default=None, description="Agent to delegate to")
     tool_name: str = Field(description="Name of the tool to execute")
     description: str = Field(description="Human-readable description of this step")
     args: dict[str, Any] = Field(
@@ -116,6 +117,7 @@ class Plan(BaseModel):
             "steps": [
                 {
                     "id": s.id,
+                    "agent": s.agent_name,
                     "tool": s.tool_name,
                     "description": s.description,
                     "args": s.args,

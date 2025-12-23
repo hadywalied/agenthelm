@@ -11,7 +11,7 @@ class TokenUsage(BaseModel):
 
     input_tokens: int
     output_tokens: int
-    model: str
+    model: str | None = None
 
     @property
     def total_tokens(self) -> int:
