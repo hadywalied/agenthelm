@@ -30,10 +30,22 @@ dependencies = [
 ]
 
 [tool.setuptools]
-# agenthelm = "agenthelm.cli:cli"  # TODO: Uncomment in Week 5
+packages = [
+    "agenthelm",
+    "agenthelm.core",
+    "agenthelm.core.storage",
+    "agenthelm.memory",
+    "agenthelm.agent",
+    "agenthelm.planning",
+    "agenthelm.orchestration",
+    # Keep legacy for now (will remove at end of v0.3.0)
+    "orchestrator",
+    "orchestrator.core",
+    "orchestrator.llm",
+]
 
-[project.scripts]
-agenthelm = "orchestrator.cli:app"
+# [project.scripts]
+# agenthelm = "agenthelm.cli:cli"  # TODO: Uncomment in Week 5
 
 [project.optional-dependencies]
 dev = [
