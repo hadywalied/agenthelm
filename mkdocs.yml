@@ -12,6 +12,7 @@ nav:
       - Core Concepts: concepts.md
       - Tutorial: tutorial.md
   - Features:
+      - Agents: agents.md
       - Memory Hub: memory.md
       - Observability: observability.md
   - API Reference: api_reference.md
