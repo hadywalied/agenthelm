@@ -2,48 +2,159 @@
 
 This section explains the fundamental ideas behind AgentHelm.
 
-## The Tracer: The Heart of Observability
+## Tool Contracts
 
-The `ExecutionTracer` is the central component for running tools and recording their behavior. It acts as a wrapper around every tool call, ensuring that no action goes unrecorded.
+Tools are the building blocks of agent actions. AgentHelm uses a decorator-based approach to define tools with rich
+metadata:
 
-Its primary responsibilities are:
+```python
+from agenthelm import tool
 
-1.  **Execution**: It takes a tool function and its arguments and executes it.
-2.  **Tracing**: It records the inputs, outputs, execution time, and any errors that occur during the execution.
-3.  **Event Creation**: It creates a structured `Event` object for every execution, which is then saved to a storage backend (like a JSON file).
+@tool(
+    requires_approval=True,  # Human-in-the-loop
+    max_retries=3,           # Automatic retries
+    timeout=30.0,            # Execution timeout
+    tags=["financial", "sensitive"]
+)
+def charge_credit_card(amount: float, card_id: str) -> dict:
+    """Charge a credit card for the specified amount."""
+    return {"status": "charged", "transaction_id": "txn_123"}
+```
 
-By routing all tool calls through the tracer, we gain a complete and auditable log of everything the agent does.
+The `@tool` decorator automatically:
 
-## The Agent: The Brain of the Operation
+- Extracts the function signature and docstring
+- Registers the tool in `TOOL_REGISTRY`
+- Enables execution tracing and cost tracking
 
-The `Agent` class is responsible for orchestrating the entire workflow. It uses a **Reason-Act (ReAct)** loop to achieve a user's goal.
+## Execution Tracing
 
-Here's how it works:
+The `ExecutionTracer` records every tool call with rich metadata:
 
-1.  **Reason**: The agent takes the user's task and the history of previous steps and presents them to a Large Language Model (LLM). It asks the LLM to decide on the single next best action.
-2.  **Act**: The agent parses the LLM's response, which includes the tool to use and the arguments to use it with. It then uses the `ExecutionTracer` to execute that tool.
-3.  **Observe**: The result of the tool execution (the "observation") is added to the history.
-4.  **Repeat**: The loop repeats, feeding the new observation back into the LLM for the next reasoning step.
+```python
+from agenthelm import ExecutionTracer
+from agenthelm.core.storage import JsonStorage
 
-This loop continues until the LLM decides the task is complete and calls the special `finish` tool.
+tracer = ExecutionTracer(storage=JsonStorage("trace.json"))
+tracer.set_trace_context(agent_name="my_agent")
 
-## The Event Model
+# Execute a tool with full tracing
+event = tracer.execute(my_tool, arg1="value", arg2=123)
 
-Every action in AgentHelm is recorded as an `Event`. This is a Pydantic model that provides a consistent structure for our logs. The key fields are:
+# Event contains: timestamp, inputs, outputs, duration, token_usage, cost, etc.
+```
 
--   `timestamp`: When the event happened.
--   `tool_name`: The name of the tool that was called.
--   `inputs` & `outputs`: The arguments the tool was called with and what it returned.
--   `error_state`: Any error that occurred.
--   `llm_reasoning_trace`: The "thought" process from the LLM that led to this tool call.
--   `confidence_score`: The LLM's confidence in its decision.
+### Event Model
 
-This structured logging is what makes true observability possible.
+Every execution produces an `Event` with these fields:
+
+| Field                   | Description                     |
+|-------------------------|---------------------------------|
+| `timestamp`             | When the event occurred         |
+| `tool_name`             | Name of the executed tool       |
+| `inputs` / `outputs`    | Arguments and return value      |
+| `execution_duration_ms` | How long it took                |
+| `token_usage`           | LLM tokens (input/output/model) |
+| `estimated_cost_usd`    | Cost estimate based on pricing  |
+| `agent_name`            | Which agent executed this       |
+| `session_id`            | Session identifier              |
+| `trace_id`              | Unique execution ID             |
+
+## Cost Tracking
+
+AgentHelm includes built-in cost tracking for LLM usage:
+
+```python
+from agenthelm import CostTracker, get_cost_tracker
+
+# Token-only tracking (no pricing)
+tracker = get_cost_tracker(tokens_only=True)
+
+# Full cost tracking with pricing
+tracker = get_cost_tracker()  # Uses built-in pricing.yaml
+
+# Track usage
+tracker.record("gpt-4o", input_tokens=500, output_tokens=150)
+
+# Get summary
+summary = tracker.get_summary()
+# {
+#     "total_input_tokens": 500,
+#     "total_output_tokens": 150,
+#     "total_cost_usd": 0.0055,
+#     "by_model": {...}
+# }
+```
+
+## Approval Handlers
+
+Control human-in-the-loop behavior with different handlers:
+
+```python
+from agenthelm import CliHandler, AutoApproveHandler, AutoDenyHandler
+
+# Interactive CLI approval
+tracer = ExecutionTracer(approval_handler=CliHandler())
+
+# Auto-approve all (for testing)
+tracer = ExecutionTracer(approval_handler=AutoApproveHandler())
+
+# Auto-deny all (for dry-run)
+tracer = ExecutionTracer(approval_handler=AutoDenyHandler())
+```
+
+## Storage Backends
+
+Events can be stored in different backends:
+
+```python
+from agenthelm.core.storage import JsonStorage, SqliteStorage
+
+# JSON file (simple, portable)
+storage = JsonStorage("traces.json")
+
+# SQLite (queryable, indexed)
+storage = SqliteStorage("traces.db")
+
+# Query by session
+events = storage.query(session_id="abc-123", limit=100)
+```
 
 ## Reliability Features
 
-Reliability is a core tenet of AgentHelm. The `ExecutionTracer` implements several key features to make agents more robust:
+### Retries
 
--   **Human-in-the-Loop (`requires_approval`)**: You can mark any tool as requiring human approval. The tracer will pause execution and wait for confirmation before proceeding.
--   **Retries**: For tools that might be flaky (e.g., due to network issues), you can specify a number of retries. The tracer will automatically re-run the tool on failure.
--   **Rollbacks (`compensating_tool`)**: You can link a tool to a "compensating" tool that can undo its action. If a step in a multi-step workflow fails, the `Agent` will instruct the `Tracer` to execute the compensating tools for all previously completed steps in reverse order, ensuring the system doesn't get left in an inconsistent state.
+```python
+@tool(max_retries=3, retry_delay=1.0)
+def flaky_api_call(endpoint: str) -> dict:
+    """Call an external API that might fail."""
+    return requests.get(endpoint).json()
+```
+
+### Human Approval
+
+```python
+@tool(requires_approval=True)
+def delete_file(path: str) -> bool:
+    """Delete a file (requires human approval)."""
+    os.remove(path)
+    return True
+```
+
+### Compensating Actions
+
+```python
+@tool(compensating_tool="restore_file")
+def archive_file(path: str) -> str:
+    """Archive a file (can be rolled back)."""
+    archive_path = f"{path}.archived"
+    shutil.move(path, archive_path)
+    return archive_path
+
+@tool()
+def restore_file(archive_path: str) -> str:
+    """Restore an archived file."""
+    original_path = archive_path.replace(".archived", "")
+    shutil.move(archive_path, original_path)
+    return original_path
+```

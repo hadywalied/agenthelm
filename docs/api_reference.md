@@ -1,44 +1,75 @@
 # API Reference
 
-This section provides a detailed API reference for all public classes and functions in the AgentHelm framework.
+This section provides a detailed API reference for all public classes and functions in AgentHelm.
 
-## Agent
+## Core
 
-::: orchestrator.Agent
-    options:
-        members:
-            - __init__
-            - run
-            - run_react
+### The `@tool` Decorator
 
-## Tools
-
-### The `@tool` decorator
-
-::: orchestrator.tool
+::: agenthelm.tool
 
 ### Tool Registry
 
-::: orchestrator.TOOL_REGISTRY
+::: agenthelm.TOOL_REGISTRY
 
-## Tracer
+### Execution Tracer
 
-::: orchestrator.ExecutionTracer
+::: agenthelm.ExecutionTracer
     options:
         members:
             - __init__
             - set_trace_context
-            - trace_and_execute
+- execute
+- increment_retry
 
-## Event Model
+### Event Model
 
-::: orchestrator.Event
+::: agenthelm.Event
+
+### Token Usage
+
+::: agenthelm.TokenUsage
+
+---
+
+## Cost Tracking
+
+### CostTracker
+
+::: agenthelm.CostTracker
+options:
+members:
+- __init__
+- record
+- get_summary
+- get_model_costs
+
+### Factory Function
+
+::: agenthelm.get_cost_tracker
+
+---
+
+## Approval Handlers
+
+::: agenthelm.ApprovalHandler
+options:
+members:
+- request_approval
+
+::: agenthelm.CliHandler
+
+::: agenthelm.AutoApproveHandler
+
+::: agenthelm.AutoDenyHandler
+
+---
 
 ## Storage
 
-### BaseStorage (Abstract Base Class)
+### BaseStorage
 
-::: orchestrator.BaseStorage
+::: agenthelm.core.storage.BaseStorage
 options:
 members:
 - save
@@ -47,50 +78,49 @@ members:
 
 ### JsonStorage
 
-::: orchestrator.JsonStorage
-options:
-members:
-- __init__
-- save
-- load
-- exists
+::: agenthelm.core.storage.JsonStorage
 
 ### SqliteStorage
 
-::: orchestrator.SqliteStorage
-options:
-members:
-- __init__
-- save
-- load
-- query
+::: agenthelm.core.storage.SqliteStorage
 
-## LLM Clients
+---
 
-::: orchestrator.LLMClient
+## Memory Hub
+
+### MemoryHub
+
+::: agenthelm.MemoryHub
     options:
         members:
             - __init__
-            - predict
+- short_term
+- semantic
+- close
 
-::: orchestrator.MistralClient
+### MemoryContext
+
+::: agenthelm.MemoryContext
     options:
         members:
             - __init__
-            - predict
+- get
+- set
+- delete
+- store_memory
+- recall
+- cleanup
 
-::: orchestrator.OpenAIClient
-    options:
-        members:
-            - __init__
-            - predict
+### Short-Term Memory
 
-## Approval Handlers
+::: agenthelm.InMemoryShortTermMemory
 
-::: orchestrator.ApprovalHandler
-    options:
-        members:
-            - request_approval
+::: agenthelm.SqliteShortTermMemory
 
-::: orchestrator.CliHandler
+### Semantic Memory
 
+::: agenthelm.SemanticMemory
+
+### Search Results
+
+::: agenthelm.SearchResult

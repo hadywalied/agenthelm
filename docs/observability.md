@@ -39,7 +39,7 @@ querying capabilities.
   single file. It's simple, human-readable, and excellent for local development and smaller trace volumes.
 
   ```python
-  from orchestrator.core.storage.json_storage import JsonStorage
+  from agenthelm.core.storage import JsonStorage
   storage = JsonStorage("my_agent_traces.json")
   ```
 
@@ -48,7 +48,7 @@ querying capabilities.
   extensive trace logging and when you need to perform complex queries.
 
   ```python
-  from orchestrator.core.storage.sqlite_storage import SqliteStorage
+  from agenthelm.core.storage import SqliteStorage
   storage = SqliteStorage("my_agent_traces.db")
   ```
 

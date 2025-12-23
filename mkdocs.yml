@@ -1,15 +1,77 @@
 site_name: AgentHelm
+site_description: Production-ready orchestration for AI agents
 site_author: hadywalied
+site_url: https://hadywalied.github.io/agenthelm/
 repo_url: https://github.com/hadywalied/agenthelm
 repo_name: hadywalied/agenthelm
 
+# Navigation
 nav:
   - Home: index.md
-  - Core Concepts: concepts.md
-  - Tutorial: tutorial.md
+  - Getting Started:
+      - Core Concepts: concepts.md
+      - Tutorial: tutorial.md
+  - Features:
+      - Memory Hub: memory.md
+      - Observability: observability.md
   - API Reference: api_reference.md
 
+# Theme configuration
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  features:
+    # Navigation
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    # Table of contents
+    - toc.follow
+    # Search
+    - search.suggest
+    - search.highlight
+    - search.share
+    # Code blocks
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+  palette:
+    # Automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+      primary: white
+      accent: indigo
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: white
+      accent: indigo
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+      primary: black
+      accent: indigo
+  icon:
+    repo: fontawesome/brands/github
+
+# Plugins
 plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
   - mkdocstrings:
       handlers:
         python:
@@ -23,39 +85,58 @@ plugins:
             show_source: true
             members_order: alphabetical
             docstring_style: "google"
+            merge_init_into_class: true
+            separate_signature: true
 
-theme:
-  name: material
-  features:
-    - content.code.copy
-  logo: assets/logo.svg
-  favicon: assets/logo.svg
-  palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-      primary: white
-      accent: indigo
+# Markdown extensions
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  # PyMdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-      primary: white
-      accent: indigo
+# Extra configuration
+extra:
+  version:
+    provider: mike
+    default: latest
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/hadywalied/agenthelm
+  generator: false
 
-
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
-      primary: black
-      accent: indigo
-
-
+# Copyright
+copyright: Copyright &copy; 2025-2026 hadywalied
