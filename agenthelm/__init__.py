@@ -21,10 +21,22 @@ from agenthelm.core import (
     get_cost_tracker,
 )
 
+from agenthelm.memory import (
+    MemoryHub,
+    MemoryContext,
+    BaseShortTermMemory,
+    BaseSemanticMemory,
+    InMemoryShortTermMemory,
+    SqliteShortTermMemory,
+    SemanticMemory,
+    SearchResult,
+)
+
 __version__ = "0.3.0"
 
 __all__ = [
     "__version__",
+    # Core
     "tool",
     "TOOL_REGISTRY",
     "Event",
@@ -38,4 +50,13 @@ __all__ = [
     "CostTracker",
     "TokenOnlyCostTracker",
     "get_cost_tracker",
+    # Memory Hub
+    "MemoryHub",
+    "MemoryContext",
+    "BaseShortTermMemory",
+    "BaseSemanticMemory",
+    "InMemoryShortTermMemory",
+    "SqliteShortTermMemory",
+    "SemanticMemory",
+    "SearchResult",
 ]
