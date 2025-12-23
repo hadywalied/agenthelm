@@ -1,8 +1,7 @@
 """Tests for agenthelm.core.tracer - ExecutionTracer."""
 
 import pytest
-from unittest.mock import MagicMock, patch
-from datetime import datetime
+from unittest.mock import MagicMock
 
 from agenthelm import ExecutionTracer, tool, TOOL_REGISTRY, Event
 from agenthelm.core.handlers import AutoApproveHandler, AutoDenyHandler
