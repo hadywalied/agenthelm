@@ -4,22 +4,33 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agenthelm"
-version = "0.2.0"
+version = "0.3.0"
 description = "A production-ready, observable, and reliable AI agent orchestration framework."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi>=0.120.0",
-    "opentelemetry-api>=1.38.0",
-    "pydantic>=2.12.3",
-    "requests>=2.32.5",
-    "sqlalchemy>=2.0.44",
-    "typer>=0.20.0",
-    "tabulate>=0.9.0",
+    # Core
+    "dspy-ai>=2.5",
+    "pydantic>=2.0",
+    # Memory
+    "redis>=5.0",
+    "qdrant-client>=1.12",
+    # Storage (keeping for trace backends)
+    "sqlalchemy>=2.0",
+    # Observability
+    "opentelemetry-api>=1.20",
+    "opentelemetry-sdk>=1.20",
+    "opentelemetry-exporter-otlp>=1.20",
+    # CLI (Rich replaces tabulate, Click replaces Typer)
+    "click>=8.0",
+    "rich>=13.0",
+    # Utilities
+    "pyyaml>=6.0",
+    "requests>=2.32", # For webhooks, HTTP tools, etc.
 ]
 
 [tool.setuptools]
-packages = ["orchestrator", "orchestrator.core", "orchestrator.llm", "agenthelm"]
+# agenthelm = "agenthelm.cli:cli"  # TODO: Uncomment in Week 5
 
 [project.scripts]
 agenthelm = "orchestrator.cli:app"
