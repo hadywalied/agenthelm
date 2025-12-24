@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://hadywalied.github.io/agenthelm/0.3.0/concepts/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../quickstart/">
       
       
         <link rel="next" href="../tutorial/">
@@ -268,7 +268,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../quickstart/" class="md-tabs__link">
           
   
   
@@ -288,7 +288,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../memory/" class="md-tabs__link">
+        <a href="../agents/" class="md-tabs__link">
           
   
   
@@ -297,6 +297,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cli/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  CLI Reference
+
+      </a>
+    </li>
   
 
       
@@ -432,6 +451,29 @@
             Getting Started
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -682,6 +724,75 @@
   
   
     <li class="md-nav__item">
+      <a href="../agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MCP Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../memory/" class="md-nav__link">
         
   
@@ -724,6 +835,28 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI Reference
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -900,7 +1033,8 @@
 <h1 id="core-concepts">Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">&para;</a></h1>
 <p>This section explains the fundamental ideas behind AgentHelm.</p>
 <h2 id="tool-contracts">Tool Contracts<a class="headerlink" href="#tool-contracts" title="Permanent link">&para;</a></h2>
-<p>Tools are the building blocks of agent actions. AgentHelm uses a decorator-based approach to define tools with rich metadata:</p>
+<p>Tools are the building blocks of agent actions. AgentHelm uses a decorator-based approach to define tools with rich
+metadata:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">agenthelm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tool</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nd">@tool</span><span class="p">(</span>
@@ -925,12 +1059,11 @@
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">agenthelm.core.storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">JsonStorage</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">tracer</span> <span class="o">=</span> <span class="n">ExecutionTracer</span><span class="p">(</span><span class="n">storage</span><span class="o">=</span><span class="n">JsonStorage</span><span class="p">(</span><span class="s2">&quot;trace.json&quot;</span><span class="p">))</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">tracer</span><span class="o">.</span><span class="n">set_trace_context</span><span class="p">(</span><span class="n">agent_name</span><span class="o">=</span><span class="s2">&quot;my_agent&quot;</span><span class="p">)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Execute a tool with full tracing</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">event</span> <span class="o">=</span> <span class="n">tracer</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">my_tool</span><span class="p">,</span> <span class="n">arg1</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># Event contains: timestamp, inputs, outputs, duration, token_usage, cost, etc.</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Execute a tool with full tracing</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">output</span><span class="p">,</span> <span class="n">event</span> <span class="o">=</span> <span class="n">tracer</span><span class="o">.</span><span class="n">trace_and_execute</span><span class="p">(</span><span class="n">my_tool</span><span class="p">,</span> <span class="n">arg1</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># Event contains: timestamp, inputs, outputs, duration, token_usage, cost, etc.</span>
 </span></code></pre></div>
 <h3 id="event-model">Event Model<a class="headerlink" href="#event-model" title="Permanent link">&para;</a></h3>
 <p>Every execution produces an <code>Event</code> with these fields:</p>
@@ -1094,7 +1227,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+          <a href="../quickstart/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quick Start">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1104,7 +1237,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Home
+                Quick Start
               </div>
             </div>
           </a>
@@ -1134,7 +1267,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024-2026 hadywalied
+      Copyright &copy; 2025-2026 hadywalied
     </div>
   
   

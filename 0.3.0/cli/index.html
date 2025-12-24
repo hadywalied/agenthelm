@@ -12,13 +12,13 @@
         <meta name="author" content="hadywalied">
       
       
-        <link rel="canonical" href="https://hadywalied.github.io/agenthelm/0.3.0/observability/">
+        <link rel="canonical" href="https://hadywalied.github.io/agenthelm/0.3.0/cli/">
       
       
-        <link rel="prev" href="../memory/">
+        <link rel="prev" href="../observability/">
       
       
-        <link rel="next" href="../cli/">
+        <link rel="next" href="../api_reference/">
       
       
       <link rel="icon" href="../assets/logo.svg">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Observability - AgentHelm</title>
+        <title>CLI Reference - AgentHelm</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#observability-tracing" class="md-skip">
+        <a href="#command-line-interface" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Observability
+              CLI Reference
             
           </span>
         </div>
@@ -282,12 +282,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../agents/" class="md-tabs__link">
           
   
@@ -304,9 +302,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../cli/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -529,31 +529,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -566,7 +563,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Features
@@ -669,6 +666,36 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Observability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -686,7 +713,7 @@
   
   
   <span class="md-ellipsis">
-    Observability
+    CLI Reference
     
   </span>
   
@@ -699,7 +726,7 @@
   
   
   <span class="md-ellipsis">
-    Observability
+    CLI Reference
     
   </span>
   
@@ -722,43 +749,83 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#execution-tracing" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
-      Execution Tracing
+      Installation
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Execution Tracing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#event-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Event Model
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cli-trace-explorer" class="md-nav__link">
+  <a href="#quick-start" class="md-nav__link">
     <span class="md-ellipsis">
-      CLI Trace Explorer
+      Quick Start
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="CLI Trace Explorer">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm plan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm execute
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm chat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm traces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="agenthelm traces">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#list-traces" class="md-nav__link">
     <span class="md-ellipsis">
-      List Traces
+      List traces
     </span>
   </a>
   
@@ -767,7 +834,7 @@
           <li class="md-nav__item">
   <a href="#show-trace-details" class="md-nav__link">
     <span class="md-ellipsis">
-      Show Trace Details
+      Show trace details
     </span>
   </a>
   
@@ -776,7 +843,7 @@
           <li class="md-nav__item">
   <a href="#filter-traces" class="md-nav__link">
     <span class="md-ellipsis">
-      Filter Traces
+      Filter traces
     </span>
   </a>
   
@@ -785,7 +852,7 @@
           <li class="md-nav__item">
   <a href="#export-traces" class="md-nav__link">
     <span class="md-ellipsis">
-      Export Traces
+      Export traces
     </span>
   </a>
   
@@ -795,39 +862,53 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#storage-backends" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-mcp" class="md-nav__link">
     <span class="md-ellipsis">
-      Storage Backends
+      agenthelm mcp
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Storage Backends">
+    <nav class="md-nav" aria-label="agenthelm mcp">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sqlite-default" class="md-nav__link">
+  <a href="#list-mcp-tools" class="md-nav__link">
     <span class="md-ellipsis">
-      SQLite (Default)
+      List MCP tools
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#json" class="md-nav__link">
+  <a href="#run-task-with-mcp-tools" class="md-nav__link">
     <span class="md-ellipsis">
-      JSON
+      Run task with MCP tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm config
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-default-storage" class="md-nav__link">
+  <a href="#agenthelm-init" class="md-nav__link">
     <span class="md-ellipsis">
-      Configure Default Storage
+      agenthelm init
     </span>
   </a>
   
@@ -839,46 +920,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#opentelemetry-jaeger" class="md-nav__link">
+  <a href="#global-options" class="md-nav__link">
     <span class="md-ellipsis">
-      OpenTelemetry &amp; Jaeger
+      Global Options
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="OpenTelemetry &amp; Jaeger">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setup-jaeger" class="md-nav__link">
+  <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup Jaeger
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enable-tracing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enable Tracing
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#view-in-jaeger-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      View in Jaeger UI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#python-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Python SDK
+      Environment Variables
     </span>
   </a>
   
@@ -890,18 +953,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verbose-logging" class="md-nav__link">
+  <a href="#trace-storage" class="md-nav__link">
     <span class="md-ellipsis">
-      Verbose Logging
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cost-tracking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cost Tracking
+      Trace Storage
     </span>
   </a>
   
@@ -911,36 +965,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    CLI Reference
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -994,43 +1018,83 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#execution-tracing" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
-      Execution Tracing
+      Installation
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Execution Tracing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#event-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Event Model
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cli-trace-explorer" class="md-nav__link">
+  <a href="#quick-start" class="md-nav__link">
     <span class="md-ellipsis">
-      CLI Trace Explorer
+      Quick Start
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="CLI Trace Explorer">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm plan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm execute
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm chat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm traces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="agenthelm traces">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#list-traces" class="md-nav__link">
     <span class="md-ellipsis">
-      List Traces
+      List traces
     </span>
   </a>
   
@@ -1039,7 +1103,7 @@
           <li class="md-nav__item">
   <a href="#show-trace-details" class="md-nav__link">
     <span class="md-ellipsis">
-      Show Trace Details
+      Show trace details
     </span>
   </a>
   
@@ -1048,7 +1112,7 @@
           <li class="md-nav__item">
   <a href="#filter-traces" class="md-nav__link">
     <span class="md-ellipsis">
-      Filter Traces
+      Filter traces
     </span>
   </a>
   
@@ -1057,7 +1121,7 @@
           <li class="md-nav__item">
   <a href="#export-traces" class="md-nav__link">
     <span class="md-ellipsis">
-      Export Traces
+      Export traces
     </span>
   </a>
   
@@ -1067,39 +1131,53 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#storage-backends" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-mcp" class="md-nav__link">
     <span class="md-ellipsis">
-      Storage Backends
+      agenthelm mcp
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Storage Backends">
+    <nav class="md-nav" aria-label="agenthelm mcp">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sqlite-default" class="md-nav__link">
+  <a href="#list-mcp-tools" class="md-nav__link">
     <span class="md-ellipsis">
-      SQLite (Default)
+      List MCP tools
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#json" class="md-nav__link">
+  <a href="#run-task-with-mcp-tools" class="md-nav__link">
     <span class="md-ellipsis">
-      JSON
+      Run task with MCP tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agenthelm-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      agenthelm config
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-default-storage" class="md-nav__link">
+  <a href="#agenthelm-init" class="md-nav__link">
     <span class="md-ellipsis">
-      Configure Default Storage
+      agenthelm init
     </span>
   </a>
   
@@ -1111,46 +1189,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#opentelemetry-jaeger" class="md-nav__link">
+  <a href="#global-options" class="md-nav__link">
     <span class="md-ellipsis">
-      OpenTelemetry &amp; Jaeger
+      Global Options
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="OpenTelemetry &amp; Jaeger">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setup-jaeger" class="md-nav__link">
+  <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup Jaeger
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enable-tracing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enable Tracing
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#view-in-jaeger-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      View in Jaeger UI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#python-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Python SDK
+      Environment Variables
     </span>
   </a>
   
@@ -1162,18 +1222,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verbose-logging" class="md-nav__link">
+  <a href="#trace-storage" class="md-nav__link">
     <span class="md-ellipsis">
-      Verbose Logging
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cost-tracking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cost Tracking
+      Trace Storage
     </span>
   </a>
   
@@ -1198,185 +1249,266 @@
   
 
 
-<h1 id="observability-tracing">Observability &amp; Tracing<a class="headerlink" href="#observability-tracing" title="Permanent link">&para;</a></h1>
-<p>AgentHelm provides comprehensive observability through execution tracing, cost tracking, and OpenTelemetry integration.</p>
-<h2 id="execution-tracing">Execution Tracing<a class="headerlink" href="#execution-tracing" title="Permanent link">&para;</a></h2>
-<p>Every tool execution is automatically traced and stored:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">agenthelm</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExecutionTracer</span><span class="p">,</span> <span class="n">ToolAgent</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">agenthelm.core.storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">SqliteStorage</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Create tracer with storage</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">storage</span> <span class="o">=</span> <span class="n">SqliteStorage</span><span class="p">(</span><span class="s2">&quot;traces.db&quot;</span><span class="p">)</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">tracer</span> <span class="o">=</span> <span class="n">ExecutionTracer</span><span class="p">(</span><span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">)</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Pass to agent</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">ToolAgent</span><span class="p">(</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_agent&quot;</span><span class="p">,</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">lm</span><span class="o">=</span><span class="n">lm</span><span class="p">,</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">my_tool</span><span class="p">],</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">tracer</span><span class="o">=</span><span class="n">tracer</span><span class="p">,</span>  <span class="c1"># Traces saved automatically</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">)</span>
+<h1 id="command-line-interface">Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permanent link">&para;</a></h1>
+<p>AgentHelm provides a powerful CLI for running agents, managing plans, and viewing traces.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>agenthelm
 </span></code></pre></div>
-<h3 id="event-model">Event Model<a class="headerlink" href="#event-model" title="Permanent link">&para;</a></h3>
-<p>Each execution produces an <code>Event</code> with:</p>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Initialize configuration</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>agenthelm<span class="w"> </span>init
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Run a simple task</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;What is 2+2?&quot;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Interactive chat mode</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>agenthelm<span class="w"> </span>chat
+</span></code></pre></div>
+<h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
+<h3 id="agenthelm-run"><code>agenthelm run</code><a class="headerlink" href="#agenthelm-run" title="Permanent link">&para;</a></h3>
+<p>Run a task with a ToolAgent.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;Search for AI news and summarize&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--model<span class="w"> </span>mistral/mistral-large-latest<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--tools<span class="w"> </span>mytools:search,summarize<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--trace
+</span></code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Field</th>
+<th>Option</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>timestamp</code></td>
-<td>When the event occurred</td>
+<td><code>-m, --model</code></td>
+<td>LLM model (default: from config)</td>
 </tr>
 <tr>
-<td><code>tool_name</code></td>
-<td>Name of the executed tool</td>
+<td><code>-t, --tools</code></td>
+<td>Tools to load (<code>module:func,func2</code>)</td>
 </tr>
 <tr>
-<td><code>inputs</code> / <code>outputs</code></td>
-<td>Arguments and return value</td>
+<td><code>--max-iters</code></td>
+<td>Max reasoning iterations (default: 10)</td>
 </tr>
 <tr>
-<td><code>execution_time</code></td>
-<td>Duration in seconds</td>
+<td><code>--trace</code></td>
+<td>Enable OpenTelemetry/Jaeger tracing</td>
 </tr>
 <tr>
-<td><code>token_usage</code></td>
-<td>LLM tokens (input/output)</td>
-</tr>
-<tr>
-<td><code>estimated_cost_usd</code></td>
-<td>Cost estimate</td>
-</tr>
-<tr>
-<td><code>agent_name</code></td>
-<td>Which agent executed this</td>
-</tr>
-<tr>
-<td><code>trace_id</code></td>
-<td>Unique execution ID</td>
+<td><code>-s, --trace-storage</code></td>
+<td>Custom trace storage path</td>
 </tr>
 </tbody>
 </table>
-<h2 id="cli-trace-explorer">CLI Trace Explorer<a class="headerlink" href="#cli-trace-explorer" title="Permanent link">&para;</a></h2>
-<h3 id="list-traces">List Traces<a class="headerlink" href="#list-traces" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># List recent traces</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>list
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Limit results</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>list<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span>
-</span></code></pre></div>
-<h3 id="show-trace-details">Show Trace Details<a class="headerlink" href="#show-trace-details" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>show<span class="w"> </span><span class="m">0</span>
-</span></code></pre></div>
-<h3 id="filter-traces">Filter Traces<a class="headerlink" href="#filter-traces" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># By tool name</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--tool<span class="w"> </span>get_weather
+<hr />
+<h3 id="agenthelm-plan"><code>agenthelm plan</code><a class="headerlink" href="#agenthelm-plan" title="Permanent link">&para;</a></h3>
+<p>Generate an execution plan for a complex task.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Generate and display a plan</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>agenthelm<span class="w"> </span>plan<span class="w"> </span><span class="s2">&quot;Build a web scraper for news sites&quot;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># By status</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--status<span class="w"> </span>success
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--status<span class="w"> </span>failed
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># By date range</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--date-from<span class="w"> </span><span class="m">2024</span>-01-01<span class="w"> </span>--date-to<span class="w"> </span><span class="m">2024</span>-12-31
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># By execution time</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--min-time<span class="w"> </span><span class="m">1</span>.0<span class="w"> </span>--max-time<span class="w"> </span><span class="m">5</span>.0
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># Output as JSON</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--status<span class="w"> </span>failed<span class="w"> </span>--json
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Save plan to file</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>agenthelm<span class="w"> </span>plan<span class="w"> </span><span class="s2">&quot;Build a web scraper&quot;</span><span class="w"> </span>-o<span class="w"> </span>plan.yaml
 </span></code></pre></div>
-<h3 id="export-traces">Export Traces<a class="headerlink" href="#export-traces" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Export to JSON</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-o<span class="w"> </span>traces.json<span class="w"> </span>-f<span class="w"> </span>json
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-m, --model</code></td>
+<td>LLM model</td>
+</tr>
+<tr>
+<td><code>-o, --output</code></td>
+<td>Save plan to YAML file</td>
+</tr>
+<tr>
+<td><code>--approve</code></td>
+<td>Auto-approve for execution</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="agenthelm-execute"><code>agenthelm execute</code><a class="headerlink" href="#agenthelm-execute" title="Permanent link">&para;</a></h3>
+<p>Execute a plan from a YAML file.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Preview plan</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>agenthelm<span class="w"> </span>execute<span class="w"> </span>plan.yaml<span class="w"> </span>--dry-run
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Export to CSV</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-o<span class="w"> </span>traces.csv<span class="w"> </span>-f<span class="w"> </span>csv
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Export to Markdown report</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-o<span class="w"> </span>report.md<span class="w"> </span>-f<span class="w"> </span>md
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Export filtered traces</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-o<span class="w"> </span>failed.md<span class="w"> </span>-f<span class="w"> </span>md<span class="w"> </span>--status<span class="w"> </span>failed
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Execute with confirmation</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>agenthelm<span class="w"> </span>execute<span class="w"> </span>plan.yaml
 </span></code></pre></div>
-<h2 id="storage-backends">Storage Backends<a class="headerlink" href="#storage-backends" title="Permanent link">&para;</a></h2>
-<h3 id="sqlite-default">SQLite (Default)<a class="headerlink" href="#sqlite-default" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Traces saved to ~/.agenthelm/traces.db by default</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;task&quot;</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Custom path</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;task&quot;</span><span class="w"> </span>-s<span class="w"> </span>./my_traces.db
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-m, --model</code></td>
+<td>LLM model</td>
+</tr>
+<tr>
+<td><code>--dry-run</code></td>
+<td>Preview without executing</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="agenthelm-chat"><code>agenthelm chat</code><a class="headerlink" href="#agenthelm-chat" title="Permanent link">&para;</a></h3>
+<p>Interactive REPL mode for conversational tasks.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>agenthelm<span class="w"> </span>chat<span class="w"> </span>--model<span class="w"> </span>mistral/mistral-large-latest
 </span></code></pre></div>
-<h3 id="json">JSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;task&quot;</span><span class="w"> </span>-s<span class="w"> </span>./traces.json
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>AgentHelm Chat (model: mistral/mistral-large-latest)
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Type &#39;exit&#39; or &#39;quit&#39; to end the session
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>&gt; What is the capital of France?
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Paris is the capital of France.
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>&gt; exit
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>Goodbye!
 </span></code></pre></div>
-<h3 id="configure-default-storage">Configure Default Storage<a class="headerlink" href="#configure-default-storage" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>agenthelm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>trace_storage<span class="w"> </span>/path/to/traces.db
+<hr />
+<h3 id="agenthelm-traces"><code>agenthelm traces</code><a class="headerlink" href="#agenthelm-traces" title="Permanent link">&para;</a></h3>
+<p>View and manage execution traces.</p>
+<h4 id="list-traces">List traces<a class="headerlink" href="#list-traces" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>list
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>list<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span>
 </span></code></pre></div>
-<h2 id="opentelemetry-jaeger">OpenTelemetry &amp; Jaeger<a class="headerlink" href="#opentelemetry-jaeger" title="Permanent link">&para;</a></h2>
-<p>AgentHelm supports OpenTelemetry for distributed tracing with Jaeger.</p>
-<h3 id="setup-jaeger">Setup Jaeger<a class="headerlink" href="#setup-jaeger" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>jaeger<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">16686</span>:16686<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">4317</span>:4317<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>jaegertracing/all-in-one:latest
+<h4 id="show-trace-details">Show trace details<a class="headerlink" href="#show-trace-details" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>show<span class="w"> </span><span class="m">0</span><span class="w">     </span><span class="c1"># Show most recent trace</span>
 </span></code></pre></div>
-<h3 id="enable-tracing">Enable Tracing<a class="headerlink" href="#enable-tracing" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Run with OpenTelemetry tracing</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;What is 2+2?&quot;</span><span class="w"> </span>--trace
+<h4 id="filter-traces">Filter traces<a class="headerlink" href="#filter-traces" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># By tool name</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--tool<span class="w"> </span>search
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Custom endpoint</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;task&quot;</span><span class="w"> </span>--trace<span class="w"> </span>--trace-endpoint<span class="w"> </span>http://localhost:4317
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># By status</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--status<span class="w"> </span>success
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># By date range</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--date-from<span class="w"> </span><span class="m">2024</span>-01-01<span class="w"> </span>--date-to<span class="w"> </span><span class="m">2024</span>-12-31
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># Output as JSON</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--status<span class="w"> </span>failed<span class="w"> </span>--json
 </span></code></pre></div>
-<h3 id="view-in-jaeger-ui">View in Jaeger UI<a class="headerlink" href="#view-in-jaeger-ui" title="Permanent link">&para;</a></h3>
-<p>Open http://localhost:16686 and select "agenthelm-cli" service.</p>
-<h3 id="python-sdk">Python SDK<a class="headerlink" href="#python-sdk" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">agenthelm.tracing</span><span class="w"> </span><span class="kn">import</span> <span class="n">init_tracing</span><span class="p">,</span> <span class="n">trace_tool</span><span class="p">,</span> <span class="n">trace_agent</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Initialize OpenTelemetry</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">init_tracing</span><span class="p">(</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="n">service_name</span><span class="o">=</span><span class="s2">&quot;my-app&quot;</span><span class="p">,</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="n">otlp_endpoint</span><span class="o">=</span><span class="s2">&quot;http://localhost:4317&quot;</span><span class="p">,</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="p">)</span>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># Trace a tool execution</span>
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="k">with</span> <span class="n">trace_tool</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;AI news&quot;</span><span class="p">})</span> <span class="k">as</span> <span class="n">span</span><span class="p">:</span>
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="s2">&quot;AI news&quot;</span><span class="p">)</span>
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="n">span</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s2">&quot;result_count&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
-</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="c1"># Trace an agent execution</span>
-</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="k">with</span> <span class="n">trace_agent</span><span class="p">(</span><span class="s2">&quot;researcher&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;Find AI news&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">span</span><span class="p">:</span>
-</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;Find AI news&quot;</span><span class="p">)</span>
+<h4 id="export-traces">Export traces<a class="headerlink" href="#export-traces" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Export to JSON</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-o<span class="w"> </span>report.json<span class="w"> </span>-f<span class="w"> </span>json
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Export to CSV</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-o<span class="w"> </span>report.csv<span class="w"> </span>-f<span class="w"> </span>csv
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Export to Markdown</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-o<span class="w"> </span>report.md<span class="w"> </span>-f<span class="w"> </span>md
 </span></code></pre></div>
-<h2 id="verbose-logging">Verbose Logging<a class="headerlink" href="#verbose-logging" title="Permanent link">&para;</a></h2>
-<p>Enable debug logging with the <code>-v</code> flag:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>agenthelm<span class="w"> </span>-v<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;task&quot;</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>agenthelm<span class="w"> </span>-v<span class="w"> </span>traces<span class="w"> </span>list
+<hr />
+<h3 id="agenthelm-mcp"><code>agenthelm mcp</code><a class="headerlink" href="#agenthelm-mcp" title="Permanent link">&para;</a></h3>
+<p>Manage MCP (Model Context Protocol) server connections.</p>
+<h4 id="list-mcp-tools">List MCP tools<a class="headerlink" href="#list-mcp-tools" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>agenthelm<span class="w"> </span>mcp<span class="w"> </span>list-tools<span class="w"> </span>uvx<span class="w"> </span>mcp-server-time
 </span></code></pre></div>
-<h2 id="cost-tracking">Cost Tracking<a class="headerlink" href="#cost-tracking" title="Permanent link">&para;</a></h2>
-<p>Track token usage and estimated costs:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">agenthelm</span><span class="w"> </span><span class="kn">import</span> <span class="n">CostTracker</span><span class="p">,</span> <span class="n">get_cost_tracker</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># Get tracker</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">tracker</span> <span class="o">=</span> <span class="n">get_cost_tracker</span><span class="p">()</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1"># Record usage</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">tracker</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;mistral-large-latest&quot;</span><span class="p">,</span> <span class="n">input_tokens</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">output_tokens</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1"># Get summary</span>
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="n">summary</span> <span class="o">=</span> <span class="n">tracker</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span>
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total cost: $</span><span class="si">{</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;total_cost_usd&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<h4 id="run-task-with-mcp-tools">Run task with MCP tools<a class="headerlink" href="#run-task-with-mcp-tools" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>agenthelm<span class="w"> </span>mcp<span class="w"> </span>run<span class="w"> </span>uvx<span class="w"> </span>mcp-server-time<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;What time is it?&quot;</span>
 </span></code></pre></div>
-<p>The CLI shows cost summary after each run:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>─── Summary ───
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Tokens: 1,234 (856 in / 378 out)
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Cost: $0.0042
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>Traces: 3 events saved
+<hr />
+<h3 id="agenthelm-config"><code>agenthelm config</code><a class="headerlink" href="#agenthelm-config" title="Permanent link">&para;</a></h3>
+<p>Manage configuration settings.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Show current config</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>agenthelm<span class="w"> </span>config<span class="w"> </span>show
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Set default model</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>agenthelm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default_model<span class="w"> </span>mistral/mistral-large-latest
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Set API key</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>agenthelm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>api_keys.openai<span class="w"> </span>sk-...
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="c1"># Show config file path</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>agenthelm<span class="w"> </span>config<span class="w"> </span>path
 </span></code></pre></div>
+<hr />
+<h3 id="agenthelm-init"><code>agenthelm init</code><a class="headerlink" href="#agenthelm-init" title="Permanent link">&para;</a></h3>
+<p>Initialize AgentHelm configuration.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>agenthelm<span class="w"> </span>init
+</span></code></pre></div>
+<p>Creates <code>~/.agenthelm/config.yaml</code> with default settings.</p>
+<hr />
+<h2 id="global-options">Global Options<a class="headerlink" href="#global-options" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-v, --verbose</code></td>
+<td>Enable debug logging</td>
+</tr>
+<tr>
+<td><code>--version</code></td>
+<td>Show version</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>Show help</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>Configuration is stored in <code>~/.agenthelm/config.yaml</code>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">default_model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mistral/mistral-large-latest</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nt">max_iters</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nt">trace_storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.agenthelm/traces.db</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nt">api_keys</span><span class="p">:</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span><span class="nt">openai</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sk-...</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span><span class="nt">anthropic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sk-...</span>
+</span></code></pre></div>
+<h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OPENAI_API_KEY</code></td>
+<td>OpenAI API key</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>Anthropic API key</td>
+</tr>
+<tr>
+<td><code>MISTRAL_API_KEY</code></td>
+<td>Mistral API key</td>
+</tr>
+<tr>
+<td><code>AGENTHELM_MODEL</code></td>
+<td>Override default model</td>
+</tr>
+</tbody>
+</table>
+<h2 id="trace-storage">Trace Storage<a class="headerlink" href="#trace-storage" title="Permanent link">&para;</a></h2>
+<p>Traces are automatically saved to <code>~/.agenthelm/traces.db</code>.</p>
+<p>Override with:</p>
+<ul>
+<li>CLI flag: <code>--trace-storage /path/to/traces.db</code></li>
+<li>Config: <code>trace_storage: /path/to/traces.db</code></li>
+</ul>
+<p>Supported formats:</p>
+<ul>
+<li>SQLite (<code>.db</code>, <code>.sqlite</code>)</li>
+<li>JSON (<code>.json</code>)</li>
+</ul>
 
 
 
@@ -1414,7 +1546,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../memory/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Memory Hub">
+          <a href="../observability/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Observability">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1424,20 +1556,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Memory Hub
+                Observability
               </div>
             </div>
           </a>
         
         
           
-          <a href="../cli/" class="md-footer__link md-footer__link--next" aria-label="Next: CLI Reference">
+          <a href="../api_reference/" class="md-footer__link md-footer__link--next" aria-label="Next: API Reference">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                CLI Reference
+                API Reference
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -18,7 +18,7 @@
         <link rel="prev" href="../concepts/">
       
       
-        <link rel="next" href="../memory/">
+        <link rel="next" href="../agents/">
       
       
       <link rel="icon" href="../assets/logo.svg">
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tutorial-building-your-first-agent-with-agenthelm" class="md-skip">
+        <a href="#tutorial-building-your-first-agent" class="md-skip">
           Skip to content
         </a>
       
@@ -268,7 +268,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../concepts/" class="md-tabs__link">
+        <a href="../quickstart/" class="md-tabs__link">
           
   
   
@@ -288,7 +288,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../memory/" class="md-tabs__link">
+        <a href="../agents/" class="md-tabs__link">
           
   
   
@@ -297,6 +297,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cli/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  CLI Reference
+
+      </a>
+    </li>
   
 
       
@@ -440,6 +459,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../concepts/" class="md-nav__link">
         
   
@@ -513,9 +555,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-setup-your-environment" class="md-nav__link">
+  <a href="#1-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Setup Your Environment
+      1. Setup
     </span>
   </a>
   
@@ -527,39 +569,6 @@
       2. Define Your Tools
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="2. Define Your Tools">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simple-tool-get_weather" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simple Tool: get_weather
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tool-requiring-human-approval-send_email" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tool Requiring Human Approval: send_email
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tool-with-rollback-create_resource-and-delete_resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tool with Rollback: create_resource and delete_resource
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -583,18 +592,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#task-requiring-approval" class="md-nav__link">
+  <a href="#interactive-mode" class="md-nav__link">
     <span class="md-ellipsis">
-      Task Requiring Approval
+      Interactive Mode
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#task-with-rollback" class="md-nav__link">
+  <a href="#task-requiring-approval" class="md-nav__link">
     <span class="md-ellipsis">
-      Task with Rollback
+      Task Requiring Approval
     </span>
   </a>
   
@@ -606,9 +615,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-inspect-the-trace" class="md-nav__link">
+  <a href="#4-view-traces" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Inspect the Trace
+      4. View Traces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-using-the-python-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Using the Python SDK
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-generate-and-execute-plans" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Generate and Execute Plans
     </span>
   </a>
   
@@ -691,6 +718,75 @@
   
   
     <li class="md-nav__item">
+      <a href="../agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MCP Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../memory/" class="md-nav__link">
         
   
@@ -744,6 +840,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api_reference/" class="md-nav__link">
         
   
@@ -786,9 +904,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-setup-your-environment" class="md-nav__link">
+  <a href="#1-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Setup Your Environment
+      1. Setup
     </span>
   </a>
   
@@ -800,39 +918,6 @@
       2. Define Your Tools
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="2. Define Your Tools">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simple-tool-get_weather" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simple Tool: get_weather
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tool-requiring-human-approval-send_email" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tool Requiring Human Approval: send_email
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tool-with-rollback-create_resource-and-delete_resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tool with Rollback: create_resource and delete_resource
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -856,18 +941,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#task-requiring-approval" class="md-nav__link">
+  <a href="#interactive-mode" class="md-nav__link">
     <span class="md-ellipsis">
-      Task Requiring Approval
+      Interactive Mode
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#task-with-rollback" class="md-nav__link">
+  <a href="#task-requiring-approval" class="md-nav__link">
     <span class="md-ellipsis">
-      Task with Rollback
+      Task Requiring Approval
     </span>
   </a>
   
@@ -879,9 +964,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-inspect-the-trace" class="md-nav__link">
+  <a href="#4-view-traces" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Inspect the Trace
+      4. View Traces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-using-the-python-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Using the Python SDK
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-generate-and-execute-plans" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Generate and Execute Plans
     </span>
   </a>
   
@@ -915,93 +1018,111 @@
   
 
 
-<h1 id="tutorial-building-your-first-agent-with-agenthelm">Tutorial: Building Your First Agent with AgentHelm<a class="headerlink" href="#tutorial-building-your-first-agent-with-agenthelm" title="Permanent link">&para;</a></h1>
-<p>This tutorial will guide you through building a simple agent using AgentHelm, demonstrating its core features like tool definition, human approval, and rollbacks.</p>
-<h2 id="1-setup-your-environment">1. Setup Your Environment<a class="headerlink" href="#1-setup-your-environment" title="Permanent link">&para;</a></h2>
-<p>First, ensure you have Python 3.12+ and a virtual environment set up. Install AgentHelm:</p>
+<h1 id="tutorial-building-your-first-agent">Tutorial: Building Your First Agent<a class="headerlink" href="#tutorial-building-your-first-agent" title="Permanent link">&para;</a></h1>
+<p>This tutorial guides you through building a simple agent using AgentHelm.</p>
+<h2 id="1-setup">1. Setup<a class="headerlink" href="#1-setup" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>agenthelm
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>agenthelm<span class="w"> </span>init
 </span></code></pre></div>
-<p>Also, make sure you have your LLM API key set as an environment variable (e.g., <code>export MISTRAL_API_KEY="your_key_here"</code>).</p>
+<p>Set your API key:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MISTRAL_API_KEY</span><span class="o">=</span><span class="s2">&quot;your_key_here&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># or</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>agenthelm<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>api_keys.mistral<span class="w"> </span>your_key_here
+</span></code></pre></div>
 <h2 id="2-define-your-tools">2. Define Your Tools<a class="headerlink" href="#2-define-your-tools" title="Permanent link">&para;</a></h2>
-<p>Create a file named <code>my_agent_tools.py</code>. This file will contain the tools your agent can use.</p>
-<h3 id="simple-tool-get_weather">Simple Tool: <code>get_weather</code><a class="headerlink" href="#simple-tool-get_weather" title="Permanent link">&para;</a></h3>
-<p>Let's start with a simple tool to get weather information. AgentHelm's <code>@tool</code> decorator automatically infers the tool's contract from your function's type hints.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># my_agent_tools.py</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">agenthelm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tool</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nd">@tool</span><span class="p">()</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_weather</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the current weather for a given city.&quot;&quot;&quot;</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="c1"># In a real scenario, this would call a weather API</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">if</span> <span class="n">city</span> <span class="o">==</span> <span class="s2">&quot;New York&quot;</span><span class="p">:</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="k">return</span> <span class="s2">&quot;It is 24°C and sunny in New York.&quot;</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="k">elif</span> <span class="n">city</span> <span class="o">==</span> <span class="s2">&quot;London&quot;</span><span class="p">:</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="k">return</span> <span class="s2">&quot;It is 15°C and cloudy in London.&quot;</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t know the weather for </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">.&quot;</span>
-</span></code></pre></div>
-<h3 id="tool-requiring-human-approval-send_email">Tool Requiring Human Approval: <code>send_email</code><a class="headerlink" href="#tool-requiring-human-approval-send_email" title="Permanent link">&para;</a></h3>
-<p>For sensitive actions, you can require human approval. AgentHelm will pause the agent's execution and prompt the user for confirmation.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># my_agent_tools.py (continued)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nd">@tool</span><span class="p">(</span><span class="n">requires_approval</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">send_email</span><span class="p">(</span><span class="n">recipient</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">subject</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sends an email to a specified recipient.&quot;&quot;&quot;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="c1"># In a real scenario, this would integrate with an email service</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ACTION REQUIRED] Sending email to </span><span class="si">{</span><span class="n">recipient</span><span class="si">}</span><span class="s2"> with subject &#39;</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">&#39; and body: &#39;</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;email_sent&quot;</span><span class="p">,</span> <span class="s2">&quot;recipient&quot;</span><span class="p">:</span> <span class="n">recipient</span><span class="p">}</span>
-</span></code></pre></div>
-<h3 id="tool-with-rollback-create_resource-and-delete_resource">Tool with Rollback: <code>create_resource</code> and <code>delete_resource</code><a class="headerlink" href="#tool-with-rollback-create_resource-and-delete_resource" title="Permanent link">&para;</a></h3>
-<p>AgentHelm supports transactional workflows with automatic rollbacks. If a multi-step process fails, it can execute compensating actions to undo previous steps.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># my_agent_tools.py (continued)</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nd">@tool</span><span class="p">()</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">delete_resource</span><span class="p">(</span><span class="n">resource_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Deletes a cloud resource by its ID (compensating action).&quot;&quot;&quot;</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[COMPENSATING ACTION] Deleting resource: </span><span class="si">{</span><span class="n">resource_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;resource_deleted&quot;</span><span class="p">,</span> <span class="s2">&quot;resource_id&quot;</span><span class="p">:</span> <span class="n">resource_id</span><span class="p">}</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nd">@tool</span><span class="p">(</span><span class="n">compensating_tool</span><span class="o">=</span><span class="s1">&#39;delete_resource&#39;</span><span class="p">)</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_resource</span><span class="p">(</span><span class="n">resource_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a cloud resource with specified type and configuration.&quot;&quot;&quot;</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="c1"># In a real scenario, this would call a cloud provider API</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">resource_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;res-</span><span class="si">{</span><span class="n">resource_type</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="nb">hash</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ACTION] Creating resource </span><span class="si">{</span><span class="n">resource_id</span><span class="si">}</span><span class="s2"> of type </span><span class="si">{</span><span class="n">resource_type</span><span class="si">}</span><span class="s2"> with config </span><span class="si">{</span><span class="n">config</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;resource_created&quot;</span><span class="p">,</span> <span class="s2">&quot;resource_id&quot;</span><span class="p">:</span> <span class="n">resource_id</span><span class="p">}</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="nd">@tool</span><span class="p">()</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="k">def</span><span class="w"> </span><span class="nf">deploy_application</span><span class="p">(</span><span class="n">resource_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">app_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Deploys an application to a given resource. Designed to fail for demonstration.&quot;&quot;&quot;</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ACTION] Deploying application </span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">resource_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Deployment failed due to an unexpected error!&quot;</span><span class="p">)</span>
+<p>Create a file named <code>my_tools.py</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># my_tools.py</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">agenthelm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tool</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nd">@tool</span><span class="p">()</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_weather</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the current weather for a given city.&quot;&quot;&quot;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="k">if</span> <span class="n">city</span> <span class="o">==</span> <span class="s2">&quot;New York&quot;</span><span class="p">:</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="k">return</span> <span class="s2">&quot;It is 24°C and sunny in New York.&quot;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="k">elif</span> <span class="n">city</span> <span class="o">==</span> <span class="s2">&quot;London&quot;</span><span class="p">:</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        <span class="k">return</span> <span class="s2">&quot;It is 15°C and cloudy in London.&quot;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Weather data not available for </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">.&quot;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nd">@tool</span><span class="p">(</span><span class="n">requires_approval</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">send_email</span><span class="p">(</span><span class="n">recipient</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">subject</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sends an email to a specified recipient.&quot;&quot;&quot;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sending email to </span><span class="si">{</span><span class="n">recipient</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;sent&quot;</span><span class="p">,</span> <span class="s2">&quot;recipient&quot;</span><span class="p">:</span> <span class="n">recipient</span><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="3-run-your-agent">3. Run Your Agent<a class="headerlink" href="#3-run-your-agent" title="Permanent link">&para;</a></h2>
-<p>Now, let's run the agent using the <code>agenthelm</code> CLI. Make sure you are in the directory containing <code>my_agent_tools.py</code>.</p>
 <h3 id="simple-task">Simple Task<a class="headerlink" href="#simple-task" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--agent-file<span class="w"> </span>my_agent_tools.py<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--task<span class="w"> </span><span class="s2">&quot;What is the weather in London?&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;What is the weather in London?&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--tools<span class="w"> </span>my_tools:get_weather
+</span></code></pre></div>
+<h3 id="interactive-mode">Interactive Mode<a class="headerlink" href="#interactive-mode" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>agenthelm<span class="w"> </span>chat<span class="w"> </span>--tools<span class="w"> </span>my_tools:get_weather,send_email
 </span></code></pre></div>
 <h3 id="task-requiring-approval">Task Requiring Approval<a class="headerlink" href="#task-requiring-approval" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--agent-file<span class="w"> </span>my_agent_tools.py<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--task<span class="w"> </span><span class="s2">&quot;Send an email to user@example.com with subject &#39;Hello&#39; and body &#39;This is a test email.&#39;&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;Send an email to user@example.com&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--tools<span class="w"> </span>my_tools:send_email
 </span></code></pre></div>
-<p>When you run this, the agent will pause and ask for your approval before sending the email.</p>
-<h3 id="task-with-rollback">Task with Rollback<a class="headerlink" href="#task-with-rollback" title="Permanent link">&para;</a></h3>
-<p>Let's simulate a multi-step workflow where a later step fails, triggering a rollback.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>agenthelm<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>--agent-file<span class="w"> </span>my_agent_tools.py<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>--task<span class="w"> </span><span class="s2">&quot;First, create a &#39;web_server&#39; resource with config {&#39;size&#39;: &#39;medium&#39;}. Then, deploy &#39;my-app&#39; to it.&quot;</span>
+<p>The agent will pause and ask for your approval.</p>
+<h2 id="4-view-traces">4. View Traces<a class="headerlink" href="#4-view-traces" title="Permanent link">&para;</a></h2>
+<p>After running, view your execution traces:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># List recent traces</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>list
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Show trace details</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>show<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Filter by tool</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span>filter<span class="w"> </span>--tool<span class="w"> </span>get_weather
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># Export to Markdown</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>agenthelm<span class="w"> </span>traces<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-o<span class="w"> </span>report.md<span class="w"> </span>-f<span class="w"> </span>md
 </span></code></pre></div>
-<p>In this scenario, the <code>create_resource</code> tool will succeed, but <code>deploy_application</code> will fail. AgentHelm will then automatically call <code>delete_resource</code> (the compensating tool) to undo the <code>create_resource</code> action.</p>
-<h2 id="4-inspect-the-trace">4. Inspect the Trace<a class="headerlink" href="#4-inspect-the-trace" title="Permanent link">&para;</a></h2>
-<p>After each run, AgentHelm generates a <code>cli_trace.json</code> file in your current directory. This file contains a detailed, structured log of every action the agent took, including LLM reasoning, tool inputs/outputs, and any errors or rollbacks.</p>
-<p>Open <code>cli_trace.json</code> in a text editor to see the full observability in action.</p>
+<h2 id="5-using-the-python-sdk">5. Using the Python SDK<a class="headerlink" href="#5-using-the-python-sdk" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">dspy</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">agenthelm</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolAgent</span><span class="p">,</span> <span class="n">tool</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nd">@tool</span><span class="p">()</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Add two numbers.&quot;&quot;&quot;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nd">@tool</span><span class="p">()</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Multiply two numbers.&quot;&quot;&quot;</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="c1"># Create agent with tools</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="n">lm</span> <span class="o">=</span> <span class="n">dspy</span><span class="o">.</span><span class="n">LM</span><span class="p">(</span><span class="s2">&quot;mistral/mistral-large-latest&quot;</span><span class="p">)</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">ToolAgent</span><span class="p">(</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;calculator&quot;</span><span class="p">,</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    <span class="n">lm</span><span class="o">=</span><span class="n">lm</span><span class="p">,</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">add</span><span class="p">,</span> <span class="n">multiply</span><span class="p">],</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>    <span class="n">max_iters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="p">)</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="c1"># Run task</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="n">result</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;What is 3 + 4, then multiply by 2?&quot;</span><span class="p">)</span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Answer: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tokens: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">token_usage</span><span class="o">.</span><span class="n">input_tokens</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">token_usage</span><span class="o">.</span><span class="n">output_tokens</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="6-generate-and-execute-plans">6. Generate and Execute Plans<a class="headerlink" href="#6-generate-and-execute-plans" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Generate a plan</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>agenthelm<span class="w"> </span>plan<span class="w"> </span><span class="s2">&quot;Build a calculator that can add and multiply&quot;</span><span class="w"> </span>-o<span class="w"> </span>plan.yaml
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Review the plan file, then execute</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>agenthelm<span class="w"> </span>execute<span class="w"> </span>plan.yaml
+</span></code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Explore the <a href="../concepts/">Core Concepts</a> to understand the architecture.</li>
-<li>Refer to the <a href="../api_reference/">API Reference</a> for detailed usage of classes and functions.</li>
+<li><a href="../cli/">CLI Reference</a> - All commands and options</li>
+<li><a href="../concepts/">Core Concepts</a> - Architecture deep dive</li>
+<li><a href="../orchestration/">Orchestration</a> - Multi-agent workflows</li>
 </ul>
 
 
@@ -1057,13 +1178,13 @@
         
         
           
-          <a href="../memory/" class="md-footer__link md-footer__link--next" aria-label="Next: Memory Hub">
+          <a href="../agents/" class="md-footer__link md-footer__link--next" aria-label="Next: Agents">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Memory Hub
+                Agents
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1080,7 +1201,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024-2026 hadywalied
+      Copyright &copy; 2025-2026 hadywalied
     </div>
   
   

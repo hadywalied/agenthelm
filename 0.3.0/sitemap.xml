@@ -2,26 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://hadywalied.github.io/agenthelm/0.3.0/</loc>
-         <lastmod>2025-12-23</lastmod>
+         <lastmod>2025-12-24</lastmod>
+    </url>
+    <url>
+         <loc>https://hadywalied.github.io/agenthelm/0.3.0/agents/</loc>
+         <lastmod>2025-12-24</lastmod>
     </url>
     <url>
          <loc>https://hadywalied.github.io/agenthelm/0.3.0/api_reference/</loc>
-         <lastmod>2025-12-23</lastmod>
+         <lastmod>2025-12-24</lastmod>
+    </url>
+    <url>
+         <loc>https://hadywalied.github.io/agenthelm/0.3.0/cli/</loc>
+         <lastmod>2025-12-24</lastmod>
     </url>
     <url>
          <loc>https://hadywalied.github.io/agenthelm/0.3.0/concepts/</loc>
-         <lastmod>2025-12-23</lastmod>
+         <lastmod>2025-12-24</lastmod>
+    </url>
+    <url>
+         <loc>https://hadywalied.github.io/agenthelm/0.3.0/mcp/</loc>
+         <lastmod>2025-12-24</lastmod>
     </url>
     <url>
          <loc>https://hadywalied.github.io/agenthelm/0.3.0/memory/</loc>
-         <lastmod>2025-12-23</lastmod>
+         <lastmod>2025-12-24</lastmod>
     </url>
     <url>
          <loc>https://hadywalied.github.io/agenthelm/0.3.0/observability/</loc>
-         <lastmod>2025-12-23</lastmod>
+         <lastmod>2025-12-24</lastmod>
+    </url>
+    <url>
+         <loc>https://hadywalied.github.io/agenthelm/0.3.0/orchestration/</loc>
+         <lastmod>2025-12-24</lastmod>
+    </url>
+    <url>
+         <loc>https://hadywalied.github.io/agenthelm/0.3.0/quickstart/</loc>
+         <lastmod>2025-12-24</lastmod>
     </url>
     <url>
          <loc>https://hadywalied.github.io/agenthelm/0.3.0/tutorial/</loc>
-         <lastmod>2025-12-23</lastmod>
+         <lastmod>2025-12-24</lastmod>
     </url>
 </urlset>
