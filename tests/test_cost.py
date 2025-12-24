@@ -3,10 +3,9 @@
 import pytest
 import tempfile
 import os
-from pathlib import Path
 
 from agenthelm import CostTracker, TokenOnlyCostTracker, get_cost_tracker
-from agenthelm.core.cost import TokenUsage, BaseCostTracker
+from agenthelm.core.cost import TokenUsage
 
 
 class TestTokenUsage:

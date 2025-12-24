@@ -1,7 +1,6 @@
 """MemoryHub - Unified interface to short-term and semantic memory."""
 
 from pathlib import Path
-from typing import Any
 
 from agenthelm.memory.base import BaseShortTermMemory, BaseSemanticMemory
 from agenthelm.memory.short_term.in_memory import InMemoryShortTermMemory

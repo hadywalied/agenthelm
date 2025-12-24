@@ -5,9 +5,8 @@ Demonstrates execution tracing, cost tracking, and OpenTelemetry integration.
 """
 
 import dspy
-from agenthelm import ToolAgent, tool, ExecutionTracer, get_cost_tracker
+from agenthelm import ToolAgent, tool, ExecutionTracer
 from agenthelm.core.storage import SqliteStorage
-from agenthelm.tracing import init_tracing, trace_agent
 
 
 # Define tools
@@ -96,7 +95,7 @@ def main():
         status = "OK" if not e.get("error_state") else "FAILED"
         print(f"  {e.get('tool_name')}: {status} ({e.get('execution_time', 0):.3f}s)")
 
-    print(f"\n✓ Traces saved to: observability_traces.db")
+    print("\n✓ Traces saved to: observability_traces.db")
     print("  View with: agenthelm traces list -s observability_traces.db")
 
 
