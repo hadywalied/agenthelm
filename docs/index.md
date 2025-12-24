@@ -5,88 +5,123 @@
 
 **Production-Ready Orchestration for AI Agents.**
 
-AgentHelm is a lightweight Python framework for building AI agents with a focus on production-readiness. It provides the essential orchestration layer to make your agents observable, reliable, and safe.
+AgentHelm is a lightweight Python framework for building AI agents with a focus on production-readiness. Built on DSPy,
+it provides the essential orchestration layer to make your agents observable, reliable, and safe.
 
-In the rapidly evolving world of AI agents, many frameworks focus on rapid prototyping. AgentHelm is different. It's built on the premise that for agents to be trusted in real-world, production environments, they need the same level of observability and control as traditional software.
+## Why AgentHelm?
 
-If you've ever struggled to debug a failing agent or worried about deploying an agent that interacts with real-world systems, AgentHelm is for you.
+In the rapidly evolving world of AI agents, many frameworks focus on rapid prototyping. AgentHelm is different—it's
+built for **production environments** where you need:
 
-## Key Features
+- 🔍 **Full observability** of every tool call
+- 🛡️ **Human-in-the-loop** approval for sensitive actions
+- 🔄 **Automatic rollbacks** when things go wrong
+- 📊 **Cost tracking** and token usage monitoring
 
--   **Traceable Execution**: Automatically log every tool call, its inputs, outputs, errors, and execution time. Get a complete, structured audit trail of your agent's actions.
--   **Human-in-the-Loop**: Mark sensitive tools (e.g., `charge_credit_card`) with a `@tool(requires_approval=True)` decorator to ensure a human must approve the action before it runs.
--   **Resilient Workflows**: Define automatic retries for flaky tools that might fail due to transient network errors.
--   **Transactional Safety**: Implement automatic rollbacks for multi-step workflows. If a step fails, AgentHelm can run compensating actions to undo the previous steps.
-
-## Quick Start
-
-### 1. Installation
+## Installation
 
 ```bash
 pip install agenthelm
 ```
 
-### 2. Create your Tools
+## Quick Start
 
-Create a Python file (e.g., `tools.py`) and define your functions with the `@tool` decorator. AgentHelm automatically parses the function signature to build the contract.
+### CLI
+
+```bash
+# Initialize configuration
+agenthelm init
+
+# Run a simple task
+agenthelm run "What is the capital of France?"
+
+# Interactive chat
+agenthelm chat
+
+# Generate a plan
+agenthelm plan "Build a web scraper" -o plan.yaml
+
+# Execute the plan
+agenthelm execute plan.yaml
+```
+
+### Python SDK
 
 ```python
-# tools.py
-from agenthelm import tool
+import dspy
+from agenthelm import ToolAgent, tool
 
+# Define a tool
 @tool()
 def get_weather(city: str) -> str:
     """Gets the current weather for a given city."""
     if city == "New York":
         return "It is 24°C and sunny in New York."
-    else:
-        return f"Sorry, I don't know the weather for {city}."
+    return f"Weather data not available for {city}."
+
+# Create agent
+lm = dspy.LM("mistral/mistral-large-latest")
+agent = ToolAgent(name="weather_bot", lm=lm, tools=[get_weather])
+
+# Run task
+result = agent.run("What's the weather in New York?")
+print(result.answer)
+```
+
+## Key Features
+
+### 🔧 Tool Decorator
+
+```python
+@tool()
+def search(query: str) -> str:
+    """Search the web."""
+    return f"Results for: {query}"
 
 @tool(requires_approval=True)
-def post_tweet(message: str) -> dict:
-    """Posts a message to a social media feed."""
-    print(f"TWEETING: {message}")
-    return {"status": "posted"}
+def send_email(to: str, body: str) -> dict:
+    """Send an email (requires approval)."""
+    return {"status": "sent"}
 ```
 
-### 3. Environment Variables
-
-AgentHelm requires API keys for the Large Language Models (LLMs) it interacts with. Set these as environment variables:
-
--   **Mistral AI**: Set `MISTRAL_API_KEY`. Optionally, set `MISTRAL_MODEL_NAME` (defaults to `mistral-small-latest`).
-    ```bash
-    export MISTRAL_API_KEY="your_mistral_api_key_here"
-    # export MISTRAL_MODEL_NAME="mistral-large-latest"
-    ```
--   **OpenAI**: Set `OPENAI_API_KEY`. Optionally, set `OPENAI_MODEL_NAME` (defaults to `gpt-4`).
-    ```bash
-    export OPENAI_API_KEY="your_openai_api_key_here"
-    # export OPENAI_MODEL_NAME="gpt-3.5-turbo"
-    ```
-
-### 4. Run the Agent
-
-Use the `agenthelm` command-line tool to run your agent. The CLI handles everything from setting up the agent to running the reasoning loop and logging the traces.
+### 📊 Observability
 
 ```bash
-# Run the agent from your terminal
-agenthelm run \
-  --agent-file examples/cli_tools_example/my_agent_tools.py \
-  --task "What is the weather in New York?"
+# View execution traces
+agenthelm traces list
 
-# For verbose output, add the -v or --verbose flag
-agenthelm run \
-  --agent-file examples/cli_tools_example/my_agent_tools.py \
-  --task "What is the weather in New York?" \
-  --llm-type mistral \
-  --verbose
+# Filter by status
+agenthelm traces filter --status failed
 
-# To specify the output trace file, use the --trace-file option
-agenthelm run \
-  --agent-file examples/cli_tools_example/my_agent_tools.py \
-  --task "What is the weather in New York?" \
-  --trace-file my_trace.json
+# Export to Markdown
+agenthelm traces export -o report.md -f md
 ```
 
-This will produce a detailed trace file (by default `cli_trace.json`), giving you a perfect record of the agent's
-execution.
+### 🔗 MCP Integration
+
+```bash
+# Connect to MCP servers
+agenthelm mcp list-tools uvx mcp-server-time
+agenthelm mcp run uvx mcp-server-time -t "What time is it?"
+```
+
+### 🔄 Plan-Driven Execution
+
+```bash
+# Generate a multi-step plan
+agenthelm plan "Build a todo app" -o plan.yaml
+
+# Review and execute
+agenthelm execute plan.yaml
+```
+
+## Next Steps
+
+- [Quick Start Guide](quickstart.md) - Get running in 5 minutes
+- [CLI Reference](cli.md) - All commands and options
+- [Agents](agents.md) - ToolAgent and PlannerAgent
+- [Orchestration](orchestration.md) - Multi-agent workflows
+
+## License
+
+MIT License - See [LICENSE](https://github.com/hadywalied/agenthelm/blob/main/LICENSE) for details.

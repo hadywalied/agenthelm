@@ -1,125 +1,138 @@
-# Tutorial: Building Your First Agent with AgentHelm
+# Tutorial: Building Your First Agent
 
-This tutorial will guide you through building a simple agent using AgentHelm, demonstrating its core features like tool definition, human approval, and rollbacks.
+This tutorial guides you through building a simple agent using AgentHelm.
 
-## 1. Setup Your Environment
-
-First, ensure you have Python 3.12+ and a virtual environment set up. Install AgentHelm:
+## 1. Setup
 
 ```bash
 pip install agenthelm
+agenthelm init
 ```
 
-Also, make sure you have your LLM API key set as an environment variable (e.g., `export MISTRAL_API_KEY="your_key_here"`).
+Set your API key:
+
+```bash
+export MISTRAL_API_KEY="your_key_here"
+# or
+agenthelm config set api_keys.mistral your_key_here
+```
 
 ## 2. Define Your Tools
 
-Create a file named `my_agent_tools.py`. This file will contain the tools your agent can use.
-
-### Simple Tool: `get_weather`
-
-Let's start with a simple tool to get weather information. AgentHelm's `@tool` decorator automatically infers the tool's contract from your function's type hints.
+Create a file named `my_tools.py`:
 
 ```python
-# my_agent_tools.py
+# my_tools.py
 from agenthelm import tool
 
 @tool()
 def get_weather(city: str) -> str:
     """Gets the current weather for a given city."""
-    # In a real scenario, this would call a weather API
     if city == "New York":
         return "It is 24°C and sunny in New York."
     elif city == "London":
         return "It is 15°C and cloudy in London."
-    else:
-        return f"Sorry, I don't know the weather for {city}."
-```
-
-### Tool Requiring Human Approval: `send_email`
-
-For sensitive actions, you can require human approval. AgentHelm will pause the agent's execution and prompt the user for confirmation.
-
-```python
-# my_agent_tools.py (continued)
+    return f"Weather data not available for {city}."
 
 @tool(requires_approval=True)
 def send_email(recipient: str, subject: str, body: str) -> dict:
     """Sends an email to a specified recipient."""
-    # In a real scenario, this would integrate with an email service
-    print(f"[ACTION REQUIRED] Sending email to {recipient} with subject '{subject}' and body: '{body}'")
-    return {"status": "email_sent", "recipient": recipient}
-```
-
-### Tool with Rollback: `create_resource` and `delete_resource`
-
-AgentHelm supports transactional workflows with automatic rollbacks. If a multi-step process fails, it can execute compensating actions to undo previous steps.
-
-```python
-# my_agent_tools.py (continued)
-
-@tool()
-def delete_resource(resource_id: str) -> dict:
-    """Deletes a cloud resource by its ID (compensating action)."""
-    print(f"[COMPENSATING ACTION] Deleting resource: {resource_id}")
-    return {"status": "resource_deleted", "resource_id": resource_id}
-
-@tool(compensating_tool='delete_resource')
-def create_resource(resource_type: str, config: dict) -> dict:
-    """Creates a cloud resource with specified type and configuration."""
-    # In a real scenario, this would call a cloud provider API
-    resource_id = f"res-{resource_type}-{hash(str(config))}"
-    print(f"[ACTION] Creating resource {resource_id} of type {resource_type} with config {config}")
-    return {"status": "resource_created", "resource_id": resource_id}
-
-@tool()
-def deploy_application(resource_id: str, app_name: str) -> dict:
-    """Deploys an application to a given resource. Designed to fail for demonstration."""
-    print(f"[ACTION] Deploying application {app_name} to {resource_id}")
-    raise RuntimeError("Deployment failed due to an unexpected error!")
+    print(f"Sending email to {recipient}")
+    return {"status": "sent", "recipient": recipient}
 ```
 
 ## 3. Run Your Agent
 
-Now, let's run the agent using the `agenthelm` CLI. Make sure you are in the directory containing `my_agent_tools.py`.
-
 ### Simple Task
 
 ```bash
-agenthelm run \
-  --agent-file my_agent_tools.py \
-  --task "What is the weather in London?"
+agenthelm run "What is the weather in London?" \
+  --tools my_tools:get_weather
+```
+
+### Interactive Mode
+
+```bash
+agenthelm chat --tools my_tools:get_weather,send_email
 ```
 
 ### Task Requiring Approval
 
 ```bash
-agenthelm run \
-  --agent-file my_agent_tools.py \
-  --task "Send an email to user@example.com with subject 'Hello' and body 'This is a test email.'"
+agenthelm run "Send an email to user@example.com" \
+  --tools my_tools:send_email
 ```
 
-When you run this, the agent will pause and ask for your approval before sending the email.
+The agent will pause and ask for your approval.
 
-### Task with Rollback
+## 4. View Traces
 
-Let's simulate a multi-step workflow where a later step fails, triggering a rollback.
+After running, view your execution traces:
 
 ```bash
-agenthelm run \
-  --agent-file my_agent_tools.py \
-  --task "First, create a 'web_server' resource with config {'size': 'medium'}. Then, deploy 'my-app' to it."
+# List recent traces
+agenthelm traces list
+
+# Show trace details
+agenthelm traces show 0
+
+# Filter by tool
+agenthelm traces filter --tool get_weather
+
+# Export to Markdown
+agenthelm traces export -o report.md -f md
 ```
 
-In this scenario, the `create_resource` tool will succeed, but `deploy_application` will fail. AgentHelm will then automatically call `delete_resource` (the compensating tool) to undo the `create_resource` action.
+## 5. Using the Python SDK
 
-## 4. Inspect the Trace
+```python
+import dspy
+from agenthelm import ToolAgent, tool
 
-After each run, AgentHelm generates a `cli_trace.json` file in your current directory. This file contains a detailed, structured log of every action the agent took, including LLM reasoning, tool inputs/outputs, and any errors or rollbacks.
 
-Open `cli_trace.json` in a text editor to see the full observability in action.
+@tool()
+def add(a: int, b: int) -> int:
+    """Add two numbers."""
+    return a + b
+
+
+@tool()
+def multiply(a: int, b: int) -> int:
+    """Multiply two numbers."""
+    return a * b
+
+
+# Create agent with tools
+lm = dspy.LM("mistral/mistral-large-latest")
+agent = ToolAgent(
+    name="calculator",
+    lm=lm,
+    tools=[add, multiply],
+    max_iters=5,
+)
+
+# Run task
+result = agent.run("What is 3 + 4, then multiply by 2?")
+
+if result.success:
+    print(f"Answer: {result.answer}")
+    print(f"Tokens: {result.token_usage.input_tokens + result.token_usage.output_tokens}")
+else:
+    print(f"Error: {result.error}")
+```
+
+## 6. Generate and Execute Plans
+
+```bash
+# Generate a plan
+agenthelm plan "Build a calculator that can add and multiply" -o plan.yaml
+
+# Review the plan file, then execute
+agenthelm execute plan.yaml
+```
 
 ## Next Steps
 
--   Explore the [Core Concepts](concepts.md) to understand the architecture.
--   Refer to the [API Reference](api_reference.md) for detailed usage of classes and functions.
+- [CLI Reference](cli.md) - All commands and options
+- [Core Concepts](concepts.md) - Architecture deep dive
+- [Orchestration](orchestration.md) - Multi-agent workflows

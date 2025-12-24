@@ -4,8 +4,8 @@ on:
   push:
     branches: [ main ]
     tags:
-      - 'v*'
-  workflow_dispatch:  # Allow manual trigger
+      - "v*"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -18,12 +18,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for version info
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -44,5 +44,23 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
 
-      - name: Deploy Docs
-        run: ~/.local/bin/uv run mkdocs gh-deploy --force
+      - name: Get version from tag or default
+        id: version
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            VERSION="${GITHUB_REF#refs/tags/v}"
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+            echo "alias=latest" >> $GITHUB_OUTPUT
+          else
+            echo "version=dev" >> $GITHUB_OUTPUT
+            echo "alias=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy docs with mike
+        run: |
+          ~/.local/bin/uv run mike deploy --push --update-aliases ${{ steps.version.outputs.version }} ${{ steps.version.outputs.alias }}
+
+      - name: Set default version (only on main)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          ~/.local/bin/uv run mike set-default --push dev || true

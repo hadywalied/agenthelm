@@ -1,36 +1,103 @@
 """
-AgentHelm - A production-ready, observable, and reliable AI agent orchestration framework.
+AgentHelm v0.3.0
+================
+
+A DSPy-native multi-agent orchestration framework.
 """
 
-__version__ = "0.2.0"
+from agenthelm.core import (
+    tool,
+    TOOL_REGISTRY,
+    Event,
+    TokenUsage,
+    ApprovalHandler,
+    CliHandler,
+    AutoApproveHandler,
+    AutoDenyHandler,
+    ExecutionTracer,
+    BaseCostTracker,
+    CostTracker,
+    TokenOnlyCostTracker,
+    get_cost_tracker,
+)
 
-# Core imports
-from orchestrator.agent import Agent
-from orchestrator.core.tool import tool, TOOL_REGISTRY
-from orchestrator.core.tracer import ExecutionTracer
-from orchestrator.core.storage.json_storage import JsonStorage
-from orchestrator.core.storage.sqlite_storage import SqliteStorage
-from orchestrator.core.storage.base import BaseStorage
-from orchestrator.core.event import Event
-from orchestrator.core.handlers import CliHandler, ApprovalHandler
+from agenthelm.memory import (
+    MemoryHub,
+    MemoryContext,
+    BaseShortTermMemory,
+    BaseSemanticMemory,
+    InMemoryShortTermMemory,
+    SqliteShortTermMemory,
+    SemanticMemory,
+    SearchResult,
+)
 
-# LLM clients
-from orchestrator.llm.base import LLMClient
-from orchestrator.llm.mistral_client import MistralClient
-from orchestrator.llm.openai_client import OpenAIClient
+from agenthelm.agent import (
+    BaseAgent,
+    AgentResult,
+    Plan,
+    PlanStep,
+    StepStatus,
+    ToolAgent,
+    PlannerAgent,
+)
+
+from agenthelm.orchestration import (
+    AgentRegistry,
+    Orchestrator,
+)
+from agenthelm.mcp import MCPClient, MCPToolAdapter
+from agenthelm.tracing import (
+    init_tracing,
+    get_tracer,
+    trace_tool,
+    trace_agent,
+)
+
+__version__ = "0.3.0"
 
 __all__ = [
-    "Agent",
+    "__version__",
+    # Core
     "tool",
     "TOOL_REGISTRY",
-    "ExecutionTracer",
-    "JsonStorage",
-    "SqliteStorage",
-    "BaseStorage",
     "Event",
-    "LLMClient",
-    "MistralClient",
-    "OpenAIClient",
-    "CliHandler",
+    "TokenUsage",
     "ApprovalHandler",
+    "CliHandler",
+    "AutoApproveHandler",
+    "AutoDenyHandler",
+    "ExecutionTracer",
+    "BaseCostTracker",
+    "CostTracker",
+    "TokenOnlyCostTracker",
+    "get_cost_tracker",
+    # Memory Hub
+    "MemoryHub",
+    "MemoryContext",
+    "BaseShortTermMemory",
+    "BaseSemanticMemory",
+    "InMemoryShortTermMemory",
+    "SqliteShortTermMemory",
+    "SemanticMemory",
+    "SearchResult",
+    # Agents
+    "BaseAgent",
+    "AgentResult",
+    "Plan",
+    "PlanStep",
+    "StepStatus",
+    "ToolAgent",
+    "PlannerAgent",
+    # Orchestration
+    "AgentRegistry",
+    "Orchestrator",
+    # MCP
+    "MCPClient",
+    "MCPToolAdapter",
+    # Tracing
+    "init_tracing",
+    "get_tracer",
+    "trace_tool",
+    "trace_agent",
 ]
