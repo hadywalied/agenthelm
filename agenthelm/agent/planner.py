@@ -1,7 +1,6 @@
 """PlannerAgent - Generates execution plans for tasks."""
 
 import json
-import uuid
 from typing import Callable
 
 import dspy
@@ -26,15 +25,21 @@ class PlannerAgent(BaseAgent):
         tools: list[Callable] | None = None,
         memory: MemoryHub | None = None,
         tracer: ExecutionTracer | None = None,
+        role: str | None = None,
         max_steps: int = 10,
     ):
-        super().__init__(name, lm, tools, memory, tracer)
+        super().__init__(name, lm, tools, memory, tracer, role)
         self.max_steps = max_steps
 
-        # DSPy module for plan generation
-        self._planning = dspy.ChainOfThought(
-            "task, available_tools -> goal, reasoning, steps_json"
-        )
+        # DSPy module for plan generation - include role if provided
+        if self.role:
+            self._planning = dspy.ChainOfThought(
+                "task, available_tools, role -> goal, reasoning, steps_json"
+            )
+        else:
+            self._planning = dspy.ChainOfThought(
+                "task, available_tools -> goal, reasoning, steps_json"
+            )
 
     def _get_tool_descriptions(self) -> str:
         """Get tool names and descriptions for the LLM."""
@@ -98,10 +103,17 @@ class PlannerAgent(BaseAgent):
         tool_descriptions = self._get_tool_descriptions()
 
         with dspy.context(lm=self.lm):
-            result = self._planning(
-                task=task,
-                available_tools=tool_descriptions,
-            )
+            if self.role:
+                result = self._planning(
+                    task=task,
+                    available_tools=tool_descriptions,
+                    role=self.role,
+                )
+            else:
+                result = self._planning(
+                    task=task,
+                    available_tools=tool_descriptions,
+                )
 
         # Parse the steps from LLM output
         steps = self._parse_steps(result.steps_json)

@@ -13,6 +13,7 @@ nav:
       - Tutorial: tutorial.md
   - Features:
       - Agents: agents.md
+      - Orchestration: orchestration.md
       - Memory Hub: memory.md
       - Observability: observability.md
   - API Reference: api_reference.md

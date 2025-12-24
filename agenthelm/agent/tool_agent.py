@@ -8,6 +8,16 @@ from agenthelm.agent.base import BaseAgent
 
 
 class ToolAgent(BaseAgent):
+    """
+    ReAct-style agent that reasons and executes tools.
+
+    Uses DSPy's ReAct pattern to iteratively:
+    1. Reason about the task
+    2. Choose and execute a tool
+    3. Observe the result
+    4. Repeat until done
+    """
+
     def __init__(
         self,
         name: str,
@@ -15,13 +25,20 @@ class ToolAgent(BaseAgent):
         tools: list[Callable] | None = None,
         memory: MemoryHub | None = None,
         tracer: ExecutionTracer | None = None,
-        max_iters=10,
+        role: str | None = None,
+        max_iters: int = 10,
     ):
-        super().__init__(name, lm, tools, memory, tracer)
+        super().__init__(name, lm, tools, memory, tracer, role)
         self.max_iters = max_iters
 
+        # Build signature with optional role context
+        if self.role:
+            signature = "task, role -> answer"
+        else:
+            signature = "task -> answer"
+
         self._react = dspy.ReAct(
-            signature="task -> answer",
+            signature=signature,
             tools=self._wrap_tools_for_tracing(),
             max_iters=self.max_iters,
         )
@@ -29,10 +46,14 @@ class ToolAgent(BaseAgent):
 
     def run(self, task: str) -> AgentResult:
         """Execute the ReAct loop and return results with traced events."""
+        self._events = []  # Reset events for this run
         result = AgentResult(success=False, session_id=self.name)
         try:
             with dspy.context(lm=self.lm):
-                react_result = self._react(task=task)
+                if self.role:
+                    react_result = self._react(task=task, role=self.role)
+                else:
+                    react_result = self._react(task=task)
 
             result.success = True
             result.answer = react_result.answer

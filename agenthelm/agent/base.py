@@ -7,6 +7,18 @@ from agenthelm import MemoryHub, ExecutionTracer, TOOL_REGISTRY
 
 
 class BaseAgent(ABC):
+    """
+    Abstract base class for all agents.
+
+    Args:
+        name: Agent identifier for tracing and registry
+        lm: DSPy language model
+        tools: List of tool functions the agent can use
+        memory: Optional MemoryHub for context persistence
+        tracer: Optional ExecutionTracer for tool call logging
+        role: Optional role/persona description that influences behavior
+    """
+
     def __init__(
         self,
         name: str,
@@ -14,12 +26,14 @@ class BaseAgent(ABC):
         tools: list[Callable] | None = None,
         memory: MemoryHub | None = None,
         tracer: ExecutionTracer | None = None,
+        role: str | None = None,
     ):
         self.name = name
         self.lm = lm
         self.tools = tools or []
         self.memory = memory
         self.tracer = tracer
+        self.role = role
 
     @abstractmethod
     def run(self, task: str): ...

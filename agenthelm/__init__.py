@@ -42,6 +42,11 @@ from agenthelm.agent import (
     PlannerAgent,
 )
 
+from agenthelm.orchestration import (
+    AgentRegistry,
+    Orchestrator,
+)
+
 __version__ = "0.3.0"
 
 __all__ = [
@@ -77,4 +82,7 @@ __all__ = [
     "StepStatus",
     "ToolAgent",
     "PlannerAgent",
+    # Orchestration
+    "AgentRegistry",
+    "Orchestrator",
 ]
