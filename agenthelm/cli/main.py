@@ -642,14 +642,11 @@ def mcp_list_tools(command: str, args: tuple):
     from agenthelm import MCPClient
 
     async def list_tools():
-        client = MCPClient({"command": command, "args": list(args)})
-
-        with console.status(f"[bold green]Connecting to {command}..."):
-            await client.connect()
-
-        tools = await client.list_tools()
-        await client.close()
-        return tools
+        async with MCPClient({"command": command, "args": list(args)}) as client:
+            with console.status(f"[bold green]Connecting to {command}..."):
+                pass  # Connection happens in __aenter__
+            tools = await client.list_tools()
+            return tools
 
     try:
         tools = asyncio.run(list_tools())
@@ -664,6 +661,9 @@ def mcp_list_tools(command: str, args: tuple):
         console.print(table)
         console.print(f"\n[dim]Total: {len(tools)} tools[/]")
 
+    except FileNotFoundError:
+        console.print(f"[red]Error:[/] Command not found: {command}")
+        console.print("[dim]Make sure the MCP server is installed.[/]")
     except Exception as e:
         console.print(f"[red]Error:[/] {e}")
 
