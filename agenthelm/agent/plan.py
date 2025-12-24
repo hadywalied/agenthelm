@@ -21,6 +21,7 @@ class PlanStep(BaseModel):
     A single step in an execution plan.
 
     Steps can have dependencies for parallel/sequential execution.
+    Supports Saga pattern with compensating actions on failure.
     """
 
     id: str = Field(description="Unique step identifier")
@@ -33,6 +34,16 @@ class PlanStep(BaseModel):
     depends_on: list[str] = Field(
         default_factory=list, description="IDs of steps that must complete first"
     )
+
+    # Saga pattern: compensating action (overrides tool-level default)
+    compensate_tool: str | None = Field(
+        default=None, description="Tool to run on rollback (overrides tool default)"
+    )
+    compensate_args: dict[str, Any] = Field(
+        default_factory=dict, description="Arguments for compensating tool"
+    )
+
+    # Runtime state
     status: StepStatus = Field(default=StepStatus.PENDING, description="Current status")
     result: Any | None = Field(default=None, description="Result after execution")
     error: str | None = Field(default=None, description="Error if failed")

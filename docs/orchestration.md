@@ -183,6 +183,77 @@ orchestrator = Orchestrator(registry, default_agent=default)
 PlanStep(id="step_1", tool_name="search", description="...")
 ```
 
+## Saga Pattern (Rollback on Failure)
+
+AgentHelm supports the Saga pattern for compensating actions when steps fail.
+
+### How It Works
+
+1. Steps execute normally
+2. If a step fails, **rollback** runs for completed steps in reverse order
+3. Each completed step's compensating action is called
+
+### Defining Compensating Actions
+
+**Option 1: Per-Tool (default)**
+
+```python
+@tool(compensating_tool="delete_file")
+def create_file(path: str) -> str:
+    """Create a file. Rollback: delete it."""
+    ...
+```
+
+**Option 2: Per-Step (override)**
+
+```python
+PlanStep(
+    id="step_1",
+    tool_name="create_file",
+    args={"path": "/tmp/data.txt"},
+    compensate_tool="archive_file",  # Overrides tool default
+    compensate_args={"path": "/tmp/data.txt"},
+)
+```
+
+### Enabling Rollback
+
+```python
+# Rollback enabled by default
+orchestrator = Orchestrator(registry, enable_rollback=True)
+
+# Disable if needed
+orchestrator = Orchestrator(registry, enable_rollback=False)
+```
+
+### Example
+
+```python
+plan = Plan(
+    goal="Create and send report",
+    approved=True,
+    steps=[
+        PlanStep(
+            id="create",
+            agent_name="writer",
+            tool_name="create_report",
+            description="Create report file",
+            compensate_tool="delete_report",  # Rollback action
+        ),
+        PlanStep(
+            id="send",
+            agent_name="sender",
+            tool_name="send_email",
+            description="Send report via email",
+            depends_on=["create"],
+        ),
+    ],
+)
+
+# If "send" fails, "create" is rolled back via delete_report
+result = await orchestrator.execute(plan)
+```
+
 ## API Reference
 
 ::: agenthelm.AgentRegistry

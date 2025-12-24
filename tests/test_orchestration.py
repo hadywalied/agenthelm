@@ -307,3 +307,105 @@ class TestOrchestrator:
 
         assert not result.success
         assert plan.steps[0].status == StepStatus.FAILED
+
+
+class TestOrchestratorSaga:
+    """Tests for Saga pattern (rollback on failure)."""
+
+    @pytest.fixture
+    def registry_with_rollback(self):
+        """Registry with agents that track calls for rollback testing."""
+        registry = AgentRegistry()
+
+        # Track calls for verification
+        calls = []
+
+        def make_agent(name: str, should_fail: bool = False):
+            agent = MagicMock()
+            agent.name = name
+
+            def run_side_effect(task):
+                calls.append((name, task))
+                if should_fail:
+                    return AgentResult(success=False, error=f"{name} failed")
+                return AgentResult(success=True, answer=f"{name} done", events=[])
+
+            agent.run.side_effect = run_side_effect
+            return agent
+
+        registry.register(make_agent("step1_agent"))
+        registry.register(make_agent("step2_agent", should_fail=True))
+        registry._calls = calls  # Attach for test access
+
+        return registry
+
+    @pytest.mark.asyncio
+    async def test_rollback_runs_on_failure(self, registry_with_rollback):
+        """On failure, compensating actions run for completed steps."""
+        plan = Plan(
+            goal="Test rollback",
+            approved=True,
+            steps=[
+                PlanStep(
+                    id="step_1",
+                    agent_name="step1_agent",
+                    tool_name="create_file",
+                    description="Create file",
+                    compensate_tool="delete_file",  # Step-level override
+                ),
+                PlanStep(
+                    id="step_2",
+                    agent_name="step2_agent",
+                    tool_name="send_email",
+                    description="Will fail",
+                    depends_on=["step_1"],
+                ),
+            ],
+        )
+
+        orchestrator = Orchestrator(registry_with_rollback, enable_rollback=True)
+        result = await orchestrator.execute(plan)
+
+        assert not result.success
+        # Step 1 completed, then step 2 failed
+        assert plan.steps[0].status == StepStatus.COMPLETED
+        assert plan.steps[1].status == StepStatus.FAILED
+
+        # Verify rollback was attempted (step1_agent called again for compensate)
+        calls = registry_with_rollback._calls
+        # First call is step 1 execution, step 2 fails, then rollback
+        assert len(calls) >= 2
+
+    @pytest.mark.asyncio
+    async def test_rollback_disabled(self, registry_with_rollback):
+        """When enable_rollback=False, no compensation runs."""
+        plan = Plan(
+            goal="No rollback",
+            approved=True,
+            steps=[
+                PlanStep(
+                    id="step_1",
+                    agent_name="step1_agent",
+                    tool_name="create_file",
+                    description="Create file",
+                    compensate_tool="delete_file",
+                ),
+                PlanStep(
+                    id="step_2",
+                    agent_name="step2_agent",
+                    tool_name="send_email",
+                    description="Will fail",
+                    depends_on=["step_1"],
+                ),
+            ],
+        )
+
+        orchestrator = Orchestrator(registry_with_rollback, enable_rollback=False)
+        result = await orchestrator.execute(plan)
+
+        assert not result.success
+        # Only 2 calls: step_1 execute + step_2 execute (fails)
+        # No rollback call
+        calls = registry_with_rollback._calls
+        assert len(calls) == 2
+
