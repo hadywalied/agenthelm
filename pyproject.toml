@@ -42,6 +42,7 @@ packages = [
     "agenthelm.orchestration",
     "agenthelm.mcp",
     "agenthelm.cli",
+    "agenthelm.tracing",
     # Keep legacy for now (will remove at end of v0.3.0)
     "orchestrator",
     "orchestrator.core",

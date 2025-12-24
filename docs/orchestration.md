@@ -11,7 +11,7 @@ from agenthelm import (
 )
 import dspy
 
-lm = dspy.LM("openai/gpt-4o-mini")
+lm = dspy.LM("mistral/mistral-large-latest")
 
 # Define tools
 @tool()

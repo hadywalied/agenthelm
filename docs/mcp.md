@@ -10,7 +10,7 @@ import asyncio
 from agenthelm import MCPToolAdapter, ToolAgent
 import dspy
 
-lm = dspy.LM("openai/gpt-4o-mini")
+lm = dspy.LM("mistral/mistral-large-latest")
 
 async def main():
     # Connect to an MCP server

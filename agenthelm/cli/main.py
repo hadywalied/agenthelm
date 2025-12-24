@@ -26,17 +26,31 @@ def cli():
 
 @cli.command()
 @click.argument("task")
-@click.option("--model", "-m", default="openai/gpt-4o-mini", help="LLM model to use")
+@click.option(
+    "--model", "-m", default="mistral/mistral-large-latest", help="LLM model to use"
+)
 @click.option("--max-iters", default=10, help="Max ReAct iterations")
 @click.option("--tools", "-t", default=None, help="Tools to load (module:func,func2)")
-def run(task: str, model: str, max_iters: int, tools: str = None):
+@click.option("--trace", is_flag=True, help="Enable OpenTelemetry tracing (Jaeger)")
+@click.option("--trace-endpoint", default="http://localhost:4317", help="OTLP endpoint")
+def run(
+    task: str, model: str, max_iters: int, tools: str, trace: bool, trace_endpoint: str
+):
     """Run a task with a ToolAgent."""
     import dspy
     from agenthelm import ToolAgent
+    from agenthelm.tracing import init_tracing, trace_agent as trace_agent_ctx
+
+    # Initialize tracing if enabled
+    if trace:
+        init_tracing(
+            service_name="agenthelm-cli", otlp_endpoint=trace_endpoint, enabled=True
+        )
+        console.print(f"[dim]Tracing enabled → {trace_endpoint}[/]")
 
     # Load config defaults
     cfg = load_config()
-    model = model or cfg.get("default_model", "openai/gpt-4o-mini")
+    model = model or cfg.get("default_model", "mistral/mistral-large-latest")
     max_iters = max_iters or cfg.get("max_iters", 10)
 
     # Load tools
@@ -56,7 +70,11 @@ def run(task: str, model: str, max_iters: int, tools: str = None):
     agent = ToolAgent(name="cli_agent", lm=lm, tools=[], max_iters=max_iters)
 
     with console.status("[bold green]Thinking..."):
-        result = agent.run(task)
+        if trace:
+            with trace_agent_ctx(agent_name="cli_agent", task=task):
+                result = agent.run(task)
+        else:
+            result = agent.run(task)
 
     if result.success:
         console.print("\n[bold green]✓ Success[/]")
@@ -68,7 +86,9 @@ def run(task: str, model: str, max_iters: int, tools: str = None):
 
 @cli.command()
 @click.argument("task")
-@click.option("--model", "-m", default="openai/gpt-4o-mini", help="LLM model to use")
+@click.option(
+    "--model", "-m", default="mistral/mistral-large-latest", help="LLM model to use"
+)
 @click.option("--approve", is_flag=True, help="Auto-approve and execute plan")
 def plan(task: str, model: str, approve: bool):
     """Generate an execution plan for a task."""
@@ -77,7 +97,7 @@ def plan(task: str, model: str, approve: bool):
 
     # Load config defaults
     cfg = load_config()
-    model = model or cfg.get("default_model", "openai/gpt-4o-mini")
+    model = model or cfg.get("default_model", "mistral/mistral-large-latest")
 
     console.print(f"[bold blue]Planning:[/] {task}")
 
@@ -349,7 +369,7 @@ def mcp_run(command: str, server_args: tuple, task: str, model: str | None):
     from agenthelm.cli.config import load_config
 
     cfg = load_config()
-    model = model or cfg.get("default_model", "openai/gpt-4o-mini")
+    model = model or cfg.get("default_model", "mistral/mistral-large-latest")
 
     async def run_with_mcp():
         adapter = MCPToolAdapter({"command": command, "args": list(server_args)})

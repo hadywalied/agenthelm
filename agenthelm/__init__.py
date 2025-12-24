@@ -47,6 +47,12 @@ from agenthelm.orchestration import (
     Orchestrator,
 )
 from agenthelm.mcp import MCPClient, MCPToolAdapter
+from agenthelm.tracing import (
+    init_tracing,
+    get_tracer,
+    trace_tool,
+    trace_agent,
+)
 
 __version__ = "0.3.0"
 
@@ -89,4 +95,9 @@ __all__ = [
     # MCP
     "MCPClient",
     "MCPToolAdapter",
+    # Tracing
+    "init_tracing",
+    "get_tracer",
+    "trace_tool",
+    "trace_agent",
 ]

@@ -9,7 +9,7 @@ import dspy
 from agenthelm import ToolAgent, PlannerAgent
 
 # Configure your LLM
-lm = dspy.LM("openai/gpt-4o-mini")
+lm = dspy.LM("mistral/mistral-large-latest")
 
 # Create a tool agent
 agent = ToolAgent(
