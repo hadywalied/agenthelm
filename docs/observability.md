@@ -1,128 +1,202 @@
-# Observability & Trace Explorer
+# Observability & Tracing
 
-AgentHelm v0.2.0 introduces a robust observability system and a powerful CLI-based trace explorer, allowing you to gain
-deep insights into your agent's execution, debug issues, and ensure reliability.
+AgentHelm provides comprehensive observability through execution tracing, cost tracking, and OpenTelemetry integration.
 
-## Standardized Logging
+## Execution Tracing
 
-All internal `print()` statements have been replaced with Python's standard `logging` module. This provides granular
-control over the verbosity of output.
+Every tool execution is automatically traced and stored:
 
-- `logging.info()`: Used for high-level, user-facing messages, indicating major steps in the agent's execution.
-- `logging.debug()`: Provides detailed information, such as LLM responses, tool arguments, and internal processing
-  steps. Useful for in-depth debugging.
-- `logging.warning()`: Indicates non-critical issues or potential problems.
-- `logging.error()`: Signals critical errors that prevent the agent from completing its task.
+```python
+from agenthelm import ExecutionTracer, ToolAgent
+from agenthelm.core.storage import SqliteStorage
 
-### Controlling Logging Verbosity
+# Create tracer with storage
+storage = SqliteStorage("traces.db")
+tracer = ExecutionTracer(storage=storage)
 
-Use the `-v` or `--verbose` flag when running your agent to enable `DEBUG`-level logging:
-
-```bash
-agenthelm run \
-  --agent-file examples/cli_tools_example/my_agent_tools.py \
-  --task "What is the weather in New York?" \
-  --verbose
+# Pass to agent
+agent = ToolAgent(
+    name="my_agent",
+    lm=lm,
+    tools=[my_tool],
+    tracer=tracer,  # Traces saved automatically
+)
 ```
 
-By default, only `INFO` level messages and above are displayed.
+### Event Model
 
-## Storage Abstraction Layer
+Each execution produces an `Event` with:
 
-AgentHelm now features a flexible storage abstraction layer, allowing you to choose how your agent's execution traces
-are persisted. This enables better integration with different environments and provides options for performance and
-querying capabilities.
-
-### Available Storage Backends
-
-- **JSON Storage (`.json`)**: This is the default storage backend. Traces are saved as a list of JSON objects in a
-  single file. It's simple, human-readable, and excellent for local development and smaller trace volumes.
-
-  ```python
-  from agenthelm.core.storage import JsonStorage
-  storage = JsonStorage("my_agent_traces.json")
-  ```
-
-- **SQLite Storage (`.db`)**: A lightweight, file-based relational database. SQLite offers significantly better
-  performance for querying and filtering large numbers of traces compared to JSON files. It's recommended for more
-  extensive trace logging and when you need to perform complex queries.
-
-  ```python
-  from agenthelm.core.storage import SqliteStorage
-  storage = SqliteStorage("my_agent_traces.db")
-  ```
-
-### Specifying Storage
-
-You can specify the storage file and type using the `--trace-file` option in the `agenthelm run` command. The backend is
-automatically determined by the file extension (`.json` for JSON, `.db` for SQLite).
-
-```bash
-# Using JSON storage (default)
-agenthelm run --agent-file tools.py --task "..." --trace-file cli_trace.json
-
-# Using SQLite storage
-agenthelm run --agent-file tools.py --task "..." --trace-file my_traces.db
-```
+| Field                | Description                |
+|----------------------|----------------------------|
+| `timestamp`          | When the event occurred    |
+| `tool_name`          | Name of the executed tool  |
+| `inputs` / `outputs` | Arguments and return value |
+| `execution_time`     | Duration in seconds        |
+| `token_usage`        | LLM tokens (input/output)  |
+| `estimated_cost_usd` | Cost estimate              |
+| `agent_name`         | Which agent executed this  |
+| `trace_id`           | Unique execution ID        |
 
 ## CLI Trace Explorer
 
-The `agenthelm traces` command provides a powerful interface to inspect, filter, and export your agent's execution
-traces directly from the command line.
-
-### `agenthelm traces list`
-
-Lists recent agent execution traces in a table format. Supports pagination.
+### List Traces
 
 ```bash
-# List the 10 most recent traces from the default JSON file
+# List recent traces
 agenthelm traces list
 
-# List 5 traces starting from the 3rd trace (offset 2) from a SQLite database
-agenthelm traces list --limit 5 --offset 2 --trace-file my_traces.db
-
-# Output traces in raw JSON format
-agenthelm traces list --json
+# Limit results
+agenthelm traces list -n 20
 ```
 
-### `agenthelm traces show <ID>`
-
-Displays detailed information for a specific trace, including inputs, outputs, LLM reasoning, and confidence scores.
+### Show Trace Details
 
 ```bash
-# Show details for trace with ID 0 from the default JSON file
 agenthelm traces show 0
-
-# Show details for trace with ID 5 from a SQLite database
-agenthelm traces show 5 --trace-file my_traces.db
 ```
 
-### `agenthelm traces filter`
-
-Filters traces based on various criteria and displays the results in a table.
+### Filter Traces
 
 ```bash
-# Filter traces by tool name and status
-agenthelm traces filter --tool-name get_weather --status success
+# By tool name
+agenthelm traces filter --tool get_weather
 
-# Filter traces that failed within a specific date range
-agenthelm traces filter --status failed --date-from 2025-10-01 --date-to 2025-10-31 --trace-file my_traces.db
+# By status
+agenthelm traces filter --status success
+agenthelm traces filter --status failed
 
-# Filter traces with high execution time and low confidence, output as JSON
-agenthelm traces filter --min-time 5.0 --confidence-max 0.7 --json
+# By date range
+agenthelm traces filter --date-from 2024-01-01 --date-to 2024-12-31
+
+# By execution time
+agenthelm traces filter --min-time 1.0 --max-time 5.0
+
+# Output as JSON
+agenthelm traces filter --status failed --json
 ```
 
-### `agenthelm traces export`
-
-Exports filtered traces to different file formats (CSV, JSON, Markdown).
+### Export Traces
 
 ```bash
-# Export all failed traces to a CSV file
-agenthelm traces export --output failed_traces.csv --format csv --status failed
+# Export to JSON
+agenthelm traces export -o traces.json -f json
 
-# Export all traces to a JSON file
-agenthelm traces export --output all_traces.json --format json --trace-file my_traces.db
+# Export to CSV
+agenthelm traces export -o traces.csv -f csv
 
-# Export traces from a specific tool to a Markdown report
-agenthelm traces export --output weather_tool_report.md --format md --tool-name get_weather
+# Export to Markdown report
+agenthelm traces export -o report.md -f md
+
+# Export filtered traces
+agenthelm traces export -o failed.md -f md --status failed
+```
+
+## Storage Backends
+
+### SQLite (Default)
+
+```bash
+# Traces saved to ~/.agenthelm/traces.db by default
+agenthelm run "task"
+
+# Custom path
+agenthelm run "task" -s ./my_traces.db
+```
+
+### JSON
+
+```bash
+agenthelm run "task" -s ./traces.json
+```
+
+### Configure Default Storage
+
+```bash
+agenthelm config set trace_storage /path/to/traces.db
+```
+
+## OpenTelemetry & Jaeger
+
+AgentHelm supports OpenTelemetry for distributed tracing with Jaeger.
+
+### Setup Jaeger
+
+```bash
+docker run -d --name jaeger \
+  -p 16686:16686 \
+  -p 4317:4317 \
+  jaegertracing/all-in-one:latest
+```
+
+### Enable Tracing
+
+```bash
+# Run with OpenTelemetry tracing
+agenthelm run "What is 2+2?" --trace
+
+# Custom endpoint
+agenthelm run "task" --trace --trace-endpoint http://localhost:4317
+```
+
+### View in Jaeger UI
+
+Open http://localhost:16686 and select "agenthelm-cli" service.
+
+### Python SDK
+
+```python
+from agenthelm.tracing import init_tracing, trace_tool, trace_agent
+
+# Initialize OpenTelemetry
+init_tracing(
+    service_name="my-app",
+    otlp_endpoint="http://localhost:4317",
+    enabled=True,
+)
+
+# Trace a tool execution
+with trace_tool("search", inputs={"query": "AI news"}) as span:
+    result = search("AI news")
+    span.set_attribute("result_count", len(result))
+
+# Trace an agent execution
+with trace_agent("researcher", task="Find AI news") as span:
+    result = agent.run("Find AI news")
+```
+
+## Verbose Logging
+
+Enable debug logging with the `-v` flag:
+
+```bash
+agenthelm -v run "task"
+agenthelm -v traces list
+```
+
+## Cost Tracking
+
+Track token usage and estimated costs:
+
+```python
+from agenthelm import CostTracker, get_cost_tracker
+
+# Get tracker
+tracker = get_cost_tracker()
+
+# Record usage
+tracker.record("mistral-large-latest", input_tokens=500, output_tokens=150)
+
+# Get summary
+summary = tracker.get_summary()
+print(f"Total cost: ${summary['total_cost_usd']:.4f}")
+```
+
+The CLI shows cost summary after each run:
+
+```
+─── Summary ───
+Tokens: 1,234 (856 in / 378 out)
+Cost: $0.0042
+Traces: 3 events saved
 ```

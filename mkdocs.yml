@@ -9,6 +9,7 @@ repo_name: hadywalied/agenthelm
 nav:
   - Home: index.md
   - Getting Started:
+      - Quick Start: quickstart.md
       - Core Concepts: concepts.md
       - Tutorial: tutorial.md
   - Features:
@@ -17,6 +18,7 @@ nav:
       - MCP Integration: mcp.md
       - Memory Hub: memory.md
       - Observability: observability.md
+  - CLI Reference: cli.md
   - API Reference: api_reference.md
 
 # Theme configuration

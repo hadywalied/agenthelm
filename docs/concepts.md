@@ -36,10 +36,9 @@ from agenthelm import ExecutionTracer
 from agenthelm.core.storage import JsonStorage
 
 tracer = ExecutionTracer(storage=JsonStorage("trace.json"))
-tracer.set_trace_context(agent_name="my_agent")
 
 # Execute a tool with full tracing
-event = tracer.execute(my_tool, arg1="value", arg2=123)
+output, event = tracer.trace_and_execute(my_tool, arg1="value", arg2=123)
 
 # Event contains: timestamp, inputs, outputs, duration, token_usage, cost, etc.
 ```
