@@ -28,6 +28,7 @@ dependencies = [
     "pyyaml>=6.0",
     "requests>=2.32", # For webhooks, HTTP tools, etc.
     "mcp>=1.25.0",
+    "python-dotenv>=1.2.1",
 ]
 
 [tool.setuptools]
@@ -38,16 +39,17 @@ packages = [
     "agenthelm.memory",
     "agenthelm.memory.short_term",
     "agenthelm.agent",
-    "agenthelm.planning",
     "agenthelm.orchestration",
+    "agenthelm.mcp",
+    "agenthelm.cli",
     # Keep legacy for now (will remove at end of v0.3.0)
     "orchestrator",
     "orchestrator.core",
     "orchestrator.llm",
 ]
 
-# [project.scripts]
-# agenthelm = "agenthelm.cli:cli"  # TODO: Uncomment in Week 5
+[project.scripts]
+agenthelm = "agenthelm.cli:cli"
 
 [project.optional-dependencies]
 dev = [
