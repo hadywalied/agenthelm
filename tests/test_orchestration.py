@@ -408,4 +408,3 @@ class TestOrchestratorSaga:
         # No rollback call
         calls = registry_with_rollback._calls
         assert len(calls) == 2
-

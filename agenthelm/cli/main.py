@@ -126,8 +126,12 @@ def run(
     # Show cost summary
     console.print("\n[dim]─── Summary ───[/]")
     if result.token_usage:
-        total_tokens = result.token_usage.input_tokens + result.token_usage.output_tokens
-        console.print(f"[dim]Tokens: {total_tokens:,} ({result.token_usage.input_tokens:,} in / {result.token_usage.output_tokens:,} out)[/]")
+        total_tokens = (
+            result.token_usage.input_tokens + result.token_usage.output_tokens
+        )
+        console.print(
+            f"[dim]Tokens: {total_tokens:,} ({result.token_usage.input_tokens:,} in / {result.token_usage.output_tokens:,} out)[/]"
+        )
     if result.total_cost_usd > 0:
         console.print(f"[dim]Cost: ${result.total_cost_usd:.4f}[/]")
     if result.events:
