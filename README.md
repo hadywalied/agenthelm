@@ -3,6 +3,7 @@
 <div id="badges" align="center">
 
 [![PyPI - Version](https://img.shields.io/pypi/v/agenthelm)](https://pypi.org/project/agenthelm/)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/agenthelm?period=total&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=MAGENTA&left_text=downloads)](https://pepy.tech/projects/agenthelm)
 [![CI](https://github.com/hadywalied/agenthelm/actions/workflows/ci.yml/badge.svg)](https://github.com/hadywalied/agenthelm/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/hadywalied/agenthelm)](https://github.com/hadywalied/agenthelm/blob/main/LICENSE)
 
