@@ -14,6 +14,7 @@ nav:
   - Features:
       - Agents: agents.md
       - Orchestration: orchestration.md
+      - MCP Integration: mcp.md
       - Memory Hub: memory.md
       - Observability: observability.md
   - API Reference: api_reference.md
