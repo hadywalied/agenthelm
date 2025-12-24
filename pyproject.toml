@@ -27,6 +27,7 @@ dependencies = [
     # Utilities
     "pyyaml>=6.0",
     "requests>=2.32", # For webhooks, HTTP tools, etc.
+    "mcp>=1.25.0",
 ]
 
 [tool.setuptools]

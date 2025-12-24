@@ -46,6 +46,7 @@ from agenthelm.orchestration import (
     AgentRegistry,
     Orchestrator,
 )
+from agenthelm.mcp import MCPClient, MCPToolAdapter
 
 __version__ = "0.3.0"
 
@@ -85,4 +86,7 @@ __all__ = [
     # Orchestration
     "AgentRegistry",
     "Orchestrator",
+    # MCP
+    "MCPClient",
+    "MCPToolAdapter",
 ]
